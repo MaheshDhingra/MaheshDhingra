@@ -11,9 +11,6 @@
   <!-- Typed.js (for auto-typing effect) -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <style>
-    /**************************************************
-     * CSS VARIABLES & GLOBAL STYLES
-     **************************************************/
     :root {
       --primary-color: #007BFF;
       --background-light: #fff;
@@ -48,9 +45,7 @@
     a:hover {
       color: var(--primary-color);
     }
-    /**************************************************
-     * SCROLL PROGRESS BAR
-     **************************************************/
+    /* Scroll Progress Bar */
     #scroll-progress {
       position: fixed;
       top: 0;
@@ -64,25 +59,31 @@
     body.dark-mode #scroll-progress {
       background: var(--text-dark);
     }
-    /**************************************************
-     * HEADER & NAVIGATION
-     **************************************************/
+    /* Header & Nav */
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      backdrop-filter: blur(10px);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 50px;
       z-index: 1000;
       border-bottom: 1px solid rgba(0,0,0,0.1);
-      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+      /* Default: transparent for light mode */
+      background: none;
+      transition: background 0.4s, border-bottom 0.4s;
+    }
+    body:not(.dark-mode) header {
+      /* Subtle transparency for the light theme */
+      background: rgba(255,255,255,0.0);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
     }
     body.dark-mode header {
       background: rgba(18,18,18,0.8);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
     }
     .logo {
       font-weight: 700;
@@ -112,10 +113,13 @@
       cursor: pointer;
       outline: none;
       margin-left: 20px;
+      color: var(--text-light);
+      transition: color 0.3s;
     }
-    /**************************************************
-     * HERO SECTION
-     **************************************************/
+    body.dark-mode .dark-mode-toggle {
+      color: var(--text-dark);
+    }
+    /* Hero Section */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -127,9 +131,6 @@
       text-align: center;
       overflow: hidden;
       transition: color 0.4s;
-    }
-    body.dark-mode .hero {
-      color: #fff;
     }
     .hero-bg {
       position: absolute;
@@ -144,7 +145,7 @@
     }
     .hero-content {
       z-index: 1;
-      margin-top: 80px; /* offset for fixed header */
+      margin-top: 80px; /* offset for header */
       animation: fadeInUp 1.5s ease-out;
     }
     .hero img {
@@ -183,22 +184,13 @@
       background-color: #444;
       transform: scale(1.05);
     }
-    /**************************************************
-     * WAVES / SECTION DIVIDERS
-     **************************************************/
-    .wave {
-      width: 100%;
-      height: 100px;
-      background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYwMCIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTYwMCAxMDAiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAsMGgxNjAwdjEwMEgweiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wLDc0YzAsMCwzNTAsLTI0LDUzMiwyNEM5NDUsMTA4LDEzMjMsMjAsMTYwMCwyMHY4MHY4SDBaIiBvcGFjaXR5PSIuMyIvPjwvc3ZnPg==') repeat-x;
+
+    /* Dark theme override */
+    body.dark-mode .wave {
+      background: url("data:image/svg+xml;utf8,<svg width='1600' height='100%%' viewBox='0 0 1600 100' xmlns='http://www.w3.org/2000/svg'><path fill='%23121212' d='M0,0h1600v100H0z'/><path fill='%23121212' d='M0,74c0,0,350,-24,532,24C945,108,1323,20,1600,20v80v8H0Z' opacity='.3'/></svg>") repeat-x;
       background-size: cover;
     }
-    .wave.flip {
-      transform: rotate(180deg);
-      margin-bottom: -5px;
-    }
-    /**************************************************
-     * SECTION STYLES
-     **************************************************/
+    /* Section Styles */
     .section {
       max-width: 1200px;
       margin: auto;
@@ -220,9 +212,7 @@
       margin: 10px auto 0;
       border-radius: 2px;
     }
-    /**************************************************
-     * ABOUT SECTION
-     **************************************************/
+    /* About Section */
     #about p {
       font-size: 1.1em;
       line-height: 1.6em;
@@ -230,9 +220,7 @@
       max-width: 800px;
       margin: 0 auto;
     }
-    /**************************************************
-     * PROJECTS SECTION
-     **************************************************/
+    /* Projects Section */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -266,9 +254,7 @@
       color: var(--primary-color);
       text-decoration: underline;
     }
-    /**************************************************
-     * SKILLS SECTION
-     **************************************************/
+    /* Skills Section */
     .skills-list {
       display: flex;
       flex-wrap: wrap;
@@ -291,10 +277,7 @@
       background: #1e1e1e;
       box-shadow: 0 4px 10px rgba(255,255,255,0.1);
     }
-    /**************************************************
-     * RESPONSIVE TIMELINE / EXPERIENCE SECTION
-     * (Fixed using CSS Grid instead of floats)
-     **************************************************/
+    /* Timeline / Experience Section (Responsive Grid) */
     .timeline {
       display: grid;
       grid-template-columns: 1fr 50px 1fr;
@@ -357,9 +340,7 @@
         top: 20px;
       }
     }
-    /**************************************************
-     * CERTIFICATIONS SECTION
-     **************************************************/
+    /* Certifications Section */
     .certifications-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -384,9 +365,7 @@
     .cert-card p {
       font-size: 0.9em;
     }
-    /**************************************************
-     * BLOG SECTION
-     **************************************************/
+    /* Blog Section */
     .blog-posts {
       display: flex;
       flex-wrap: wrap;
@@ -423,9 +402,7 @@
       font-size: 0.95em;
       line-height: 1.4em;
     }
-    /**************************************************
-     * TESTIMONIALS CAROUSEL
-     **************************************************/
+    /* Testimonials Carousel */
     .testimonials {
       position: relative;
       overflow: hidden;
@@ -476,9 +453,7 @@
     .carousel-buttons button:hover {
       background: rgba(0,0,0,0.7);
     }
-    /**************************************************
-     * CONTACT FORM
-     **************************************************/
+    /* Contact Form */
     .contact-form {
       max-width: 600px;
       margin: 0 auto;
@@ -515,18 +490,14 @@
       background-color: #444;
       transform: scale(1.05);
     }
-    /**************************************************
-     * FOOTER
-     **************************************************/
+    /* Footer */
     footer {
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
       border-top: 1px solid rgba(0,0,0,0.1);
     }
-    /**************************************************
-     * BACK TO TOP BUTTON
-     **************************************************/
+    /* Back to Top Button */
     .back-to-top {
       position: fixed;
       bottom: 30px;
@@ -545,9 +516,7 @@
       background: #444;
       transform: scale(1.1);
     }
-    /**************************************************
-     * ANIMATIONS
-     **************************************************/
+    /* Animations */
     @keyframes fadeInUp {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -556,9 +525,7 @@
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-    /**************************************************
-     * RESPONSIVE ADJUSTMENTS
-     **************************************************/
+    /* Responsive Adjustments */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -581,6 +548,7 @@
       .projects-grid {
         grid-template-columns: 1fr;
       }
+
     }
   </style>
 </head>
@@ -601,7 +569,10 @@
       <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+    <!-- Elegant theme icon that toggles between moon & sun -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+      <i id="themeIcon" class="fas fa-moon"></i>
+    </button>
   </header>
   
   <!-- Hero Section with Parallax Background -->
@@ -616,8 +587,7 @@
     </div>
   </section>
   
-  <!-- Wave Divider -->
-  <div class="wave flip"></div>
+  
   
   <!-- About Section -->
   <section class="section" id="about">
@@ -629,8 +599,7 @@
     </p>
   </section>
   
-  <!-- Wave Divider -->
-  <div class="wave"></div>
+
   
   <!-- Projects Section -->
   <section class="section" id="projects">
@@ -663,8 +632,7 @@
     </div>
   </section>
   
-  <!-- Wave Divider -->
-  <div class="wave flip"></div>
+  
   
   <!-- Skills Section -->
   <section class="section" id="skills">
@@ -680,10 +648,14 @@
       <li><i class="fas fa-cloud"></i> DigitalOcean</li>
       <li><i class="fas fa-robot"></i> AI & Machine Learning</li>
       <li><i class="fab fa-css3"></i> Tailwind CSS</li>
+      <li><i class="fas fa-bolt"></i> Bun.js</li>
+      <li><i class="fas fa-cube"></i> Three.js</li>
     </ul>
   </section>
   
-  <!-- Timeline / Experience Section (Responsive Grid) -->
+
+  
+  <!-- Timeline / Experience Section -->
   <section class="section" id="timeline">
     <h2>Experience</h2>
     <div class="timeline">
@@ -702,8 +674,7 @@
     </div>
   </section>
   
-  <!-- Wave Divider -->
-  <div class="wave flip"></div>
+  
   
   <!-- Certifications & Achievements Section -->
   <section class="section" id="certifications">
@@ -724,8 +695,7 @@
     </div>
   </section>
   
-  <!-- Wave Divider -->
-  <div class="wave"></div>
+
   
   <!-- Blog Section -->
   <section class="section" id="blog">
@@ -755,8 +725,7 @@
     </div>
   </section>
   
-  <!-- Wave Divider -->
-  <div class="wave flip"></div>
+  
   
   <!-- Testimonials Section -->
   <section class="section testimonials" id="testimonials">
@@ -781,8 +750,7 @@
     </div>
   </section>
   
-  <!-- Wave Divider -->
-  <div class="wave"></div>
+
   
   <!-- Contact Form Section -->
   <section class="section contact-form" id="contact">
@@ -822,6 +790,14 @@
     // Dark Mode Toggle Function
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
+      const icon = document.getElementById('themeIcon');
+      if (document.body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
     }
     
     // Testimonials Carousel
@@ -841,6 +817,7 @@
       testimonialIndex--;
       showTestimonial(testimonialIndex);
     }
+    // Auto cycle testimonials every 5 seconds
     setInterval(nextTestimonial, 5000);
     
     // Back to Top Button & Scroll Progress Bar
