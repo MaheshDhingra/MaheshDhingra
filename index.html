@@ -12,8 +12,16 @@
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <style>
     /**************************************************
-     * RESET & GLOBAL STYLES
+     * CSS VARIABLES & GLOBAL STYLES
      **************************************************/
+    :root {
+      --primary-color: #007BFF;
+      --background-light: #fff;
+      --background-dark: #121212;
+      --text-light: #000;
+      --text-dark: #e0e0e0;
+      --box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
     * {
       margin: 0; 
       padding: 0; 
@@ -21,16 +29,16 @@
     }
     body {
       font-family: 'Inter', sans-serif;
-      background: #fff;
-      color: #000;
+      background: var(--background-light);
+      color: var(--text-light);
       scroll-behavior: smooth;
       transition: background 0.4s, color 0.4s;
       overflow-x: hidden;
       position: relative;
     }
     body.dark-mode {
-      background: #121212;
-      color: #e0e0e0;
+      background: var(--background-dark);
+      color: var(--text-dark);
     }
     a {
       text-decoration: none;
@@ -38,7 +46,7 @@
       transition: color 0.3s;
     }
     a:hover {
-      color: #007BFF;
+      color: var(--primary-color);
     }
     /**************************************************
      * SCROLL PROGRESS BAR
@@ -48,16 +56,16 @@
       top: 0;
       left: 0;
       height: 4px;
-      background: #000;
+      background: var(--text-light);
       z-index: 9999;
       width: 0;
       transition: width 0.25s ease-out;
     }
     body.dark-mode #scroll-progress {
-      background: #e0e0e0;
+      background: var(--text-dark);
     }
     /**************************************************
-     * HEADER & NAV
+     * HEADER & NAVIGATION
      **************************************************/
     header {
       position: fixed;
@@ -71,6 +79,10 @@
       padding: 10px 50px;
       z-index: 1000;
       border-bottom: 1px solid rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.8);
+    }
+    body.dark-mode header {
+      background: rgba(18,18,18,0.8);
     }
     .logo {
       font-weight: 700;
@@ -111,10 +123,9 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 0 20px;
-      overflow: hidden;
-      color: #000;
+      padding: 100px 20px 80px;
       text-align: center;
+      overflow: hidden;
       transition: color 0.4s;
     }
     body.dark-mode .hero {
@@ -133,8 +144,8 @@
     }
     .hero-content {
       z-index: 1;
-      margin-top: 80px; /* offset for header */
-      animation: fadeInUp 1.5s ease forwards;
+      margin-top: 80px; /* offset for fixed header */
+      animation: fadeInUp 1.5s ease-out;
     }
     .hero img {
       width: 180px;
@@ -153,14 +164,14 @@
       margin: 5px 0 15px;
     }
     .typed-highlight {
-      color: #007BFF;
+      color: var(--primary-color);
       font-weight: 600;
     }
     .hero .hero-btn {
       margin-top: 20px;
       padding: 15px 30px;
-      background-color: #000;
-      color: #fff;
+      background-color: var(--text-light);
+      color: var(--background-light);
       border: none;
       border-radius: 8px;
       font-size: 1.2em;
@@ -186,13 +197,13 @@
       margin-bottom: -5px;
     }
     /**************************************************
-     * SECTION
+     * SECTION STYLES
      **************************************************/
     .section {
       max-width: 1200px;
       margin: auto;
       padding: 60px 20px;
-      animation: fadeIn 1.5s ease-in-out;
+      animation: fadeIn 1.5s ease-out;
     }
     .section h2 {
       font-size: 2.5em;
@@ -205,12 +216,12 @@
       display: block;
       width: 60px;
       height: 4px;
-      background: #007BFF;
+      background: var(--primary-color);
       margin: 10px auto 0;
       border-radius: 2px;
     }
     /**************************************************
-     * ABOUT
+     * ABOUT SECTION
      **************************************************/
     #about p {
       font-size: 1.1em;
@@ -220,7 +231,7 @@
       margin: 0 auto;
     }
     /**************************************************
-     * PROJECTS
+     * PROJECTS SECTION
      **************************************************/
     .projects-grid {
       display: grid;
@@ -228,12 +239,11 @@
       gap: 20px;
     }
     .project-card {
-      background: #fff;
+      background: var(--background-light);
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: var(--box-shadow);
       padding: 20px;
       transition: transform 0.3s, box-shadow 0.3s;
-      position: relative;
       overflow: hidden;
     }
     body.dark-mode .project-card {
@@ -253,11 +263,11 @@
     .project-links a {
       margin-right: 15px;
       font-size: 0.95em;
-      color: #007BFF;
+      color: var(--primary-color);
       text-decoration: underline;
     }
     /**************************************************
-     * SKILLS
+     * SKILLS SECTION
      **************************************************/
     .skills-list {
       display: flex;
@@ -270,7 +280,7 @@
       background: #f8f8f8;
       padding: 15px 25px;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: var(--box-shadow);
       font-size: 1.1em;
       transition: transform 0.2s;
     }
@@ -282,63 +292,73 @@
       box-shadow: 0 4px 10px rgba(255,255,255,0.1);
     }
     /**************************************************
-     * TIMELINE / EXPERIENCE
+     * RESPONSIVE TIMELINE / EXPERIENCE SECTION
+     * (Fixed using CSS Grid instead of floats)
      **************************************************/
     .timeline {
+      display: grid;
+      grid-template-columns: 1fr 50px 1fr;
+      gap: 20px;
       position: relative;
       margin: 50px 0;
     }
     .timeline::before {
       content: '';
       position: absolute;
-      left: 50%;
       top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       width: 2px;
       height: 100%;
-      background: #007BFF;
-      transform: translateX(-50%);
+      background: var(--primary-color);
     }
     .timeline-item {
-      width: 50%;
-      padding: 20px;
       position: relative;
+      padding: 20px;
     }
-    .timeline-item:nth-child(odd) {
-      float: left;
+    .timeline-item.left {
+      grid-column: 1;
       text-align: right;
-      clear: both;
     }
-    .timeline-item:nth-child(even) {
-      float: right;
+    .timeline-item.right {
+      grid-column: 3;
       text-align: left;
-      clear: both;
-    }
-    .timeline-item h4 {
-      margin-bottom: 5px;
-      font-size: 1.2em;
-    }
-    .timeline-item p {
-      font-size: 0.95em;
-      line-height: 1.5em;
     }
     .timeline-item::before {
       content: '';
       position: absolute;
       top: 20px;
-      width: 10px;
-      height: 10px;
-      background: #007BFF;
+      width: 15px;
+      height: 15px;
+      background: var(--primary-color);
       border-radius: 50%;
-      z-index: 1;
     }
-    .timeline-item:nth-child(odd)::before {
-      right: -5px;
+    .timeline-item.left::before {
+      right: -40px;
     }
-    .timeline-item:nth-child(even)::before {
-      left: -5px;
+    .timeline-item.right::before {
+      left: -40px;
+    }
+    @media (max-width: 768px) {
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+      .timeline::before {
+        display: none;
+      }
+      .timeline-item {
+        grid-column: 1;
+        text-align: left;
+        padding-left: 40px;
+        margin-bottom: 20px;
+      }
+      .timeline-item::before {
+        left: 0;
+        top: 20px;
+      }
     }
     /**************************************************
-     * CERTIFICATIONS
+     * CERTIFICATIONS SECTION
      **************************************************/
     .certifications-grid {
       display: grid;
@@ -346,10 +366,10 @@
       gap: 20px;
     }
     .cert-card {
-      background: #fff;
+      background: var(--background-light);
       border-radius: 8px;
       padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: var(--box-shadow);
       transition: transform 0.3s;
     }
     body.dark-mode .cert-card {
@@ -374,9 +394,9 @@
       justify-content: center;
     }
     .post {
-      background: #fff;
+      background: var(--background-light);
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: var(--box-shadow);
       overflow: hidden;
       width: 300px;
       transition: transform 0.3s;
@@ -471,8 +491,8 @@
       border: 1px solid #ddd;
       border-radius: 8px;
       font-size: 1em;
-      background: #fff;
-      color: #000;
+      background: var(--background-light);
+      color: var(--text-light);
     }
     body.dark-mode .contact-form input,
     body.dark-mode .contact-form textarea {
@@ -537,18 +557,29 @@
       100% { opacity: 1; transform: translateY(0); }
     }
     /**************************************************
-     * RESPONSIVE
+     * RESPONSIVE ADJUSTMENTS
      **************************************************/
-    @media(max-width: 768px) {
-      .timeline::before {
-        display: none;
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 10px 20px;
       }
-      .timeline-item {
-        width: 100%;
-        text-align: left !important;
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
       }
-      .timeline-item::before {
-        display: none;
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .section h2 {
+        font-size: 2rem;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -652,22 +683,19 @@
     </ul>
   </section>
   
-  <!-- Wave Divider -->
-  <div class="wave"></div>
-  
-  <!-- Timeline / Experience Section -->
+  <!-- Timeline / Experience Section (Responsive Grid) -->
   <section class="section" id="timeline">
     <h2>Experience</h2>
     <div class="timeline">
-      <div class="timeline-item">
+      <div class="timeline-item left">
         <h4>Senior Full-Stack Engineer @ Company A (2023 - Present)</h4>
         <p>Leading a team to build microservice-based web apps with React, Node.js, and AI-driven features.</p>
       </div>
-      <div class="timeline-item">
+      <div class="timeline-item right">
         <h4>Software Engineer @ Company B (2021 - 2023)</h4>
         <p>Developed large-scale MERN stack projects, integrated CI/CD pipelines, and improved performance by 40%.</p>
       </div>
-      <div class="timeline-item">
+      <div class="timeline-item left">
         <h4>Freelance Developer (2019 - 2021)</h4>
         <p>Created custom websites, AI solutions, and full-stack applications for various clients globally.</p>
       </div>
@@ -677,7 +705,7 @@
   <!-- Wave Divider -->
   <div class="wave flip"></div>
   
-  <!-- Certifications & Achievements -->
+  <!-- Certifications & Achievements Section -->
   <section class="section" id="certifications">
     <h2>Certifications & Achievements</h2>
     <div class="certifications-grid">
@@ -730,7 +758,7 @@
   <!-- Wave Divider -->
   <div class="wave flip"></div>
   
-  <!-- Testimonials Carousel -->
+  <!-- Testimonials Section -->
   <section class="section testimonials" id="testimonials">
     <h2>Testimonials</h2>
     <div class="testimonial-container" id="testimonial-container">
@@ -756,7 +784,7 @@
   <!-- Wave Divider -->
   <div class="wave"></div>
   
-  <!-- Contact Form -->
+  <!-- Contact Form Section -->
   <section class="section contact-form" id="contact">
     <h2>Contact Me</h2>
     <form onsubmit="handleFormSubmit(event)">
@@ -768,7 +796,7 @@
   </section>
   
   <!-- Back to Top Button -->
-  <button class="back-to-top" id="backToTopBtn"><i class="fas fa-arrow-up"></i></button>
+  <button class="back-to-top" id="backToTopBtn" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
   
   <!-- Footer -->
   <footer>
@@ -776,9 +804,7 @@
   </footer>
   
   <script>
-    /**************************************************
-     * AUTO-TYPING TEXT (Typed.js)
-     **************************************************/
+    // Auto-Typing Effect using Typed.js
     document.addEventListener('DOMContentLoaded', () => {
       new Typed('.typed-text', {
         strings: [
@@ -793,16 +819,12 @@
       });
     });
     
-    /**************************************************
-     * DARK MODE TOGGLE
-     **************************************************/
+    // Dark Mode Toggle Function
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
     }
     
-    /**************************************************
-     * TESTIMONIALS CAROUSEL
-     **************************************************/
+    // Testimonials Carousel
     let testimonialIndex = 0;
     function showTestimonial(index) {
       const container = document.getElementById('testimonial-container');
@@ -819,33 +841,23 @@
       testimonialIndex--;
       showTestimonial(testimonialIndex);
     }
-    // Auto cycle testimonials every 5 seconds
     setInterval(nextTestimonial, 5000);
     
-    /**************************************************
-     * BACK TO TOP BUTTON
-     **************************************************/
+    // Back to Top Button & Scroll Progress Bar
     const backToTopBtn = document.getElementById('backToTopBtn');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTopBtn.style.display = 'block';
-      } else {
-        backToTopBtn.style.display = 'none';
-      }
-      // Update scroll progress
       const scrollProgress = document.getElementById('scroll-progress');
       const scrollTop = window.scrollY;
       const docHeight = document.body.scrollHeight - window.innerHeight;
       const scrollPercent = (scrollTop / docHeight) * 100;
       scrollProgress.style.width = scrollPercent + '%';
+      backToTopBtn.style.display = (scrollTop > 300) ? 'block' : 'none';
     });
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     
-    /**************************************************
-     * CONTACT FORM SUBMISSION
-     **************************************************/
+    // Contact Form Submission Handler
     function handleFormSubmit(e) {
       e.preventDefault();
       alert('Thank you for your message! I will get back to you soon.');
