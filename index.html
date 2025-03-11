@@ -2,25 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mahesh Dhingra | Portfolio</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <!-- Font Awesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- Typed.js (for auto-typing effect) -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <style>
-    /* Global Styles */
+    /**************************************************
+     * RESET & GLOBAL STYLES
+     **************************************************/
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #fff;
+      background: #fff;
       color: #000;
-      margin: 0;
-      padding: 0;
       scroll-behavior: smooth;
-      transition: background 0.3s, color 0.3s;
+      transition: background 0.4s, color 0.4s;
+      overflow-x: hidden;
+      position: relative;
     }
-    .dark-mode {
-      background-color: #121212;
+    body.dark-mode {
+      background: #121212;
       color: #e0e0e0;
     }
     a {
@@ -31,13 +40,30 @@
     a:hover {
       color: #007BFF;
     }
-    /* Header */
+    /**************************************************
+     * SCROLL PROGRESS BAR
+     **************************************************/
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: #000;
+      z-index: 9999;
+      width: 0;
+      transition: width 0.25s ease-out;
+    }
+    body.dark-mode #scroll-progress {
+      background: #e0e0e0;
+    }
+    /**************************************************
+     * HEADER & NAV
+     **************************************************/
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: inherit;
       backdrop-filter: blur(10px);
       display: flex;
       justify-content: space-between;
@@ -45,6 +71,10 @@
       padding: 10px 50px;
       z-index: 1000;
       border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
     }
     .nav-links {
       display: flex;
@@ -56,6 +86,12 @@
     .nav-links a {
       font-weight: 500;
       letter-spacing: 0.5px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .nav-links a:hover {
+      background: rgba(0, 0, 0, 0.05);
     }
     .dark-mode-toggle {
       background: none;
@@ -63,17 +99,42 @@
       font-size: 1.5em;
       cursor: pointer;
       outline: none;
+      margin-left: 20px;
     }
-    /* Hero Section */
+    /**************************************************
+     * HERO SECTION
+     **************************************************/
     .hero {
+      position: relative;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 150px 20px 80px;
-      background: linear-gradient(135deg, #f0f0f0, #fff);
-      animation: fadeIn 1.5s ease-in-out;
-      margin-top: 70px; /* Offset for fixed header */
+      padding: 0 20px;
+      overflow: hidden;
+      color: #000;
+      text-align: center;
+      transition: color 0.4s;
+    }
+    body.dark-mode .hero {
+      color: #fff;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 120%;
+      background: url('https://images.unsplash.com/photo-1562259949-5caaf67799a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center;
+      background-size: cover;
+      filter: brightness(50%);
+      z-index: -1;
+    }
+    .hero-content {
+      z-index: 1;
+      margin-top: 80px; /* offset for header */
+      animation: fadeInUp 1.5s ease forwards;
     }
     .hero img {
       width: 180px;
@@ -85,17 +146,17 @@
     }
     .hero h1 {
       font-size: 3em;
-      margin: 10px 0;
+      margin-bottom: 10px;
     }
     .hero p {
       font-size: 1.2em;
-      margin: 10px 0;
+      margin: 5px 0 15px;
     }
-    .hero .typed-text {
+    .typed-highlight {
       color: #007BFF;
       font-weight: 600;
     }
-    .hero .button {
+    .hero .hero-btn {
       margin-top: 20px;
       padding: 15px 30px;
       background-color: #000;
@@ -107,77 +168,252 @@
       transition: background 0.3s, transform 0.2s;
       box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
     }
-    .hero .button:hover {
+    .hero .hero-btn:hover {
       background-color: #444;
       transform: scale(1.05);
     }
-    /* Sections */
+    /**************************************************
+     * WAVES / SECTION DIVIDERS
+     **************************************************/
+    .wave {
+      width: 100%;
+      height: 100px;
+      background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYwMCIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTYwMCAxMDAiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAsMGgxNjAwdjEwMEgweiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wLDc0YzAsMCwzNTAsLTI0LDUzMiwyNEM5NDUsMTA4LDEzMjMsMjAsMTYwMCwyMHY4MHY4SDBaIiBvcGFjaXR5PSIuMyIvPjwvc3ZnPg==') repeat-x;
+      background-size: cover;
+    }
+    .wave.flip {
+      transform: rotate(180deg);
+      margin-bottom: -5px;
+    }
+    /**************************************************
+     * SECTION
+     **************************************************/
     .section {
-      padding: 80px 20px;
       max-width: 1200px;
       margin: auto;
+      padding: 60px 20px;
       animation: fadeIn 1.5s ease-in-out;
     }
     .section h2 {
       font-size: 2.5em;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       text-align: center;
+      position: relative;
     }
-    /* Projects */
-    .projects .project-item {
-      margin: 20px 0;
+    .section h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #007BFF;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+    /**************************************************
+     * ABOUT
+     **************************************************/
+    #about p {
+      font-size: 1.1em;
+      line-height: 1.6em;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    /**************************************************
+     * PROJECTS
+     **************************************************/
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
       transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
     }
-    .projects .project-item:hover {
+    body.dark-mode .project-card {
+      background: #1e1e1e;
+    }
+    .project-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
-    .projects .project-links a {
-      margin-right: 15px;
-      font-size: 1em;
-      color: #007BFF;
+    .project-card h3 {
+      margin-bottom: 10px;
     }
-    /* Skills */
-    .skills ul {
+    .project-card p {
+      font-size: 0.95em;
+      margin-bottom: 15px;
+    }
+    .project-links a {
+      margin-right: 15px;
+      font-size: 0.95em;
+      color: #007BFF;
+      text-decoration: underline;
+    }
+    /**************************************************
+     * SKILLS
+     **************************************************/
+    .skills-list {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
-      padding: 0;
     }
-    .skills li {
+    .skills-list li {
       list-style: none;
       background: #f8f8f8;
       padding: 15px 25px;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       font-size: 1.1em;
+      transition: transform 0.2s;
     }
-    /* Certifications */
-    .certifications ul {
-      list-style: none;
-      padding: 0;
+    .skills-list li:hover {
+      transform: scale(1.05);
+    }
+    body.dark-mode .skills-list li {
+      background: #1e1e1e;
+      box-shadow: 0 4px 10px rgba(255,255,255,0.1);
+    }
+    /**************************************************
+     * TIMELINE / EXPERIENCE
+     **************************************************/
+    .timeline {
+      position: relative;
+      margin: 50px 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: #007BFF;
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      width: 50%;
+      padding: 20px;
+      position: relative;
+    }
+    .timeline-item:nth-child(odd) {
+      float: left;
+      text-align: right;
+      clear: both;
+    }
+    .timeline-item:nth-child(even) {
+      float: right;
+      text-align: left;
+      clear: both;
+    }
+    .timeline-item h4 {
+      margin-bottom: 5px;
+      font-size: 1.2em;
+    }
+    .timeline-item p {
+      font-size: 0.95em;
+      line-height: 1.5em;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      width: 10px;
+      height: 10px;
+      background: #007BFF;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .timeline-item:nth-child(odd)::before {
+      right: -5px;
+    }
+    .timeline-item:nth-child(even)::before {
+      left: -5px;
+    }
+    /**************************************************
+     * CERTIFICATIONS
+     **************************************************/
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .cert-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    body.dark-mode .cert-card {
+      background: #1e1e1e;
+    }
+    .cert-card:hover {
+      transform: translateY(-5px);
+    }
+    .cert-card h3 {
+      margin-bottom: 5px;
+    }
+    .cert-card p {
+      font-size: 0.9em;
+    }
+    /**************************************************
+     * BLOG SECTION
+     **************************************************/
+    .blog-posts {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
     }
-    .certifications li {
-      background: #f0f0f0;
-      padding: 20px;
+    .post {
+      background: #fff;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 280px;
+      overflow: hidden;
+      width: 300px;
+      transition: transform 0.3s;
     }
-    /* Testimonials Carousel */
+    body.dark-mode .post {
+      background: #1e1e1e;
+    }
+    .post:hover {
+      transform: scale(1.03);
+    }
+    .post img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .post-content {
+      padding: 15px;
+    }
+    .post-content h3 {
+      margin: 0 0 10px;
+      font-size: 1.2em;
+    }
+    .post-content p {
+      font-size: 0.95em;
+      line-height: 1.4em;
+    }
+    /**************************************************
+     * TESTIMONIALS CAROUSEL
+     **************************************************/
     .testimonials {
       position: relative;
       overflow: hidden;
       background: #f8f8f8;
       padding: 60px 20px;
+    }
+    body.dark-mode .testimonials {
+      background: #1e1e1e;
     }
     .testimonial-container {
       display: flex;
@@ -193,8 +429,11 @@
       font-size: 1.2em;
       font-style: italic;
       margin-bottom: 10px;
+      line-height: 1.4em;
     }
     .testimonial span {
+      display: block;
+      margin-top: 10px;
       font-weight: bold;
     }
     .carousel-buttons {
@@ -217,52 +456,29 @@
     .carousel-buttons button:hover {
       background: rgba(0,0,0,0.7);
     }
-    /* Blog */
-    .blog .blog-posts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-    .blog .post {
-      background: #f8f8f8;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      overflow: hidden;
-      width: 300px;
-      transition: transform 0.3s;
-    }
-    .blog .post:hover {
-      transform: scale(1.03);
-    }
-    .blog .post img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .blog .post-content {
-      padding: 15px;
-    }
-    .blog .post-content h3 {
-      margin: 0 0 10px;
-      font-size: 1.2em;
-    }
-    .blog .post-content p {
-      font-size: 0.95em;
-      line-height: 1.4em;
-    }
-    /* Contact Form */
+    /**************************************************
+     * CONTACT FORM
+     **************************************************/
     .contact-form {
       max-width: 600px;
-      margin: auto;
+      margin: 0 auto;
     }
-    .contact-form input, .contact-form textarea {
+    .contact-form input,
+    .contact-form textarea {
       width: 100%;
       padding: 15px;
       margin: 10px 0;
       border: 1px solid #ddd;
       border-radius: 8px;
       font-size: 1em;
+      background: #fff;
+      color: #000;
+    }
+    body.dark-mode .contact-form input,
+    body.dark-mode .contact-form textarea {
+      background: #2a2a2a;
+      color: #fff;
+      border: 1px solid #444;
     }
     .contact-form button {
       padding: 15px 30px;
@@ -273,12 +489,24 @@
       font-size: 1.1em;
       cursor: pointer;
       transition: background 0.3s, transform 0.2s;
+      margin-top: 10px;
     }
     .contact-form button:hover {
       background-color: #444;
       transform: scale(1.05);
     }
-    /* Back to Top Button */
+    /**************************************************
+     * FOOTER
+     **************************************************/
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+    /**************************************************
+     * BACK TO TOP BUTTON
+     **************************************************/
     .back-to-top {
       position: fixed;
       bottom: 30px;
@@ -297,21 +525,46 @@
       background: #444;
       transform: scale(1.1);
     }
-    /* Animations */
+    /**************************************************
+     * ANIMATIONS
+     **************************************************/
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    /**************************************************
+     * RESPONSIVE
+     **************************************************/
+    @media(max-width: 768px) {
+      .timeline::before {
+        display: none;
+      }
+      .timeline-item {
+        width: 100%;
+        text-align: left !important;
+      }
+      .timeline-item::before {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Header / Navigation -->
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress"></div>
+  
+  <!-- Header -->
   <header>
-    <div>Mahesh Dhingra</div>
+    <div class="logo">Mahesh Dhingra</div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#timeline">Experience</a></li>
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#blog">Blog</a></li>
       <li><a href="#testimonials">Testimonials</a></li>
@@ -320,190 +573,242 @@
     <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
   </header>
   
-  <!-- Hero Section with Auto-Typing Effect -->
+  <!-- Hero Section with Parallax Background -->
   <section class="hero">
-    <img src="profile.jpg" alt="Profile Picture" />
-    <h1>Hi, I'm Mahesh Dhingra</h1>
-    <p>Full-Stack Developer | AI Enthusiast | Software Engineer</p>
-    <p>I build <span class="typed-text"></span></p>
-    <button class="button" onclick="window.open('resume.pdf', '_blank')">View Resume</button>
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <img src="profile.jpg" alt="Profile Picture" />
+      <h1>Hi, I'm Mahesh Dhingra</h1>
+      <p>Full-Stack Developer | AI Enthusiast | Software Engineer</p>
+      <p>I build <span class="typed-highlight typed-text"></span></p>
+      <button class="hero-btn" onclick="window.open('resume.pdf', '_blank')">View Resume</button>
+    </div>
   </section>
+  
+  <!-- Wave Divider -->
+  <div class="wave flip"></div>
   
   <!-- About Section -->
   <section class="section" id="about">
     <h2>About Me</h2>
-    <p>I am a passionate MERN Stack Developer with expertise in TypeScript, AI, and software engineering. I have built scalable applications, AI models, and real-time solutions for clients worldwide. My focus is on delivering innovative, efficient, and high-quality software solutions that drive success.</p>
+    <p>
+      I am a passionate MERN Stack Developer with expertise in TypeScript, AI, and software engineering.
+      I have built scalable applications, AI models, and real-time solutions for clients worldwide.
+      My focus is on delivering innovative, efficient, and high-quality software solutions that drive success.
+    </p>
   </section>
+  
+  <!-- Wave Divider -->
+  <div class="wave"></div>
   
   <!-- Projects Section -->
   <section class="section" id="projects">
     <h2>Projects</h2>
-    <div class="projects">
-      <div class="project-item">
+    <div class="projects-grid">
+      <div class="project-card">
         <h3>AI Trading Bot</h3>
         <p>Real-time trading bot built with Python and machine learning techniques.</p>
         <div class="project-links">
-          <a href="#">Live Demo</a>
-          <a href="#">GitHub</a>
+          <a href="#" target="_blank">Live Demo</a>
+          <a href="#" target="_blank">GitHub</a>
         </div>
       </div>
-      <div class="project-item">
+      <div class="project-card">
         <h3>Social Media Platform</h3>
         <p>A scalable social media platform built with the MERN stack featuring authentication and real-time chat.</p>
         <div class="project-links">
-          <a href="#">Live Demo</a>
-          <a href="#">GitHub</a>
+          <a href="#" target="_blank">Live Demo</a>
+          <a href="#" target="_blank">GitHub</a>
         </div>
       </div>
-      <div class="project-item">
+      <div class="project-card">
         <h3>Portfolio Manager</h3>
         <p>An investment portfolio manager built with Next.js and TypeScript.</p>
         <div class="project-links">
-          <a href="#">Live Demo</a>
-          <a href="#">GitHub</a>
+          <a href="#" target="_blank">Live Demo</a>
+          <a href="#" target="_blank">GitHub</a>
         </div>
       </div>
     </div>
   </section>
   
-  <!-- Skills Section with Icons -->
+  <!-- Wave Divider -->
+  <div class="wave flip"></div>
+  
+  <!-- Skills Section -->
   <section class="section" id="skills">
     <h2>Skills</h2>
-    <div class="skills">
-      <ul>
-        <li><i class="fab fa-js"></i> JavaScript</li>
-        <li><i class="fab fa-react"></i> React</li>
-        <li><i class="fab fa-node"></i> Node.js</li>
-        <li><i class="fas fa-database"></i> MongoDB</li>
-        <li>TypeScript</li>
-        <li>Next.js</li>
-        <li>Tailwind CSS</li>
-        <li>AWS</li>
-        <li>DigitalOcean</li>
-        <li>AI & Machine Learning</li>
-      </ul>
+    <ul class="skills-list">
+      <li><i class="fab fa-js"></i> JavaScript</li>
+      <li><i class="fab fa-react"></i> React</li>
+      <li><i class="fab fa-node"></i> Node.js</li>
+      <li><i class="fas fa-database"></i> MongoDB</li>
+      <li><i class="fab fa-js"></i> TypeScript</li>
+      <li><i class="fab fa-react"></i> Next.js</li>
+      <li><i class="fas fa-cloud"></i> AWS</li>
+      <li><i class="fas fa-cloud"></i> DigitalOcean</li>
+      <li><i class="fas fa-robot"></i> AI & Machine Learning</li>
+      <li><i class="fab fa-css3"></i> Tailwind CSS</li>
+    </ul>
+  </section>
+  
+  <!-- Wave Divider -->
+  <div class="wave"></div>
+  
+  <!-- Timeline / Experience Section -->
+  <section class="section" id="timeline">
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>Senior Full-Stack Engineer @ Company A (2023 - Present)</h4>
+        <p>Leading a team to build microservice-based web apps with React, Node.js, and AI-driven features.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Software Engineer @ Company B (2021 - 2023)</h4>
+        <p>Developed large-scale MERN stack projects, integrated CI/CD pipelines, and improved performance by 40%.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Freelance Developer (2019 - 2021)</h4>
+        <p>Created custom websites, AI solutions, and full-stack applications for various clients globally.</p>
+      </div>
     </div>
   </section>
+  
+  <!-- Wave Divider -->
+  <div class="wave flip"></div>
   
   <!-- Certifications & Achievements -->
   <section class="section" id="certifications">
     <h2>Certifications & Achievements</h2>
-    <div class="certifications">
-      <ul>
-        <li>
-          <h3>Full-Stack Web Development Certification</h3>
-          <p>Issued by XYZ Institute, 2023</p>
-        </li>
-        <li>
-          <h3>AI & Machine Learning Bootcamp</h3>
-          <p>Completed at ABC Academy, 2022</p>
-        </li>
-        <li>
-          <h3>Hackathon Winner</h3>
-          <p>1st Place at Global Hackathon, 2023</p>
-        </li>
-      </ul>
+    <div class="certifications-grid">
+      <div class="cert-card">
+        <h3>Full-Stack Web Development</h3>
+        <p>Issued by XYZ Institute, 2023</p>
+      </div>
+      <div class="cert-card">
+        <h3>AI & Machine Learning Bootcamp</h3>
+        <p>Completed at ABC Academy, 2022</p>
+      </div>
+      <div class="cert-card">
+        <h3>Hackathon Winner</h3>
+        <p>1st Place at Global Hackathon, 2023</p>
+      </div>
     </div>
   </section>
+  
+  <!-- Wave Divider -->
+  <div class="wave"></div>
   
   <!-- Blog Section -->
   <section class="section" id="blog">
     <h2>Latest Blog Posts</h2>
-    <div class="blog">
-      <div class="blog-posts">
-        <div class="post">
-          <img src="blog1.jpg" alt="Blog 1">
-          <div class="post-content">
-            <h3>Optimizing React Performance</h3>
-            <p>Learn tips and tricks to enhance your React application's performance.</p>
-          </div>
+    <div class="blog-posts">
+      <div class="post">
+        <img src="https://images.unsplash.com/photo-1581093588401-9eabfbaae7e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blog 1">
+        <div class="post-content">
+          <h3>Optimizing React Performance</h3>
+          <p>Learn tips and tricks to enhance your React application's performance.</p>
         </div>
-        <div class="post">
-          <img src="blog2.jpg" alt="Blog 2">
-          <div class="post-content">
-            <h3>How AI is Changing Web Development</h3>
-            <p>Explore the impact of AI in modern web development and design.</p>
-          </div>
+      </div>
+      <div class="post">
+        <img src="https://images.unsplash.com/photo-1565038966584-e9a29f0da9e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blog 2">
+        <div class="post-content">
+          <h3>How AI is Changing Web Development</h3>
+          <p>Explore the impact of AI in modern web development and design.</p>
         </div>
-        <div class="post">
-          <img src="blog3.jpg" alt="Blog 3">
-          <div class="post-content">
-            <h3>Mastering TypeScript in 2025</h3>
-            <p>Tips and resources for mastering TypeScript and modern JavaScript frameworks.</p>
-          </div>
+      </div>
+      <div class="post">
+        <img src="https://images.unsplash.com/photo-1536859355448-76f92ebdc33b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blog 3">
+        <div class="post-content">
+          <h3>Mastering TypeScript in 2025</h3>
+          <p>Tips and resources for mastering TypeScript and modern JavaScript frameworks.</p>
         </div>
       </div>
     </div>
   </section>
   
+  <!-- Wave Divider -->
+  <div class="wave flip"></div>
+  
   <!-- Testimonials Carousel -->
-  <section class="section" id="testimonials">
+  <section class="section testimonials" id="testimonials">
     <h2>Testimonials</h2>
-    <div class="testimonials">
-      <div class="testimonial-container" id="testimonial-container">
-        <div class="testimonial">
-          <p>"Mahesh is a phenomenal developer. His ability to solve complex problems is unmatched."</p>
-          <span>- Client A</span>
-        </div>
-        <div class="testimonial">
-          <p>"Working with Mahesh was an absolute pleasure. His code is clean, efficient, and scalable."</p>
-          <span>- Client B</span>
-        </div>
-        <div class="testimonial">
-          <p>"Mahesh delivered exceptional results on our project. Highly recommended!"</p>
-          <span>- Client C</span>
-        </div>
+    <div class="testimonial-container" id="testimonial-container">
+      <div class="testimonial">
+        <p>“Mahesh is a phenomenal developer. His ability to solve complex problems is unmatched.”</p>
+        <span>- Client A</span>
       </div>
-      <div class="carousel-buttons">
-        <button onclick="prevTestimonial()"><i class="fas fa-chevron-left"></i></button>
-        <button onclick="nextTestimonial()"><i class="fas fa-chevron-right"></i></button>
+      <div class="testimonial">
+        <p>“Working with Mahesh was an absolute pleasure. His code is clean, efficient, and scalable.”</p>
+        <span>- Client B</span>
+      </div>
+      <div class="testimonial">
+        <p>“Mahesh delivered exceptional results on our project. Highly recommended!”</p>
+        <span>- Client C</span>
       </div>
     </div>
+    <div class="carousel-buttons">
+      <button onclick="prevTestimonial()"><i class="fas fa-chevron-left"></i></button>
+      <button onclick="nextTestimonial()"><i class="fas fa-chevron-right"></i></button>
+    </div>
   </section>
+  
+  <!-- Wave Divider -->
+  <div class="wave"></div>
   
   <!-- Contact Form -->
   <section class="section contact-form" id="contact">
     <h2>Contact Me</h2>
     <form onsubmit="handleFormSubmit(event)">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
       <textarea placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
   </section>
   
   <!-- Back to Top Button -->
-  <button class="back-to-top" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+  <button class="back-to-top" id="backToTopBtn"><i class="fas fa-arrow-up"></i></button>
   
   <!-- Footer -->
-  <footer class="footer">
+  <footer>
     &copy; 2025 Mahesh Dhingra. All rights reserved.
   </footer>
   
-  <!-- Scripts -->
-  <!-- Typed.js for Auto-Typing Effect -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script>
-    // Auto typing effect
-    var typed = new Typed('.typed-text', {
-      strings: ["innovative web solutions.", "scalable applications.", "cutting-edge AI models."],
-      typeSpeed: 50,
-      backSpeed: 25,
-      loop: true
+    /**************************************************
+     * AUTO-TYPING TEXT (Typed.js)
+     **************************************************/
+    document.addEventListener('DOMContentLoaded', () => {
+      new Typed('.typed-text', {
+        strings: [
+          'innovative web solutions.',
+          'scalable applications.',
+          'cutting-edge AI models.',
+          'user-friendly experiences.'
+        ],
+        typeSpeed: 50,
+        backSpeed: 25,
+        loop: true
+      });
     });
     
-    // Dark mode toggle function
+    /**************************************************
+     * DARK MODE TOGGLE
+     **************************************************/
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
     }
     
-    // Testimonials Carousel
+    /**************************************************
+     * TESTIMONIALS CAROUSEL
+     **************************************************/
     let testimonialIndex = 0;
     function showTestimonial(index) {
       const container = document.getElementById('testimonial-container');
       const total = container.children.length;
-      if(index >= total) testimonialIndex = 0;
-      if(index < 0) testimonialIndex = total - 1;
+      if (index >= total) testimonialIndex = 0;
+      if (index < 0) testimonialIndex = total - 1;
       container.style.transform = `translateX(-${testimonialIndex * 100}%)`;
     }
     function nextTestimonial() {
@@ -517,20 +822,34 @@
     // Auto cycle testimonials every 5 seconds
     setInterval(nextTestimonial, 5000);
     
-    // Back to Top Button Functionality
-    window.addEventListener('scroll', function() {
-      const btn = document.querySelector('.back-to-top');
-      btn.style.display = (window.scrollY > 300) ? 'block' : 'none';
+    /**************************************************
+     * BACK TO TOP BUTTON
+     **************************************************/
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.style.display = 'block';
+      } else {
+        backToTopBtn.style.display = 'none';
+      }
+      // Update scroll progress
+      const scrollProgress = document.getElementById('scroll-progress');
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      scrollProgress.style.width = scrollPercent + '%';
     });
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     
-    // Handle contact form submission
-    function handleFormSubmit(event) {
-      event.preventDefault();
+    /**************************************************
+     * CONTACT FORM SUBMISSION
+     **************************************************/
+    function handleFormSubmit(e) {
+      e.preventDefault();
       alert('Thank you for your message! I will get back to you soon.');
-      event.target.reset();
+      e.target.reset();
     }
   </script>
 </body>
