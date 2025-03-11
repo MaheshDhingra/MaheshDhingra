@@ -1,15 +1,537 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/assets/jsm-logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mahesh Dhingra</title>
-  </head>
-  <body>
-    <div id="root" style="height:100000px; width: 100000px; background-color: black; overflow: hidden;">
-      <p style="font-size: 200px!important; color: #ffff;">We are still working on it!</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahesh Dhingra | Portfolio</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fff;
+      color: #000;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      transition: background 0.3s, color 0.3s;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: #007BFF;
+    }
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: inherit;
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 50px;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .nav-links li {
+      list-style: none;
+    }
+    .nav-links a {
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .dark-mode-toggle {
+      background: none;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      outline: none;
+    }
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 150px 20px 80px;
+      background: linear-gradient(135deg, #f0f0f0, #fff);
+      animation: fadeIn 1.5s ease-in-out;
+      margin-top: 70px; /* Offset for fixed header */
+    }
+    .hero img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 3em;
+      margin: 10px 0;
+    }
+    .hero p {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+    .hero .typed-text {
+      color: #007BFF;
+      font-weight: 600;
+    }
+    .hero .button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .hero .button:hover {
+      background-color: #444;
+      transform: scale(1.05);
+    }
+    /* Sections */
+    .section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    .section h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    /* Projects */
+    .projects .project-item {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .projects .project-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .projects .project-links a {
+      margin-right: 15px;
+      font-size: 1em;
+      color: #007BFF;
+    }
+    /* Skills */
+    .skills ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 0;
+    }
+    .skills li {
+      list-style: none;
+      background: #f8f8f8;
+      padding: 15px 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      font-size: 1.1em;
+    }
+    /* Certifications */
+    .certifications ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .certifications li {
+      background: #f0f0f0;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 280px;
+    }
+    /* Testimonials Carousel */
+    .testimonials {
+      position: relative;
+      overflow: hidden;
+      background: #f8f8f8;
+      padding: 60px 20px;
+    }
+    .testimonial-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .testimonial {
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 20px;
+      text-align: center;
+    }
+    .testimonial p {
+      font-size: 1.2em;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    .testimonial span {
+      font-weight: bold;
+    }
+    .carousel-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .carousel-buttons button {
+      background: rgba(0,0,0,0.5);
+      border: none;
+      color: #fff;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+    .carousel-buttons button:hover {
+      background: rgba(0,0,0,0.7);
+    }
+    /* Blog */
+    .blog .blog-posts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .blog .post {
+      background: #f8f8f8;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      width: 300px;
+      transition: transform 0.3s;
+    }
+    .blog .post:hover {
+      transform: scale(1.03);
+    }
+    .blog .post img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .blog .post-content {
+      padding: 15px;
+    }
+    .blog .post-content h3 {
+      margin: 0 0 10px;
+      font-size: 1.2em;
+    }
+    .blog .post-content p {
+      font-size: 0.95em;
+      line-height: 1.4em;
+    }
+    /* Contact Form */
+    .contact-form {
+      max-width: 600px;
+      margin: auto;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+    .contact-form button {
+      padding: 15px 30px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .contact-form button:hover {
+      background-color: #444;
+      transform: scale(1.05);
+    }
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      transition: background 0.3s, transform 0.2s;
+      z-index: 1000;
+    }
+    .back-to-top:hover {
+      background: #444;
+      transform: scale(1.1);
+    }
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header>
+    <div>Mahesh Dhingra</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+  </header>
+  
+  <!-- Hero Section with Auto-Typing Effect -->
+  <section class="hero">
+    <img src="profile.jpg" alt="Profile Picture" />
+    <h1>Hi, I'm Mahesh Dhingra</h1>
+    <p>Full-Stack Developer | AI Enthusiast | Software Engineer</p>
+    <p>I build <span class="typed-text"></span></p>
+    <button class="button" onclick="window.open('resume.pdf', '_blank')">View Resume</button>
+  </section>
+  
+  <!-- About Section -->
+  <section class="section" id="about">
+    <h2>About Me</h2>
+    <p>I am a passionate MERN Stack Developer with expertise in TypeScript, AI, and software engineering. I have built scalable applications, AI models, and real-time solutions for clients worldwide. My focus is on delivering innovative, efficient, and high-quality software solutions that drive success.</p>
+  </section>
+  
+  <!-- Projects Section -->
+  <section class="section" id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-item">
+        <h3>AI Trading Bot</h3>
+        <p>Real-time trading bot built with Python and machine learning techniques.</p>
+        <div class="project-links">
+          <a href="#">Live Demo</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+      <div class="project-item">
+        <h3>Social Media Platform</h3>
+        <p>A scalable social media platform built with the MERN stack featuring authentication and real-time chat.</p>
+        <div class="project-links">
+          <a href="#">Live Demo</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+      <div class="project-item">
+        <h3>Portfolio Manager</h3>
+        <p>An investment portfolio manager built with Next.js and TypeScript.</p>
+        <div class="project-links">
+          <a href="#">Live Demo</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
     </div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  </section>
+  
+  <!-- Skills Section with Icons -->
+  <section class="section" id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <ul>
+        <li><i class="fab fa-js"></i> JavaScript</li>
+        <li><i class="fab fa-react"></i> React</li>
+        <li><i class="fab fa-node"></i> Node.js</li>
+        <li><i class="fas fa-database"></i> MongoDB</li>
+        <li>TypeScript</li>
+        <li>Next.js</li>
+        <li>Tailwind CSS</li>
+        <li>AWS</li>
+        <li>DigitalOcean</li>
+        <li>AI & Machine Learning</li>
+      </ul>
+    </div>
+  </section>
+  
+  <!-- Certifications & Achievements -->
+  <section class="section" id="certifications">
+    <h2>Certifications & Achievements</h2>
+    <div class="certifications">
+      <ul>
+        <li>
+          <h3>Full-Stack Web Development Certification</h3>
+          <p>Issued by XYZ Institute, 2023</p>
+        </li>
+        <li>
+          <h3>AI & Machine Learning Bootcamp</h3>
+          <p>Completed at ABC Academy, 2022</p>
+        </li>
+        <li>
+          <h3>Hackathon Winner</h3>
+          <p>1st Place at Global Hackathon, 2023</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  
+  <!-- Blog Section -->
+  <section class="section" id="blog">
+    <h2>Latest Blog Posts</h2>
+    <div class="blog">
+      <div class="blog-posts">
+        <div class="post">
+          <img src="blog1.jpg" alt="Blog 1">
+          <div class="post-content">
+            <h3>Optimizing React Performance</h3>
+            <p>Learn tips and tricks to enhance your React application's performance.</p>
+          </div>
+        </div>
+        <div class="post">
+          <img src="blog2.jpg" alt="Blog 2">
+          <div class="post-content">
+            <h3>How AI is Changing Web Development</h3>
+            <p>Explore the impact of AI in modern web development and design.</p>
+          </div>
+        </div>
+        <div class="post">
+          <img src="blog3.jpg" alt="Blog 3">
+          <div class="post-content">
+            <h3>Mastering TypeScript in 2025</h3>
+            <p>Tips and resources for mastering TypeScript and modern JavaScript frameworks.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Testimonials Carousel -->
+  <section class="section" id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial-container" id="testimonial-container">
+        <div class="testimonial">
+          <p>"Mahesh is a phenomenal developer. His ability to solve complex problems is unmatched."</p>
+          <span>- Client A</span>
+        </div>
+        <div class="testimonial">
+          <p>"Working with Mahesh was an absolute pleasure. His code is clean, efficient, and scalable."</p>
+          <span>- Client B</span>
+        </div>
+        <div class="testimonial">
+          <p>"Mahesh delivered exceptional results on our project. Highly recommended!"</p>
+          <span>- Client C</span>
+        </div>
+      </div>
+      <div class="carousel-buttons">
+        <button onclick="prevTestimonial()"><i class="fas fa-chevron-left"></i></button>
+        <button onclick="nextTestimonial()"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Form -->
+  <section class="section contact-form" id="contact">
+    <h2>Contact Me</h2>
+    <form onsubmit="handleFormSubmit(event)">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+  
+  <!-- Back to Top Button -->
+  <button class="back-to-top" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; 2025 Mahesh Dhingra. All rights reserved.
+  </footer>
+  
+  <!-- Scripts -->
+  <!-- Typed.js for Auto-Typing Effect -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    // Auto typing effect
+    var typed = new Typed('.typed-text', {
+      strings: ["innovative web solutions.", "scalable applications.", "cutting-edge AI models."],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+    
+    // Dark mode toggle function
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+    
+    // Testimonials Carousel
+    let testimonialIndex = 0;
+    function showTestimonial(index) {
+      const container = document.getElementById('testimonial-container');
+      const total = container.children.length;
+      if(index >= total) testimonialIndex = 0;
+      if(index < 0) testimonialIndex = total - 1;
+      container.style.transform = `translateX(-${testimonialIndex * 100}%)`;
+    }
+    function nextTestimonial() {
+      testimonialIndex++;
+      showTestimonial(testimonialIndex);
+    }
+    function prevTestimonial() {
+      testimonialIndex--;
+      showTestimonial(testimonialIndex);
+    }
+    // Auto cycle testimonials every 5 seconds
+    setInterval(nextTestimonial, 5000);
+    
+    // Back to Top Button Functionality
+    window.addEventListener('scroll', function() {
+      const btn = document.querySelector('.back-to-top');
+      btn.style.display = (window.scrollY > 300) ? 'block' : 'none';
+    });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Handle contact form submission
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      alert('Thank you for your message! I will get back to you soon.');
+      event.target.reset();
+    }
+  </script>
+</body>
 </html>
