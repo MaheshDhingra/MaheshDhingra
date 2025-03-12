@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,9 +20,9 @@
       --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    /* Use the new cursor */
+    /* Use a smaller custom cursor (24x24 instead of 48x48) */
     body {
-      cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24'><path fill='%23FFF' stroke='%23000' stroke-width='0.5' stroke-linejoin='round' d='M10 11V8.99c0-.88.59-1.64 1.44-1.86h.05A1.99 1.99 0 0 1 14 9.05V12v-2c0-.88.6-1.65 1.46-1.87h.05A1.98 1.98 0 0 1 18 10.06V13v-1.94a2 2 0 0 1 1.51-1.94h0A2 2 0 0 1 22 11.06V14c0 .6-.08 1.27-.21 1.97a7.96 7.96 0 0 1-7.55 6.48 54.98 54.98 0 0 1-4.48 0 7.96 7.96 0 0 1-7.55-6.48C2.08 15.27 2 14.59 2 14v-1.49c0-1.11.9-2.01 2.01-2.01h0a2 2 0 0 1 2.01 2.03l-.01.97v-10c0-1.1.9-2 2-2h0a2 2 0 0 1 2 2V11Z'/></svg>") 0 0, auto;
+      cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='%23FFF' stroke='%23000' stroke-width='0.5' stroke-linejoin='round' d='M10 11V8.99c0-.88.59-1.64 1.44-1.86h.05A1.99 1.99 0 0 1 14 9.05V12v-2c0-.88.6-1.65 1.46-1.87h.05A1.98 1.98 0 0 1 18 10.06V13v-1.94a2 2 0 0 1 1.51-1.94h0A2 2 0 0 1 22 11.06V14c0 .6-.08 1.27-.21 1.97a7.96 7.96 0 0 1-7.55 6.48 54.98 54.98 0 0 1-4.48 0 7.96 7.96 0 0 1-7.55-6.48C2.08 15.27 2 14.59 2 14v-1.49c0-1.11.9-2.01 2.01-2.01h0a2 2 0 0 1 2.01 2.03l-.01.97v-10c0-1.1.9-2 2-2h0a2 2 0 0 1 2 2V11Z'/></svg>") 0 0, auto;
       font-family: 'Inter', sans-serif;
       background: var(--background-light);
       color: var(--text-light);
@@ -31,7 +30,6 @@
       overflow-x: hidden;
       position: relative;
     }
-
     body.dark-mode {
       background: var(--background-dark);
       color: var(--text-dark);
@@ -42,17 +40,14 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     html {
       scroll-behavior: smooth;
     }
-
     a {
       text-decoration: none;
       color: inherit;
       transition: color 0.3s;
     }
-
     a:hover {
       color: var(--primary-color);
     }
@@ -68,7 +63,6 @@
       width: 0;
       transition: width 0.25s ease-out;
     }
-
     body.dark-mode #scroll-progress {
       background: var(--text-dark);
     }
@@ -89,31 +83,25 @@
       background: none;
       transition: background 0.4s, border-bottom 0.4s;
     }
-
     body:not(.dark-mode) header {
       background: rgba(255, 255, 255, 0.0);
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
-
     body.dark-mode header {
       background: rgba(18, 18, 18, 0.8);
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
-
     .logo {
       font-weight: 700;
       font-size: 1.5rem;
     }
-
     .nav-links {
       display: flex;
       gap: 20px;
     }
-
     .nav-links li {
       list-style: none;
     }
-
     .nav-links a {
       font-weight: 500;
       letter-spacing: 0.5px;
@@ -122,7 +110,6 @@
       transition: background 0.3s;
       position: relative;
     }
-
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -133,11 +120,9 @@
       background-color: var(--primary-color);
       transition: width 0.3s ease;
     }
-
     .nav-links a:hover::after {
       width: 100%;
     }
-
     .dark-mode-toggle {
       background: none;
       border: none;
@@ -148,7 +133,6 @@
       color: var(--text-light);
       transition: color 0.3s;
     }
-
     body.dark-mode .dark-mode-toggle {
       color: var(--text-dark);
     }
@@ -164,14 +148,12 @@
       justify-content: center;
       animation: fadeIn 1.5s ease-out;
     }
-
     .section h2 {
       font-size: 2.5em;
       margin-bottom: 30px;
       text-align: center;
       position: relative;
     }
-
     .section h2::after {
       content: '';
       display: block;
@@ -194,7 +176,6 @@
       text-align: center;
       overflow: hidden;
     }
-
     .hero-bg {
       position: absolute;
       top: 0;
@@ -205,13 +186,11 @@
       filter: brightness(50%);
       z-index: -1;
     }
-
     .hero-content {
       z-index: 1;
       margin-top: 80px;
       animation: fadeInUp 1.5s ease-out;
     }
-
     .hero img {
       width: 180px;
       height: 180px;
@@ -220,22 +199,18 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       margin-bottom: 20px;
     }
-
     .hero h1 {
       font-size: 3em;
       margin-bottom: 10px;
     }
-
     .hero p {
       font-size: 1.2em;
       margin: 5px 0 15px;
     }
-
     .typed-highlight {
       color: var(--primary-color);
       font-weight: 600;
     }
-
     .hero .hero-btn {
       margin-top: 20px;
       padding: 15px 30px;
@@ -248,7 +223,6 @@
       transition: background 0.3s, transform 0.2s;
       box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
     }
-
     .hero .hero-btn:hover {
       background-color: #444;
       transform: scale(1.05);
@@ -269,7 +243,6 @@
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 20px;
     }
-
     .project-card {
       background: var(--background-light);
       border-radius: 10px;
@@ -278,32 +251,26 @@
       transition: transform 0.3s, box-shadow 0.3s;
       overflow: hidden;
     }
-
     body.dark-mode .project-card {
       background: #1e1e1e;
     }
-
     .project-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
-
     .project-card h3 {
       margin-bottom: 10px;
     }
-
     .project-card p {
       font-size: 0.95em;
       margin-bottom: 15px;
     }
-
     .project-links a {
       margin-right: 15px;
       font-size: 0.95em;
       color: var(--primary-color);
       text-decoration: underline;
     }
-
     .project-thumbnail {
       width: 100px;
       height: 100px;
@@ -319,7 +286,6 @@
       gap: 20px;
       justify-content: center;
     }
-
     .skills-list li {
       list-style: none;
       background: #f8f8f8;
@@ -329,14 +295,12 @@
       font-size: 1.1em;
       transition: transform 0.2s;
     }
-
     .skills-list li:hover {
       transform: scale(1.05);
     }
-
     body.dark-mode .skills-list li {
       background: #1e1e1e;
-      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 10px rgba(255,255,255,0.1);
     }
 
     /* Timeline / Experience Section (Responsive Grid) */
@@ -347,7 +311,6 @@
       position: relative;
       margin: 50px 0;
     }
-
     .timeline::before {
       content: '';
       position: absolute;
@@ -358,22 +321,18 @@
       height: 100%;
       background: var(--primary-color);
     }
-
     .timeline-item {
       position: relative;
       padding: 20px;
     }
-
     .timeline-item.left {
       grid-column: 1;
       text-align: right;
     }
-
     .timeline-item.right {
       grid-column: 3;
       text-align: left;
     }
-
     .timeline-item::before {
       content: '';
       position: absolute;
@@ -383,31 +342,25 @@
       background: var(--primary-color);
       border-radius: 50%;
     }
-
     .timeline-item.left::before {
       right: -40px;
     }
-
     .timeline-item.right::before {
       left: -40px;
     }
-
     @media (max-width: 768px) {
       .timeline {
         grid-template-columns: 1fr;
       }
-
       .timeline::before {
         display: none;
       }
-
       .timeline-item {
         grid-column: 1;
         text-align: left;
         padding-left: 40px;
         margin-bottom: 20px;
       }
-
       .timeline-item::before {
         left: 0;
         top: 20px;
@@ -420,7 +373,6 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
     }
-
     .cert-card {
       background: var(--background-light);
       border-radius: 8px;
@@ -428,19 +380,15 @@
       box-shadow: var(--box-shadow);
       transition: transform 0.3s;
     }
-
     body.dark-mode .cert-card {
       background: #1e1e1e;
     }
-
     .cert-card:hover {
       transform: translateY(-5px);
     }
-
     .cert-card h3 {
       margin-bottom: 5px;
     }
-
     .cert-card p {
       font-size: 0.9em;
     }
@@ -452,7 +400,6 @@
       gap: 20px;
       justify-content: center;
     }
-
     .post {
       background: var(--background-light);
       border-radius: 8px;
@@ -461,36 +408,30 @@
       width: 300px;
       transition: transform 0.3s;
     }
-
     body.dark-mode .post {
       background: #1e1e1e;
     }
-
     .post:hover {
       transform: scale(1.03);
     }
-
     .post img {
       width: 100%;
       height: 180px;
       object-fit: cover;
     }
-
     .post-content {
       padding: 15px;
     }
-
     .post-content h3 {
       margin: 0 0 10px;
       font-size: 1.2em;
     }
-
     .post-content p {
       font-size: 0.95em;
       line-height: 1.4em;
     }
 
-    /* Contact Section - Displaying Contact Details with Icons */
+    /* Contact Section - Improved Look */
     .contact-section {
       display: flex;
       flex-direction: column;
@@ -498,14 +439,14 @@
       align-items: center;
       text-align: center;
       min-height: 100vh;
+      /* A subtle background gradient for the contact section */
+      background: linear-gradient(135deg, #ffffff, #ffffff);
     }
-
     .contact-section h2 {
       font-size: 2.5em;
       margin-bottom: 20px;
       position: relative;
     }
-
     .contact-section h2::after {
       content: '';
       display: block;
@@ -515,44 +456,44 @@
       margin: 10px auto 0;
       border-radius: 2px;
     }
-
     .contact-card {
-      background: var(--background-light);
-      border-radius: 10px;
+      background: #fff;
+      border-radius: 12px;
       box-shadow: var(--box-shadow);
-      padding: 30px 50px;
+      padding: 40px 60px;
       display: flex;
-      gap: 40px;
+      flex-direction: column;
+      gap: 30px;
       align-items: center;
       justify-content: center;
-      margin-top: 40px;
-      flex-wrap: wrap;
-      max-width: 600px;
+      margin-top: 30px;
+      max-width: 500px;
+      transition: transform 0.3s;
     }
-
     body.dark-mode .contact-card {
       background: #1e1e1e;
     }
-
+    .contact-card:hover {
+      transform: translateY(-5px);
+    }
     .contact-item {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 1.2em;
+      font-size: 1.1em;
+      color: var(--text-light);
     }
-
     .contact-item i {
-      font-size: 2em;
-      color: var(--primary-color);
+      font-size: 1em;
+      color: var(--text-light);
+      transition: color 0.3s;
     }
-
-    .contact-item span a {
+    .contact-item a {
       color: var(--text-light);
       text-decoration: none;
       transition: color 0.3s;
     }
-
-    .contact-item span a:hover {
+    .contact-item a:hover {
       color: var(--primary-color);
     }
 
@@ -579,7 +520,6 @@
       transition: background 0.3s, transform 0.2s;
       z-index: 1000;
     }
-
     .back-to-top:hover {
       background: #444;
       transform: scale(1.1);
@@ -591,19 +531,16 @@
         opacity: 0;
         transform: translateY(20px);
       }
-
       100% {
         opacity: 1;
         transform: translateY(0);
       }
     }
-
     @keyframes fadeIn {
       0% {
         opacity: 0;
         transform: translateY(20px);
       }
-
       100% {
         opacity: 1;
         transform: translateY(0);
@@ -616,31 +553,25 @@
         flex-direction: column;
         padding: 10px 20px;
       }
-
       .nav-links {
         flex-wrap: wrap;
         justify-content: center;
         margin-top: 10px;
       }
-
       .hero h1 {
         font-size: 2rem;
       }
-
       .hero p {
         font-size: 1rem;
       }
-
       .section h2 {
         font-size: 2rem;
       }
-
       .projects-grid {
         grid-template-columns: 1fr;
       }
-
       .contact-card {
-        padding: 20px;
+        padding: 30px 20px;
       }
     }
   </style>
@@ -813,18 +744,17 @@
     </div>
   </section>
 
-
-  <!-- Contact Section -->
+  <!-- Contact Section (Revamped) -->
   <section class="section contact-section" id="contact">
     <h2>Contact Me</h2>
     <div class="contact-card">
       <div class="contact-item">
         <i class="fas fa-envelope"></i>
-        <span><a href="mailto:maheshishere11@hotmail.com">maheshishere11@hotmail.com</a></span>
+        <a href="mailto:maheshishere11@hotmail.com">maheshishere11@hotmail.com</a>
       </div>
       <div class="contact-item">
         <i class="fas fa-phone-alt"></i>
-        <span><a href="tel:+919650047126">+91 9650047126</a></span>
+        <a href="tel:+919650047126">+91 9650047126</a>
       </div>
     </div>
   </section>
@@ -881,5 +811,4 @@
     }
   </script>
 </body>
-
 </html>
