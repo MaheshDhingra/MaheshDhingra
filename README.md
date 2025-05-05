@@ -1,4 +1,4 @@
-# Hello World!, I'm Mahesh, a Indian Software Engineer 👋🏼:
+# Hello World!, I'm Mahesh, a Software Engineer 👋🏼:
 🛜 currently working as a freelancer [website](https://mahesh.is-a.dev)<br>👨🏼‍🎓 currently in high school<br>👨🏼‍💻 have been coding from 10+ years <br>🎬 trying to figure out life as <i>Mahesh Dhingra</i>
 
 <picture>
