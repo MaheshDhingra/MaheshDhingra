@@ -4,7 +4,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mahesh Dhingra</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f5f6fa;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #222;
+    }
+    .container {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      padding: 32px 24px 24px 24px;
+      max-width: 350px;
+      text-align: center;
+    }
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #e1e1e1;
+      margin-bottom: 18px;
+    }
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+    p {
+      margin: 0 0 12px 0;
+      font-size: 1.05rem;
+      color: #444;
+    }
+    .greeting {
+      color: #0077cc;
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <img src="me.png" alt="My Photo" class="profile-pic">
+    <h1>Mahesh Dhingra</h1>
+    <div class="greeting" id="greeting"></div>
+    <p>Hello! I'm Mahesh, a passionate developer and technology enthusiast. I love building simple, elegant solutions and learning new things every day.</p>
+    <p>Feel free to connect with me!</p>
+  </div>
+  <script>
+    // Simple JS greeting based on time
+    const hour = new Date().getHours();
+    let greet = 'Hello';
+    if (hour < 12) greet = 'Good morning';
+    else if (hour < 18) greet = 'Good afternoon';
+    else greet = 'Good evening';
+    document.getElementById('greeting').textContent = greet + '!';
+  </script>
 </body>
 </html>
