@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahesh Dhingra</title>
+  <title>Mahesh Dhingra - Home</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       margin: 0;
@@ -17,21 +20,68 @@
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #222;
     }
-    .container {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-      padding: 32px 24px 24px 24px;
-      max-width: 350px;
+    header {
+      width: 100%;
+      background: #0077cc;
+      color: #fff;
+      padding: 10px 0;
       text-align: center;
     }
-    .profile-pic {
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .home-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      padding: 38px 28px 28px 28px;
+      max-width: 420px;
+      margin: 40px auto 0 auto;
+      position: relative;
+      border: 2.5px solid #ffe082;
+      animation: popin 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    @keyframes popin {
+      0% { transform: scale(0.92); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .home-img {
       width: 120px;
       height: 120px;
       object-fit: cover;
       border-radius: 50%;
-      border: 3px solid #e1e1e1;
-      margin-bottom: 18px;
+      border: 4px solid #ff6f61;
+      margin: 18px 0 18px 0;
+      box-shadow: 0 2px 12px #ff6f6133;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+    .home-img:hover {
+      border: 4px solid #0077cc;
+      box-shadow: 0 4px 24px #0077cc33;
+    }
+    .divider {
+      width: 60%;
+      height: 2px;
+      background: linear-gradient(90deg, #ffe082 0%, #ff6f61 100%);
+      border: none;
+      margin: 18px auto 18px auto;
+      border-radius: 2px;
+    }
+    .home-links {
+      margin: 10px 0 18px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: center;
     }
     h1 {
       margin: 0 0 10px 0;
@@ -48,24 +98,103 @@
       font-weight: 500;
       margin-bottom: 18px;
     }
+    .highlight {
+      background: #e1f5fe;
+      padding: 10px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 10px 0;
+    }
+    .special-text {
+      color: #d32f2f;
+      font-weight: 600;
+    }
+    footer {
+      margin-top: auto;
+      background: #0077cc;
+      color: #fff;
+      width: 100%;
+      text-align: center;
+      padding: 12px 0;
+      position: relative;
+    }
+    footer a {
+      color: #ffd54f;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .project-list {
+      text-align: left;
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    .project-list li {
+      margin: 5px 0;
+      position: relative;
+      padding-left: 15px;
+    }
+    .project-list li:before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      color: #0077cc;
+    }
+    .special-link {
+      color: #0077cc;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .special-link:hover {
+      text-decoration: underline;
+    }
+    .fun-btn {
+      background: #0077cc;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    .fun-btn:hover {
+      background: #005fa3;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="me.png" alt="My Photo" class="profile-pic">
-    <h1>Mahesh Dhingra</h1>
-    <div class="greeting" id="greeting"></div>
-    <p>Hello! I'm Mahesh, a passionate developer and technology enthusiast. I love building simple, elegant solutions and learning new things every day.</p>
-    <p>Feel free to connect with me!</p>
-  </div>
-  <script>
-    // Simple JS greeting based on time
-    const hour = new Date().getHours();
-    let greet = 'Hello';
-    if (hour < 12) greet = 'Good morning';
-    else if (hour < 18) greet = 'Good afternoon';
-    else greet = 'Good evening';
-    document.getElementById('greeting').textContent = greet + '!';
-  </script>
+  <header>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="projects.html">Projects</a> |
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <div class="home-card">
+      <img src="me.png" alt="Mahesh Dhingra" class="home-img">
+      <h1 style="margin-bottom:10px;">Welcome to My Website!</h1>
+      <div class="highlight">Hi! I'm Mahesh, a high school student who loves coding, learning, and helping others. I built this site myself to share my projects and connect with new friends!</div>
+      <p style="color:#0077cc;font-weight:bold;">I enjoy working on creative projects, especially ones that make life easier or more fun. When I'm not coding, you might find me reading, playing chess, or exploring new tech.</p>
+      <p class="special-text">Thanks for visiting my site! Check out my projects or send me a message if you want to chat.</p>
+      <ul class="project-list">
+        <li>Web Development</li>
+        <li>Chess Enthusiast</li>
+        <li>Open Source Contributor</li>
+      </ul>
+      <div class="home-links">
+        <a href="mailto:mahesh@example.com" class="special-link">Email Me</a>
+        <a href="https://github.com/maheshdhingra" class="special-link" target="_blank">My GitHub</a>
+      </div>
+      <button class="fun-btn" onclick="alert('Have a great day!')">Say Hi!</button>
+      <hr class="divider">
+    </div>
+  </main>
+  <footer>
+    <p>© 2025 Mahesh Dhingra | <a href="https://github.com/maheshdhingra" target="_blank">GitHub</a></p>
+  </footer>
 </body>
 </html>
