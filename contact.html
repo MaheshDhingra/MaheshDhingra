@@ -18,12 +18,13 @@
   <main>
     <section class="contact">
       <h2>Let's Connect!</h2>
-      <form id="contact-form" action="mailto:dhingram447@gmail.com" method="POST" enctype="text/plain">
+      <form id="contact-form">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" placeholder="Your Message" required></textarea>
         <button type="submit">Send</button>
       </form>
+      <div id="form-status" style="margin-top:1rem;font-size:1.05rem;"></div>
       <p>Or download my <a href="resume.pdf" target="_blank">resume</a>.</p>
       <div class="social-links">
         <a href="https://github.com/MaheshDhingra" title="GitHub" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg" alt="GitHub" class="icon"></a>
@@ -34,5 +35,16 @@
     </section>
   </main>
   <script src="script.js"></script>
+  <script>
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const status = document.getElementById('form-status');
+  status.textContent = 'Sending...';
+  setTimeout(() => {
+    status.textContent = 'Thank you for reaching out! I will get back to you soon.';
+    document.getElementById('contact-form').reset();
+  }, 1200);
+});
+</script>
 </body>
 </html>

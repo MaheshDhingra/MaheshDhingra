@@ -148,9 +148,54 @@ h1, h2, h3 {
   width: 260px;
   transition: transform 0.2s;
 }
-.project-card:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+.project-card.improved {
+  border: 2px solid #222;
+  border-radius: 0.5rem;
+  background: #fafbfc;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  margin-bottom: 1.5rem;
+  padding: 1.2rem 1.3rem 1.1rem 1.3rem;
+  min-width: 240px;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.project-card.improved:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+  transform: translateY(-4px) scale(1.03);
+}
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.project-header h3 {
+  margin: 0;
+  font-size: 1.13rem;
+  font-weight: 700;
+}
+.project-stars {
+  font-size: 1.05rem;
+  color: #eab308;
+  font-weight: 600;
+}
+.project-desc {
+  font-size: 1.01rem;
+  color: #222;
+  margin: 0.2rem 0 0.3rem 0;
+}
+.project-meta {
+  font-size: 0.97rem;
+  color: #555;
+}
+.project-lang {
+  font-size: 0.97rem;
+  color: #888;
+  font-style: italic;
+  margin-top: 0.1rem;
 }
 form#contact-form {
   display: flex;
