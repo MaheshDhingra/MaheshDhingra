@@ -91,7 +91,7 @@
       <p>Available for work and collaboration. Reach out via <a href="mailto:dhingram447@gmail.com">email</a> or <a href="contact.html">contact form</a>. Download my <a href="resume.pdf" target="_blank">resume</a>.</p>
       <div class="social-links">
         <a href="https://github.com/MaheshDhingra" title="GitHub" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg" alt="GitHub" class="icon"></a>
-        <a href="#" title="LinkedIn" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" alt="LinkedIn" class="icon"></a>
+        <a href="https://www.instagram.com/maheshh_dh/" title="Instagram" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg" alt="Instagram" class="icon"></a>
         <a href="#" title="Twitter" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/twitter.svg" alt="Twitter" class="icon"></a>
         <a href="mailto:dhingram447@gmail.com" title="Email"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/gmail.svg" alt="Email" class="icon"></a>
       </div>
@@ -111,10 +111,14 @@ async function fetchProjects() {
     return;
   }
   container.innerHTML = userRepos.slice(0, 6).map(repo => `
-    <div class="project-card">
-      <h3><a href="${repo.html_url}" target="_blank">${repo.name.replace(/[-_]/g, ' ')}</a></h3>
-      <p>${repo.description ? repo.description : 'No description yet, but something cool is coming!'}</p>
-      <div style="font-size:0.95rem;color:#555;">★ ${repo.stargazers_count} | Last updated: ${new Date(repo.updated_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</div>
+    <div class="project-card improved">
+      <div class="project-header">
+        <h3><a href="${repo.html_url}" target="_blank">${repo.name.replace(/[-_]/g, ' ')}</a></h3>
+        <span class="project-stars">★ ${repo.stargazers_count}</span>
+      </div>
+      <p class="project-desc">${repo.description ? repo.description : 'No description yet, but something cool is coming!'}</p>
+      <div class="project-meta">Last updated: ${new Date(repo.updated_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</div>
+      <div class="project-lang">${repo.language ? repo.language : ''}</div>
     </div>
   `).join('');
 }
