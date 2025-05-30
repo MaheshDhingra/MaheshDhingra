@@ -18,14 +18,15 @@
   <main>
     <section class="contact">
       <h2>Let's Connect!</h2>
-      <form id="contact-form">
+      <form id="contact-form" action="https://formspree.io/f/mzzgpdvz" method="POST" target="_self">
+        <input type="hidden" name="_redirect" value="./thankyou.html">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" placeholder="Your Message" required></textarea>
         <button type="submit">Send</button>
       </form>
-      <div id="form-status" style="margin-top:1rem;font-size:1.05rem;"></div>
-      <p>Or download my <a href="resume.pdf" target="_blank">resume</a>.</p>
+      <div id="form-status" style="margin-top:1rem;font-size:1.08rem;color:#111;letter-spacing:0.01em;"></div>
+      <p style="margin-top:2rem;">Or download my <a href="resume.pdf" target="_blank">resume</a>.</p>
       <div class="social-links">
         <a href="https://github.com/MaheshDhingra" title="GitHub" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg" alt="GitHub" class="icon"></a>
         <a href="#" title="LinkedIn" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" alt="LinkedIn" class="icon"></a>
@@ -35,16 +36,6 @@
     </section>
   </main>
   <script src="script.js"></script>
-  <script>
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const status = document.getElementById('form-status');
-  status.textContent = 'Sending...';
-  setTimeout(() => {
-    status.textContent = 'Thank you for reaching out! I will get back to you soon.';
-    document.getElementById('contact-form').reset();
-  }, 1200);
-});
-</script>
+  <!-- Removed JS thank you handler to ensure only Formspree redirect is used -->
 </body>
 </html>

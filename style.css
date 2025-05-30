@@ -1,11 +1,15 @@
 /* style.css - Aesthetic, modern, responsive portfolio styles */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap');
 body {
   margin: 0;
-  font-family: 'Fira Mono', 'Menlo', 'Consolas', 'Courier New', monospace;
-  background: linear-gradient(135deg, #ededed 0%, #f5f5f5 100%) fixed;
+  font-family: 'Fira Mono', 'Menlo', 'Consolas', 'Courier New', monospace !important;
+  background: #fff;
   min-height: 100vh;
   cursor: url('me.png'), auto;
   color: #111;
+}
+* {
+  font-family: 'Fira Mono', 'Menlo', 'Consolas', 'Courier New', monospace !important;
 }
 nav {
   background: transparent;
@@ -15,37 +19,46 @@ nav {
 }
 nav ul {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   list-style: none;
   margin: 0;
   padding: 0;
-  padding-left: 0.5rem;
+  gap: 2.5rem;
 }
 nav ul li {
-  margin: 0 1.2rem 0 0;
+  margin: 0;
 }
 nav ul li a {
   color: #111;
   font-family: inherit;
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   text-decoration: none;
-  font-weight: 500;
-  padding: 0.7rem 0;
+  font-weight: 600;
+  padding: 0.7rem 0.8rem;
   display: block;
   border-bottom: 2px solid transparent;
-  transition: border 0.2s;
+  transition: none;
+  border-radius: 0.3rem;
+  letter-spacing: 0.01em;
 }
-nav ul li a.active, nav ul li a:hover {
+nav ul li a.active {
   border-bottom: 2px solid #111;
+  background: #f3f3f3;
+}
+nav ul li a:hover, nav ul li a:focus {
+  border-bottom: 2px solid #111;
+  background: #f3f3f3;
+  color: #111;
 }
 main {
   max-width: 900px;
   margin: 2.5rem auto;
   padding: 2.5rem 2rem;
   background: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  color: #111;
   border: 1.5px solid #bbb;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
 }
 .hero {
   display: flex;
@@ -59,7 +72,7 @@ main {
   height: 110px;
   border-radius: 0.3rem;
   object-fit: cover;
-  border: 2px solid #111;
+  border: 2px solid #fff;
   box-shadow: none;
 }
 .hero-info {
@@ -133,20 +146,29 @@ h1, h2, h3 {
   margin-bottom: 0.2rem;
 }
 .project-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.2rem;
   justify-content: center;
   margin-top: 2rem;
+  background: transparent;
 }
 .project-card {
+  border: 2px solid #222;
+  border-radius: 0.7rem;
   background: #fff;
-  border: 1.5px solid #bbb;
-  border-radius: 0.3rem;
-  box-shadow: none;
-  padding: 1.2rem;
-  width: 260px;
-  transition: transform 0.2s;
+  color: #111;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  margin-bottom: 0;
+  padding: 1.3rem 1.5rem 1.1rem 1.5rem;
+  min-width: 0;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+  font-family: 'Fira Mono', 'Menlo', 'Consolas', 'Courier New', monospace;
+  font-size: 1.08rem;
 }
 .project-card.improved {
   border: 2px solid #222;
@@ -162,7 +184,7 @@ h1, h2, h3 {
   gap: 0.5rem;
   transition: box-shadow 0.2s, transform 0.2s;
 }
-.project-card.improved:hover {
+.project-card.improved:hover, .project-card:hover {
   box-shadow: 0 6px 24px rgba(0,0,0,0.10);
   transform: translateY(-4px) scale(1.03);
 }
@@ -176,26 +198,39 @@ h1, h2, h3 {
   margin: 0;
   font-size: 1.13rem;
   font-weight: 700;
+  color: #111;
+  font-family: inherit;
+}
+.project-header a, .project-header a:visited {
+  color: #111;
+  text-decoration: none;
+  font-weight: 700;
+}
+.project-header a:hover, .project-header a:focus {
+  color: #111;
+  text-decoration: underline;
 }
 .project-stars {
-  font-size: 1.05rem;
-  color: #eab308;
-  font-weight: 600;
+  color: #111;
 }
 .project-desc {
   font-size: 1.01rem;
-  color: #222;
+  color: #111;
   margin: 0.2rem 0 0.3rem 0;
+  font-family: inherit;
 }
 .project-meta {
   font-size: 0.97rem;
-  color: #555;
+  color: #888;
+  font-style: italic;
+  font-family: inherit;
 }
 .project-lang {
   font-size: 0.97rem;
   color: #888;
   font-style: italic;
   margin-top: 0.1rem;
+  font-family: inherit;
 }
 form#contact-form {
   display: flex;
@@ -226,6 +261,10 @@ form#contact-form button {
 }
 form#contact-form button:hover {
   background: #333;
+  color: #fff;
+}
+#form-status {
+  color: #111;
 }
 .badges {
   display: flex;
@@ -249,8 +288,8 @@ form#contact-form button:hover {
   cursor: default;
 }
 .badge:hover {
-  transform: scale(1.07);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  background: #333;
+  color: #fff;
 }
 .languages, .technologies {
   margin-top: 2.5rem;
@@ -273,7 +312,7 @@ form#contact-form button:hover {
 .about-list {
   margin: 1rem 0 0 1.5rem;
   padding: 0;
-  color: #222;
+  color: #111;
 }
 .about-list li {
   margin-bottom: 0.5rem;
@@ -290,11 +329,13 @@ form#contact-form button:hover {
 .see-more {
   margin-top: 1.5rem;
 }
-.see-more a {
+.see-more a, .see-more a:visited {
   color: #111;
   text-decoration: underline;
   font-weight: 600;
-  font-size: 1.1rem;
+}
+.see-more a:hover, .see-more a:focus {
+  color: #111;
 }
 .testimonials {
   margin: 3rem 0 2rem 0;
@@ -342,29 +383,44 @@ form#contact-form button:hover {
 }
 .social-links a {
   color: #fff;
-  background: #111;
   border-radius: 2rem;
   padding: 0.4rem 1.1rem;
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, filter 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 48px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  filter: none;
 }
 .social-links a:hover {
-  background: #333;
   color: #fff;
+  filter: none;
 }
 .icon {
   width: 1.6rem;
   height: 1.6rem;
   vertical-align: middle;
   margin: 0 0.2rem;
-  filter: grayscale(1) brightness(0.2);
+  filter: none;
   transition: filter 0.2s, transform 0.2s;
 }
 .icon:hover {
-  filter: grayscale(0) brightness(0.7);
+  filter: brightness(0.7);
   transform: scale(1.15);
+}
+.projects h2 {
+  color: #111;
+  font-family: 'Fira Mono', 'Menlo', 'Consolas', 'Courier New', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  text-decoration: none;
+  letter-spacing: 0.01em;
 }
 .timeline {
   margin: 2.5rem 0 2rem 0;
@@ -416,6 +472,15 @@ form#contact-form button:hover {
 .about-social {
   margin: 2.5rem 0 1.5rem 0;
   text-align: center;
+}
+a, a:visited {
+  color: #111;
+  text-decoration: underline;
+  transition: none;
+}
+a:hover, a:focus {
+  color: #111;
+  text-decoration: underline;
 }
 @media (max-width: 900px) {
   main {
