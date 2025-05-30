@@ -496,6 +496,130 @@ a:hover, a:focus {
   color: #111;
   /* text-decoration: underline; */
 }
+.contact-modern {
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 2.5rem 1.2rem 2.5rem 1.2rem;
+  background: rgba(255,255,255,0.97);
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contact-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+.contact-subtitle {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #222;
+}
+.contact-form-wrapper {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+#contact-form input, #contact-form textarea {
+  padding: 0.85rem;
+  border: 1.5px solid #111;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: #fafbfc;
+  color: #111;
+  font-family: inherit;
+}
+#contact-form button {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 0.85rem;
+  border-radius: 0.5rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 0.2rem;
+  transition: background 0.2s;
+}
+#contact-form button:hover {
+  background: #333;
+}
+.contact-social {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 1.5rem 0 1.2rem 0;
+}
+.contact-social .icon {
+  width: 2.1rem;
+  height: 2.1rem;
+  margin: 0 0.1rem;
+  filter: none;
+  transition: filter 0.2s, transform 0.2s;
+}
+.contact-social .icon:hover {
+  filter: brightness(0.7);
+  transform: scale(1.13);
+}
+.contact-resume {
+  margin-bottom: 2rem;
+}
+.contact-resume a {
+  color: #111;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+.contact-faq, .contact-elsewhere {
+  background: #f7f7f7;
+  border-radius: 0.7rem;
+  padding: 1.2rem 1rem;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+  margin-bottom: 0.5rem;
+}
+.contact-faq h3, .contact-elsewhere h3 {
+  font-size: 1.13rem;
+  margin-bottom: 0.7rem;
+  font-weight: 700;
+}
+.contact-faq ul {
+  list-style: disc inside;
+  padding-left: 1.2rem;
+  color: #222;
+  font-size: 1.01rem;
+  margin: 0;
+}
+.contact-faq li {
+  margin-bottom: 0.7rem;
+}
+.elsewhere-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+.elsewhere-links a {
+  color: #111;
+  font-weight: 600;
+  text-decoration: underline;
+  font-size: 1.01rem;
+}
 @media (max-width: 900px) {
   html, body {
     max-width: 100vw;
@@ -665,5 +789,146 @@ a:hover, a:focus {
   .icon {
     width: 0.9rem;
     height: 0.9rem;
+  }
+}
+.contact-modern {
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 2.5rem 1.2rem 2.5rem 1.2rem;
+  background: rgba(255,255,255,0.97);
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contact-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+.contact-subtitle {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #222;
+}
+.contact-form-wrapper {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+#contact-form input, #contact-form textarea {
+  padding: 0.85rem;
+  border: 1.5px solid #111;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: #fafbfc;
+  color: #111;
+  font-family: inherit;
+}
+#contact-form button {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 0.85rem;
+  border-radius: 0.5rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 0.2rem;
+  transition: background 0.2s;
+}
+#contact-form button:hover {
+  background: #333;
+}
+.contact-social {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 1.5rem 0 1.2rem 0;
+}
+.contact-social .icon {
+  width: 2.1rem;
+  height: 2.1rem;
+  margin: 0 0.1rem;
+  filter: none;
+  transition: filter 0.2s, transform 0.2s;
+}
+.contact-social .icon:hover {
+  filter: brightness(0.7);
+  transform: scale(1.13);
+}
+.contact-resume {
+  margin-bottom: 2rem;
+}
+.contact-resume a {
+  color: #111;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+.contact-faq, .contact-elsewhere {
+  background: #f7f7f7;
+  border-radius: 0.7rem;
+  padding: 1.2rem 1rem;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+  margin-bottom: 0.5rem;
+}
+.contact-faq h3, .contact-elsewhere h3 {
+  font-size: 1.13rem;
+  margin-bottom: 0.7rem;
+  font-weight: 700;
+}
+.contact-faq ul {
+  list-style: disc inside;
+  padding-left: 1.2rem;
+  color: #222;
+  font-size: 1.01rem;
+  margin: 0;
+}
+.contact-faq li {
+  margin-bottom: 0.7rem;
+}
+.elsewhere-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+.elsewhere-links a {
+  color: #111;
+  font-weight: 600;
+  text-decoration: underline;
+  font-size: 1.01rem;
+}
+@media (max-width: 600px) {
+  .contact-modern {
+    max-width: 98vw;
+    padding: 1.2rem 0.2rem 1.2rem 0.2rem;
+    border-radius: 0.7rem;
+  }
+  .contact-title {
+    font-size: 1.13rem;
+  }
+  .contact-faq, .contact-elsewhere {
+    padding: 0.7rem 0.3rem;
+  }
+  .contact-social .icon {
+    width: 1.3rem;
+    height: 1.3rem;
   }
 }
