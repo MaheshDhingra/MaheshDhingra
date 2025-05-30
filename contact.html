@@ -16,44 +16,22 @@
     </ul>
   </nav>
   <main>
-    <section class="contact contact-modern">
-      <h2 class="contact-title">Let's Connect!</h2>
-      <p class="contact-subtitle">I'd love to hear from you! Whether you have a question, want to collaborate, or just want to say hi, use the form below or reach out through my socials.</p>
-      <div class="contact-form-wrapper">
-        <form id="contact-form" action="https://formspree.io/f/mzzgpdvz" method="POST" target="_self">
-          <input type="hidden" name="_redirect" value="./thankyou.html">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required style="word-break:break-all;overflow-wrap:break-word;max-width:100%;box-sizing:border-box;">
-          <textarea name="message" placeholder="Your Message" required></textarea>
-          <button type="submit">Send</button>
-        </form>
-      </div>
-      <div class="contact-social">
+    <section class="contact">
+      <h2>Let's Connect!</h2>
+      <form id="contact-form" action="https://formspree.io/f/mzzgpdvz" method="POST" target="_self">
+        <input type="hidden" name="_redirect" value="./thankyou.html">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <div id="form-status" style="margin-top:1rem;font-size:1.08rem;color:#111;letter-spacing:0.01em;"></div>
+      <p style="margin-top:2rem;">Or download my <a href="resume.pdf" target="_blank">resume</a>.</p>
+      <div class="social-links">
         <a href="https://github.com/MaheshDhingra" title="GitHub" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg" alt="GitHub" class="icon"></a>
         <a href="https://www.instagram.com/maheshh_dh/" title="Instagram" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg" alt="Instagram" class="icon"></a>
         <a href="#" title="Twitter" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/twitter.svg" alt="Twitter" class="icon"></a>
         <a href="mailto:dhingram447@gmail.com" title="Email"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/gmail.svg" alt="Email" class="icon"></a>
-      </div>
-      <div class="contact-resume">
-        <a href="resume.pdf" target="_blank">Download my resume</a>
-      </div>
-      <div class="contact-cards">
-        <div class="contact-faq">
-          <h3>Frequently Asked Questions</h3>
-          <ul>
-            <li><strong>Can I hire you for a project?</strong><br>Yes! I'm open to freelance and collaboration opportunities. Just send me a message.</li>
-            <li><strong>What technologies do you work with?</strong><br>I work with web, desktop, and mobile tech including JavaScript, Python, Rust, and more. See my <a href="projects.html">projects</a> for details.</li>
-            <li><strong>How soon will I get a reply?</strong><br>I usually respond within 24-48 hours.</li>
-          </ul>
-        </div>
-        <div class="contact-elsewhere">
-          <h3>Find Me Elsewhere</h3>
-          <div class="elsewhere-links">
-            <a href="mailto:dhingram447@gmail.com">dhingram447@gmail.com</a>
-            <a href="https://github.com/MaheshDhingra" target="_blank">GitHub</a>
-            <a href="https://www.instagram.com/maheshh_dh/" target="_blank">Instagram</a>
-          </div>
-        </div>
       </div>
     </section>
   </main>

@@ -10,13 +10,4 @@ document.addEventListener('DOMContentLoaded', function() {
       link.classList.remove('active');
     }
   });
-
-  // Contact form handler
-  const form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      // Remove e.preventDefault(); so the form submits to Formspree
-      // Remove form.reset();
-    });
-  }
 });
