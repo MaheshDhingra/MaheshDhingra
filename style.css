@@ -321,6 +321,57 @@ form#contact-form button:hover {
   filter: grayscale(0) brightness(0.7);
   transform: scale(1.15);
 }
+.timeline {
+  margin: 2.5rem 0 2rem 0;
+  border-left: 2px solid #bbb;
+  padding-left: 1.5rem;
+}
+.timeline-item {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.timeline-date {
+  font-size: 1.02rem;
+  color: #555;
+  margin-bottom: 0.2rem;
+  font-family: inherit;
+}
+.timeline-content {
+  background: #fff;
+  border: 1.5px solid #bbb;
+  border-radius: 0.3rem;
+  padding: 0.8rem 1.1rem;
+  margin-left: 0.5rem;
+  font-size: 1.05rem;
+}
+.timeline-item:before {
+  content: '';
+  position: absolute;
+  left: -1.7rem;
+  top: 0.7rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  background: #111;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #bbb;
+}
+.fun-facts {
+  margin: 2.5rem 0 2rem 0;
+}
+.fun-facts ul {
+  list-style: disc inside;
+  padding-left: 1.2rem;
+  color: #222;
+}
+.fun-facts li {
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+}
+.about-social {
+  margin: 2.5rem 0 1.5rem 0;
+  text-align: center;
+}
 @media (max-width: 900px) {
   main {
     padding: 1.2rem 0.5rem;
