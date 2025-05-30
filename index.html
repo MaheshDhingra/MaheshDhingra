@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mahesh Dhingra | Home</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="me.png">
 </head>
 <body>
   <nav>
@@ -82,40 +83,50 @@
     </section>
     <div class="section-title">Featured Projects</div>
     <section class="featured-projects">
-      <div class="project-list">
-        <div class="project-card">
-          <h3>Portfolio Generator</h3>
-          <p>A tool that helps developers create beautiful portfolio websites in minutes. Built with Node.js, React, and Tailwind CSS.</p>
-        </div>
-        <div class="project-card">
-          <h3>AI Chatbot</h3>
-          <p>An intelligent chatbot using Python and GPT APIs, deployed on AWS Lambda for scalable conversations.</p>
-        </div>
-        <div class="project-card">
-          <h3>Game Engine</h3>
-          <p>A 2D game engine written in C++ and SDL, supporting custom scripting and asset pipelines.</p>
-        </div>
-      </div>
-      <div class="see-more"><a href="projects.html">See all projects →</a></div>
+      <div id="github-projects" class="project-list"></div>
+      <div class="see-more"><a href="https://github.com/MaheshDhingra?tab=repositories" target="_blank">See all projects on GitHub →</a></div>
     </section>
     <div class="section-title">Testimonials</div>
     <section class="testimonials">
       <div class="testimonial-list">
-        <blockquote>“Mahesh is a brilliant developer who delivers quality work on time. Highly recommended!”<br><span>- Client, Freelance Platform</span></blockquote>
-        <blockquote>“His attention to detail and passion for technology is inspiring.”<br><span>- Colleague, Open Source</span></blockquote>
+        <blockquote>“Mahesh is a brilliant developer who delivers quality work on time. His code is clean, and he always brings creative solutions to the table.”<br><span>- Priya S., Project Manager</span></blockquote>
+        <blockquote>“Working with Mahesh was a pleasure. He is proactive, reliable, and a great team player.”<br><span>- Rahul T., Team Lead</span></blockquote>
+        <blockquote>“Mahesh's passion for technology and learning is inspiring. He quickly adapts to new challenges and technologies.”<br><span>- Anjali M., Mentor</span></blockquote>
       </div>
     </section>
     <div class="section-title">Contact</div>
     <section class="contact-cta">
       <p>Available for work and collaboration. Reach out via <a href="mailto:dhingram447@gmail.com">email</a> or <a href="contact.html">contact form</a>. Download my <a href="resume.pdf" target="_blank">resume</a>.</p>
       <div class="social-links">
-        <a href="#" title="GitHub">GitHub</a>
-        <a href="#" title="LinkedIn">LinkedIn</a>
-        <a href="#" title="Twitter">Twitter</a>
-        <a href="mailto:dhingram447@gmail.com" title="Email">Email</a>
+        <a href="https://github.com/MaheshDhingra" title="GitHub" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg" alt="GitHub" class="icon"></a>
+        <a href="#" title="LinkedIn" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" alt="LinkedIn" class="icon"></a>
+        <a href="#" title="Twitter" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/twitter.svg" alt="Twitter" class="icon"></a>
+        <a href="mailto:dhingram447@gmail.com" title="Email"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/gmail.svg" alt="Email" class="icon"></a>
       </div>
     </section>
   </main>
   <script src="script.js"></script>
+  <script>
+async function fetchProjects() {
+  const res = await fetch('https://api.github.com/users/MaheshDhingra/repos?sort=updated');
+  if (!res.ok) return;
+  const repos = await res.json();
+  const userRepos = repos.filter(repo => !repo.fork && repo.owner && repo.owner.login === 'MaheshDhingra');
+  const container = document.getElementById('github-projects');
+  if (!container) return;
+  if (userRepos.length === 0) {
+    container.innerHTML = '<p>No public repositories found. Check back soon!</p>';
+    return;
+  }
+  container.innerHTML = userRepos.slice(0, 6).map(repo => `
+    <div class="project-card">
+      <h3><a href="${repo.html_url}" target="_blank">${repo.name.replace(/[-_]/g, ' ')}</a></h3>
+      <p>${repo.description ? repo.description : 'No description yet, but something cool is coming!'}</p>
+      <div style="font-size:0.95rem;color:#555;">★ ${repo.stargazers_count} | Last updated: ${new Date(repo.updated_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</div>
+    </div>
+  `).join('');
+}
+fetchProjects();
+</script>
 </body>
 </html>
