@@ -3,6 +3,14 @@ body, * {
   margin: 0;
   font-family: 'Fira Mono', 'Menlo', 'Consolas', 'Courier New', monospace !important;
 }
+body {
+  background: url('background.png') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  color: #111;
+}
 nav {
   background: transparent;
   box-shadow: none;
@@ -204,7 +212,7 @@ h1, h2, h3 {
 }
 .project-header a:hover, .project-header a:focus {
   color: #111;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 .project-stars {
   color: #111;
@@ -334,7 +342,7 @@ form#contact-form button:hover {
 }
 .see-more a, .see-more a:visited {
   color: #111;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   font-weight: 600;
 }
 .see-more a:hover, .see-more a:focus {
@@ -376,7 +384,7 @@ form#contact-form button:hover {
 }
 .contact-cta a {
   color: #111;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   font-weight: 600;
 }
 .social-links {
@@ -481,14 +489,23 @@ form#contact-form button:hover {
 }
 a, a:visited {
   color: #111;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   transition: none;
 }
 a:hover, a:focus {
   color: #111;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 @media (max-width: 900px) {
+  html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    background: url('background.png') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+  }
   main {
     padding: 1.2rem 0.5rem;
     max-width: 100vw;
@@ -496,139 +513,157 @@ a:hover, a:focus {
     border-width: 0;
     box-shadow: none;
   }
+  nav ul {
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0.5rem 0.2rem;
+    justify-content: flex-start;
+    scrollbar-width: none;
+  }
+  nav ul::-webkit-scrollbar {
+    display: none;
+  }
+  nav ul li a {
+    font-size: 1rem;
+    padding: 0.5rem 0.7rem;
+    min-width: max-content;
+  }
   .hero {
     flex-direction: column;
     align-items: center;
-    gap: 1.2rem;
-    margin-bottom: 1.5rem;
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+    text-align: center;
   }
   .profile-img {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+  }
+  .hero-info h1 {
+    font-size: 1.5rem;
+    word-break: break-word;
+  }
+  .hero-info p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
   }
   .info-cards {
     flex-direction: column;
-    gap: 0.7rem;
-    margin: 1rem 0 1.5rem 0;
+    gap: 0.5rem;
+    margin: 0.7rem 0 1.2rem 0;
   }
-  .experience-skills {
-    flex-direction: column;
-    gap: 1.2rem;
+  .info-card {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
+    padding: 0.7rem 0.5rem;
+  }
+  .section-title {
+    font-size: 1.05rem;
+    margin: 1.2rem 0 0.6rem 0;
+    padding-bottom: 0.15rem;
+  }
+  .about-extended, .timeline, .fun-facts, .featured-projects, .testimonials, .contact-cta {
+    margin: 1rem 0 0.7rem 0;
+    padding: 0 0.1rem;
   }
   .project-list {
     grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-top: 1.2rem;
+    gap: 0.7rem;
+    margin-top: 1rem;
   }
   .project-card, .project-card.improved {
     min-width: 0;
     max-width: 100%;
-    padding: 1rem 0.7rem 1rem 0.7rem;
-    margin-bottom: 1rem;
-  }
-  .section-title {
-    font-size: 1.1rem;
-    margin: 1.5rem 0 0.7rem 0;
-    padding-bottom: 0.2rem;
-  }
-  .about-extended, .timeline, .fun-facts, .featured-projects, .testimonials, .contact-cta {
-    margin: 1.2rem 0 1rem 0;
-    padding: 0 0.2rem;
-  }
-  .timeline {
-    padding-left: 0.7rem;
-    border-width: 1px;
-  }
-  .timeline-item:before {
-    left: -1.1rem;
-    top: 0.5rem;
-    width: 0.6rem;
-    height: 0.6rem;
-  }
-  .testimonial-list blockquote {
-    padding: 0.7rem 0.7rem;
-    font-size: 0.98rem;
-    max-width: 95vw;
-  }
-  .badges {
-    gap: 0.3rem;
-    margin: 0.7rem 0 1.2rem 0;
-  }
-  .badge {
-    font-size: 0.95rem;
-    padding: 0.3rem 0.7rem;
-  }
-  .social-links {
-    gap: 0.7rem;
-    min-width: 0;
-  }
-  .icon {
-    width: 1.2rem;
-    height: 1.2rem;
-    margin: 0 0.1rem;
-  }
-  nav ul {
-    gap: 1.2rem;
-    flex-wrap: wrap;
-    padding: 0.5rem 0;
-  }
-  nav ul li a {
-    font-size: 1rem;
-    padding: 0.5rem 0.5rem;
-  }
-  .about-list {
-    margin: 0.7rem 0 0 1rem;
+    padding: 0.7rem 0.3rem 0.7rem 0.3rem;
+    margin-bottom: 0.7rem;
     font-size: 0.98rem;
   }
-  .project-header h3 {
-    font-size: 1rem;
-  }
-  .project-desc, .project-meta, .project-lang {
-    font-size: 0.95rem;
-  }
-  .contact-cta h2, .featured-projects h2, .languages h2, .technologies h2 {
-    font-size: 1.1rem;
-  }
-}
-@media (max-width: 600px) {
-  main {
-    padding: 0.5rem 0.1rem;
-    margin: 0.5rem 0;
-  }
-  .hero {
-    gap: 0.7rem;
-    margin-bottom: 1rem;
-  }
-  .profile-img {
-    width: 70px;
-    height: 70px;
-  }
-  .info-cards {
-    gap: 0.4rem;
-    margin: 0.5rem 0 1rem 0;
-  }
-  .section-title {
-    font-size: 1rem;
-    margin: 1rem 0 0.5rem 0;
-    padding-bottom: 0.1rem;
+  h1, h2, h3, .hero-info h1 {
+    font-size: 1.2rem !important;
+    word-break: break-word;
   }
   .about-list {
     margin: 0.5rem 0 0 0.5rem;
     font-size: 0.93rem;
   }
-  .project-card, .project-card.improved {
-    padding: 0.7rem 0.3rem 0.7rem 0.3rem;
+  .project-header h3 {
+    font-size: 1rem;
   }
-  nav ul {
-    gap: 0.5rem;
-    padding: 0.2rem 0;
-  }
-  nav ul li a {
+  .project-desc, .project-meta, .project-lang {
     font-size: 0.93rem;
-    padding: 0.3rem 0.3rem;
+  }
+  .contact-cta h2, .featured-projects h2, .languages h2, .technologies h2 {
+    font-size: 1rem;
+  }
+  .badges {
+    gap: 0.2rem;
+    margin: 0.5rem 0 1rem 0;
+  }
+  .badge {
+    font-size: 0.93rem;
+    padding: 0.2rem 0.5rem;
+  }
+  .social-links {
+    gap: 0.5rem;
+    min-width: 0;
   }
   .icon {
     width: 1rem;
     height: 1rem;
+    margin: 0 0.05rem;
+  }
+}
+@media (max-width: 600px) {
+  body {
+    background: url('background.png') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+  }
+  main {
+    padding: 0.3rem 0.05rem;
+    margin: 0.3rem 0;
+  }
+  .hero {
+    gap: 0.4rem;
+    margin-bottom: 0.7rem;
+  }
+  .profile-img {
+    width: 60px;
+    height: 60px;
+  }
+  .info-cards {
+    gap: 0.2rem;
+    margin: 0.3rem 0 0.7rem 0;
+  }
+  .section-title {
+    font-size: 0.95rem;
+    margin: 0.7rem 0 0.3rem 0;
+    padding-bottom: 0.05rem;
+  }
+  .about-list {
+    margin: 0.3rem 0 0 0.2rem;
+    font-size: 0.9rem;
+  }
+  .project-card, .project-card.improved {
+    padding: 0.4rem 0.1rem 0.4rem 0.1rem;
+    font-size: 0.93rem;
+  }
+  nav ul {
+    gap: 0.2rem;
+    padding: 0.1rem 0;
+  }
+  nav ul li a {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.2rem;
+  }
+  .icon {
+    width: 0.9rem;
+    height: 0.9rem;
   }
 }
