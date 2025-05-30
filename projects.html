@@ -3,107 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahesh Dhingra - Projects</title>
-  <link rel="icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <title>Projects | Mahesh Dhingra</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    .projects-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-      padding: 38px 28px 28px 28px;
-      max-width: 420px;
-      margin: 40px auto 0 auto;
-      position: relative;
-      border: 2.5px solid #ffe082;
-      animation: popin 0.7s cubic-bezier(.68,-0.55,.27,1.55);
-    }
-    @keyframes popin {
-      0% { transform: scale(0.92); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    .projects-img {
-      width: 110px;
-      height: 110px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid #ff6f61;
-      margin: 18px 0 18px 0;
-      box-shadow: 0 2px 12px #ff6f6133;
-      transition: border 0.3s, box-shadow 0.3s;
-    }
-    .projects-img:hover {
-      border: 4px solid #0077cc;
-      box-shadow: 0 4px 24px #0077cc33;
-    }
-    .projects-list {
-      text-align: left;
-      margin: 0 0 18px 0;
-      padding-left: 0;
-      list-style: none;
-      width: 100%;
-    }
-    .projects-list li {
-      margin-bottom: 12px;
-      padding-left: 32px;
-      position: relative;
-      font-size: 1.08rem;
-    }
-    .projects-list li:before {
-      content: '🍨';
-      position: absolute;
-      left: 0;
-      font-size: 1.2em;
-    }
-    .divider {
-      width: 60%;
-      height: 2px;
-      background: linear-gradient(90deg, #ffe082 0%, #ff6f61 100%);
-      border: none;
-      margin: 18px auto 18px auto;
-      border-radius: 2px;
-    }
-    .projects-links {
-      margin: 10px 0 18px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      align-items: center;
-    }
-  </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="index.html">Home</a> |
-      <a href="projects.html">Projects</a> |
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
   <main>
-    <div class="projects-card">
-      <h1 style="margin-bottom:10px;">My Projects</h1>
-      <ul class="projects-list">
-        <li><b>Personal Website</b> – This site! Built from scratch with HTML &amp; CSS.</li>
-        <li><b>School Coding Club</b> – Helped organize and teach coding basics.</li>
-        <li><b>Mini Game</b> – Made a simple game for fun using JavaScript.</li>
-      </ul>
-      <div class="projects-links">
-        <a href="index.html" class="special-link">Back to Home</a>
-        <a href="https://github.com/maheshdhingra" class="special-link" target="_blank">See More on GitHub</a>
+    <section class="projects">
+      <h2>Projects</h2>
+      <div class="project-list">
+        <div class="project-card">
+          <h3>Project One</h3>
+          <p>A brief description of your first project.</p>
+        </div>
+        <div class="project-card">
+          <h3>Project Two</h3>
+          <p>A brief description of your second project.</p>
+        </div>
+        <!-- Add more projects as needed -->
       </div>
-      <img src="me.png" alt="Mahesh Dhingra" class="projects-img">
-      <button class="fun-btn" onclick="alert('Keep building cool stuff!')">Motivate Me!</button>
-      <hr class="divider">
-      <div class="highlight" style="margin-bottom:0;">I love building things that help people and make life easier!</div>
-    </div>
+    </section>
   </main>
-  <footer>
-    <p>© 2025 Mahesh Dhingra | <a href="https://github.com/maheshdhingra" target="_blank">GitHub</a></p>
-  </footer>
+  <script src="script.js"></script>
 </body>
 </html>

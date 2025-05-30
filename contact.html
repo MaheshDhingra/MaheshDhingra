@@ -3,76 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahesh Dhingra - Contact</title>
-  <link rel="icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <title>Contact | Mahesh Dhingra</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    .contact-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-      padding: 38px 28px 28px 28px;
-      max-width: 420px;
-      margin: 40px auto 0 auto;
-      position: relative;
-      border: 2.5px solid #ffe082;
-      animation: popin 0.7s cubic-bezier(.68,-0.55,.27,1.55);
-    }
-    @keyframes popin {
-      0% { transform: scale(0.92); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    .contact-links {
-      margin: 10px 0 18px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      align-items: center;
-    }
-    .contact-info {
-      margin: 12px 0 18px 0;
-      font-size: 1.08rem;
-      text-align: left;
-    }
-    .divider {
-      width: 60%;
-      height: 2px;
-      background: linear-gradient(90deg, #ffe082 0%, #ff6f61 100%);
-      border: none;
-      margin: 18px auto 18px auto;
-      border-radius: 2px;
-    }
-  </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="index.html">Home</a> |
-      <a href="projects.html">Projects</a> |
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
   <main>
-    <div class="contact-card">
-      <h1 style="margin-bottom:10px;">Contact Me</h1>
-      <div class="highlight">I'd love to hear from you! Whether you want to collaborate, chat about tech, or just say hi, feel free to reach out.</div>
-      <div class="contact-info">
-        <b>Email:</b> <a href="mailto:mahesh@example.com" class="special-link">mahesh@example.com</a><br>
-        <b>GitHub:</b> <a href="https://github.com/maheshdhingra" class="special-link" target="_blank">maheshdhingra</a>
-      </div>
-      <button class="fun-btn" onclick="alert('Message sent! (Not really, but you can email me!)')">Send a Virtual Hi!</button>
-      <div class="contact-links">
-        <a href="index.html" class="special-link">Back to Home</a>
-      </div>
-      <hr class="divider">
-    </div>
+    <section class="contact">
+      <h2>Contact Me</h2>
+      <form id="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <p>Or download my <a href="resume.pdf" target="_blank">resume</a>.</p>
+    </section>
   </main>
-  <footer>
-    <p>© 2025 Mahesh Dhingra | <a href="https://github.com/maheshdhingra" target="_blank">GitHub</a></p>
-  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
