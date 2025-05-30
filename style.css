@@ -491,22 +491,144 @@ a:hover, a:focus {
 @media (max-width: 900px) {
   main {
     padding: 1.2rem 0.5rem;
+    max-width: 100vw;
+    margin: 1.2rem 0;
+    border-width: 0;
+    box-shadow: none;
   }
   .hero {
     flex-direction: column;
     align-items: center;
     gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  .profile-img {
+    width: 90px;
+    height: 90px;
+  }
+  .info-cards {
+    flex-direction: column;
+    gap: 0.7rem;
+    margin: 1rem 0 1.5rem 0;
   }
   .experience-skills {
     flex-direction: column;
     gap: 1.2rem;
   }
   .project-list {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 1rem;
+    margin-top: 1.2rem;
+  }
+  .project-card, .project-card.improved {
+    min-width: 0;
+    max-width: 100%;
+    padding: 1rem 0.7rem 1rem 0.7rem;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.7rem 0;
+    padding-bottom: 0.2rem;
+  }
+  .about-extended, .timeline, .fun-facts, .featured-projects, .testimonials, .contact-cta {
+    margin: 1.2rem 0 1rem 0;
+    padding: 0 0.2rem;
+  }
+  .timeline {
+    padding-left: 0.7rem;
+    border-width: 1px;
+  }
+  .timeline-item:before {
+    left: -1.1rem;
+    top: 0.5rem;
+    width: 0.6rem;
+    height: 0.6rem;
   }
   .testimonial-list blockquote {
     padding: 0.7rem 0.7rem;
     font-size: 0.98rem;
+    max-width: 95vw;
+  }
+  .badges {
+    gap: 0.3rem;
+    margin: 0.7rem 0 1.2rem 0;
+  }
+  .badge {
+    font-size: 0.95rem;
+    padding: 0.3rem 0.7rem;
+  }
+  .social-links {
+    gap: 0.7rem;
+    min-width: 0;
+  }
+  .icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0 0.1rem;
+  }
+  nav ul {
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    padding: 0.5rem 0;
+  }
+  nav ul li a {
+    font-size: 1rem;
+    padding: 0.5rem 0.5rem;
+  }
+  .about-list {
+    margin: 0.7rem 0 0 1rem;
+    font-size: 0.98rem;
+  }
+  .project-header h3 {
+    font-size: 1rem;
+  }
+  .project-desc, .project-meta, .project-lang {
+    font-size: 0.95rem;
+  }
+  .contact-cta h2, .featured-projects h2, .languages h2, .technologies h2 {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 600px) {
+  main {
+    padding: 0.5rem 0.1rem;
+    margin: 0.5rem 0;
+  }
+  .hero {
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+  }
+  .profile-img {
+    width: 70px;
+    height: 70px;
+  }
+  .info-cards {
+    gap: 0.4rem;
+    margin: 0.5rem 0 1rem 0;
+  }
+  .section-title {
+    font-size: 1rem;
+    margin: 1rem 0 0.5rem 0;
+    padding-bottom: 0.1rem;
+  }
+  .about-list {
+    margin: 0.5rem 0 0 0.5rem;
+    font-size: 0.93rem;
+  }
+  .project-card, .project-card.improved {
+    padding: 0.7rem 0.3rem 0.7rem 0.3rem;
+  }
+  nav ul {
+    gap: 0.5rem;
+    padding: 0.2rem 0;
+  }
+  nav ul li a {
+    font-size: 0.93rem;
+    padding: 0.3rem 0.3rem;
+  }
+  .icon {
+    width: 1rem;
+    height: 1rem;
   }
 }
