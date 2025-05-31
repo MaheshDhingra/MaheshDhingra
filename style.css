@@ -38,7 +38,7 @@ nav ul li a {
   padding: 0.7rem 0.8rem;
   display: block;
   border-bottom: 2px solid transparent;
-  transition: none;
+  transition: all 0.3s ease;
   border-radius: 0.3rem;
   letter-spacing: 0.01em;
 }
@@ -50,6 +50,7 @@ nav ul li a:hover, nav ul li a:focus {
   border-bottom: 2px solid #111;
   background: none;
   color: #111;
+  transform: translateY(-2px);
 }
 main {
   max-width: 900px;
@@ -66,6 +67,7 @@ main {
   align-items: center;
   gap: 2.5rem;
   margin-bottom: 2.5rem;
+  animation: fadeSlideUp 0.8s ease-out;
 }
 .profile-img {
   width: 110px;
@@ -75,6 +77,13 @@ main {
   border: 3px solid #111;
   box-shadow: none;
   display: block;
+  animation: dance 2s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+.profile-img:hover {
+  animation: dance 0.7s ease-in-out infinite;
+  transform: scale(1.1);
+  cursor: pointer;
 }
 .hero-info {
   flex: 1;
@@ -121,6 +130,11 @@ h1, h2, h3 {
   min-width: 180px;
   text-align: center;
   font-family: 'Fira Mono', 'Menlo', 'Consolas', 'Courier New', monospace !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 .experience-skills {
   display: flex;
@@ -173,6 +187,8 @@ h1, h2, h3 {
   transition: box-shadow 0.2s, transform 0.2s;
   font-family: 'Fira Mono', 'Menlo', 'Consolas', 'Courier New', monospace;
   font-size: 1.08rem;
+  animation: fadeSlideUp 0.6s ease-out;
+  animation-fill-mode: both;
 }
 .project-card.improved {
   border: 2px solid #222;
@@ -267,11 +283,11 @@ form#contact-form button {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
 }
 form#contact-form button:hover {
-  background: #333;
-  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 #form-status {
   color: #111;
@@ -292,14 +308,14 @@ form#contact-form button:hover {
   font-size: 1rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   letter-spacing: 0.02em;
-  transition: transform 0.15s, box-shadow 0.15s;
+  transition: transform 0.2s ease;
   border: none;
   outline: none;
   cursor: default;
+  animation: pulseGlow 2s infinite;
 }
 .badge:hover {
-  background: #333;
-  color: #fff;
+  transform: scale(1.1);
 }
 .languages, .technologies {
   margin-top: 2.5rem;
@@ -442,6 +458,8 @@ form#contact-form button:hover {
 .timeline-item {
   margin-bottom: 1.5rem;
   position: relative;
+  animation: slideIn 0.6s ease-out;
+  animation-fill-mode: both;
 }
 .timeline-date {
   font-size: 1.02rem;
@@ -548,10 +566,11 @@ a:hover, a:focus {
   font-weight: 700;
   cursor: pointer;
   margin-top: 0.2rem;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
 }
 #contact-form button:hover {
-  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 .contact-social {
   display: flex;
@@ -564,11 +583,10 @@ a:hover, a:focus {
   height: 2.1rem;
   margin: 0 0.1rem;
   filter: none;
-  transition: filter 0.2s, transform 0.2s;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 .contact-social .icon:hover {
-  filter: brightness(0.7);
-  transform: scale(1.13);
+  transform: scale(1.2) rotate(5deg);
 }
 .contact-resume {
   margin-bottom: 2rem;
@@ -843,10 +861,11 @@ a:hover, a:focus {
   font-weight: 700;
   cursor: pointer;
   margin-top: 0.2rem;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
 }
 #contact-form button:hover {
-  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 .contact-social {
   display: flex;
@@ -859,11 +878,10 @@ a:hover, a:focus {
   height: 2.1rem;
   margin: 0 0.1rem;
   filter: none;
-  transition: filter 0.2s, transform 0.2s;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 .contact-social .icon:hover {
-  filter: brightness(0.7);
-  transform: scale(1.13);
+  transform: scale(1.2) rotate(5deg);
 }
 .contact-resume {
   margin-bottom: 2rem;
@@ -931,4 +949,120 @@ a:hover, a:focus {
     width: 1.3rem;
     height: 1.3rem;
   }
+}
+
+/* Animations */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(17, 17, 17, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(17, 17, 17, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(17, 17, 17, 0); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes dance {
+  0% { 
+    transform: translateY(0) rotate(0deg); 
+  }
+  25% { 
+    transform: translateY(-10px) rotate(5deg); 
+  }
+  50% { 
+    transform: translateY(0) rotate(0deg); 
+  }
+  75% { 
+    transform: translateY(-10px) rotate(-5deg); 
+  }
+  100% { 
+    transform: translateY(0) rotate(0deg); 
+  }
+}
+
+/* Add animations to existing elements */
+.hero {
+  animation: fadeSlideUp 0.8s ease-out;
+}
+
+.profile-img {
+  animation: dance 2s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.profile-img:hover {
+  animation: dance 0.7s ease-in-out infinite;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.info-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.project-card {
+  animation: fadeSlideUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.badge {
+  animation: pulseGlow 2s infinite;
+  transition: transform 0.2s ease;
+}
+
+.badge:hover {
+  transform: scale(1.1);
+}
+
+nav ul li a {
+  transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+  transform: translateY(-2px);
+}
+
+.timeline-item {
+  animation: slideIn 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+/* Stagger timeline items */
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+.contact-social .icon {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.contact-social .icon:hover {
+  transform: scale(1.2) rotate(5deg);
+}
+
+#contact-form button {
+  transition: all 0.3s ease;
+}
+
+#contact-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
