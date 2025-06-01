@@ -146,6 +146,13 @@ li {
   box-shadow: 0 6px 24px #ff4e5040;
   background: linear-gradient(120deg, #ffe0e0 60%, #fffbe6 100%);
 }
+.topping.selected {
+  background: linear-gradient(120deg, #ffecd2 60%, #fcb69f 100%);
+  color: #fff;
+  border: 2px solid #43a047;
+  box-shadow: 0 0 0 4px #43a04733;
+  transform: scale(1.12) rotate(2deg);
+}
 
 .cta {
   display: inline-block;

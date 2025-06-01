@@ -38,7 +38,7 @@
     </section>
     <section class="toppings-grid">
       <h2>Pick Your Toppings!</h2>
-      <div class="grid-toppings">
+      <div class="grid-toppings" id="toppingsGrid">
         <div class="topping">🍓 Strawberry</div>
         <div class="topping">🧋 Boba Pearls</div>
         <div class="topping">🥭 Mango Jelly</div>
@@ -46,7 +46,9 @@
         <div class="topping">🍦 Ice Cream</div>
         <div class="topping">🍪 Cookie Crumbs</div>
       </div>
-      <button class="cta">Submit My Toppings!</button>
+      <button class="cta" id="submitToppings">Submit My Toppings!</button>
+      <div id="toppingsMessage" style="display:none; margin-top:1rem; font-size:1.1rem; color:#ff4e50; font-weight:bold;"></div>
+      <div id="toppingRain"></div>
     </section>
     <section class="start">
       <h2>Where do I start?</h2>
@@ -83,3 +85,66 @@
   </main>
 </body>
 </html>
+<script>
+// Topping selection logic
+const toppingsGrid = document.getElementById('toppingsGrid');
+const toppings = toppingsGrid.querySelectorAll('.topping');
+const submitBtn = document.getElementById('submitToppings');
+const message = document.getElementById('toppingsMessage');
+const toppingRain = document.getElementById('toppingRain');
+let selected = new Set();
+
+toppings.forEach(topping => {
+  topping.addEventListener('click', () => {
+    topping.classList.toggle('selected');
+    if (topping.classList.contains('selected')) {
+      selected.add(topping.textContent.trim());
+    } else {
+      selected.delete(topping.textContent.trim());
+    }
+  });
+});
+
+function rainToppings(toppingsArr) {
+  toppingRain.innerHTML = '';
+  toppingRain.style.position = 'fixed';
+  toppingRain.style.left = '0';
+  toppingRain.style.top = '0';
+  toppingRain.style.width = '100vw';
+  toppingRain.style.height = '100vh';
+  toppingRain.style.pointerEvents = 'none';
+  toppingRain.style.zIndex = '9999';
+
+  const emojis = toppingsArr.map(t => t.match(/\p{Emoji_Presentation}|\p{Extended_Pictographic}/gu)?.[0] || t[0]);
+  for (let i = 0; i < 24; i++) {
+    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+    const el = document.createElement('div');
+    el.textContent = emoji;
+    el.style.position = 'absolute';
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.top = '-3rem';
+    el.style.fontSize = (Math.random() * 1.5 + 1.5) + 'rem';
+    el.style.opacity = Math.random() * 0.5 + 0.5;
+    el.style.transition = 'transform 2.2s cubic-bezier(.68,-0.55,.27,1.55), opacity 2.2s';
+    toppingRain.appendChild(el);
+    setTimeout(() => {
+      el.style.transform = `translateY(${window.innerHeight + 80}px) rotate(${Math.random() * 60 - 30}deg)`;
+      el.style.opacity = 0.7;
+    }, 50 + Math.random() * 400);
+  }
+  setTimeout(() => { toppingRain.innerHTML = ''; }, 2500);
+}
+
+submitBtn.addEventListener('click', () => {
+  if (selected.size === 0) {
+    message.textContent = 'Pick at least one topping!';
+    message.style.display = 'block';
+    message.style.color = '#ff4e50';
+    return;
+  }
+  message.textContent = `Yum! You picked: ${[...selected].join(', ')} 🎉`;
+  message.style.display = 'block';
+  message.style.color = '#43a047';
+  rainToppings([...selected]);
+});
+</script>
