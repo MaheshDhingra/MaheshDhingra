@@ -5,7 +5,221 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Toppings Event | Hack Club</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>
+  :root {
+  --main-bg: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%);
+  --container-bg: rgba(255,255,255,0.95);
+  --accent: #ff4e50;
+  --accent2: #f9d423;
+  --text: #222;
+  --header-size: 2.5rem;
+  --border-radius: 1.2rem;
+}
+
+body {
+  margin: 0;
+  font-family: 'Fira Mono', 'Menlo', 'Consolas', 'Courier New', monospace;
+  background: var(--main-bg);
+  min-height: 100vh;
+  color: var(--text);
+  animation: bgmove 10s linear infinite alternate;
+}
+
+@keyframes bgmove {
+  0% { background-position: 0 0; }
+  100% { background-position: 100vw 100vh; }
+}
+
+.header {
+  text-align: center;
+  padding: 2rem 1rem 1rem 1rem;
+  font-size: var(--header-size);
+  color: var(--accent);
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  animation: pop 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+@keyframes pop {
+  0% { transform: scale(0.7) rotate(-10deg); opacity: 0; }
+  80% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  background: var(--container-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+section {
+  padding: 1rem 0.5rem;
+  border-radius: 0.7rem;
+  background: linear-gradient(90deg, #fff8, #fff0 80%);
+  box-shadow: 0 2px 8px rgba(255,78,80,0.04);
+  transition: box-shadow 0.3s, background 0.3s;
+}
+section:hover {
+  box-shadow: 0 6px 24px rgba(255,78,80,0.12);
+  background: linear-gradient(90deg, #fffbe6, #fff0 80%);
+}
+
+h1, h2 {
+  font-family: inherit;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+h2 {
+  font-size: 1.3rem;
+  color: var(--accent2);
+}
+
+ul {
+  margin: 0.5rem 0 0 1.2rem;
+  padding: 0;
+}
+li {
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+.link {
+  color: var(--accent);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.link:hover {
+  color: var(--accent2);
+}
+.footer {
+  text-align: center;
+  margin-top: 2rem;
+  color: #888;
+  font-size: 1rem;
+}
+
+.boba-pearls {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  margin: 1rem 0 0.5rem 0;
+}
+.pearl {
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(circle at 30% 30%, #4e2e1e 70%, #222 100%);
+  border-radius: 50%;
+  animation: bounce 1.2s infinite alternate;
+  box-shadow: 0 2px 8px #0002;
+}
+.pearl:nth-child(2) { animation-delay: 0.2s; }
+.pearl:nth-child(3) { animation-delay: 0.4s; }
+.pearl:nth-child(4) { animation-delay: 0.6s; }
+.pearl:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-18px) scale(1.1); }
+}
+
+.toppings-grid {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+.grid-toppings {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.2rem;
+  margin: 1rem 0 1.5rem 0;
+}
+.topping {
+  background: linear-gradient(120deg, #fffbe6 60%, #ffe0e0 100%);
+  border-radius: 1.2rem;
+  padding: 1.1rem 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #b85c38;
+  box-shadow: 0 2px 8px #ff4e5010;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  border: 2px solid #ff4e50;
+}
+.topping:hover {
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 6px 24px #ff4e5040;
+  background: linear-gradient(120deg, #ffe0e0 60%, #fffbe6 100%);
+}
+.topping.selected {
+  background: linear-gradient(120deg, #ffecd2 60%, #fcb69f 100%);
+  color: #fff;
+  border: 2px solid #43a047;
+  box-shadow: 0 0 0 4px #43a04733;
+  transform: scale(1.12) rotate(2deg);
+}
+
+.cta {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff4e50, #f9d423);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.8rem 2.2rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 12px #ff4e5040;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  animation: pop 1.2s cubic-bezier(.68,-0.55,.27,1.55) 0.5s both;
+}
+.cta:hover {
+  background: linear-gradient(90deg, #f9d423, #ff4e50);
+  transform: scale(1.07);
+}
+
+.flex-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.parrot {
+  font-size: 2rem;
+  animation: parrot-dance 1.5s infinite alternate cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes parrot-dance {
+  0% { transform: rotate(-10deg) scale(1); }
+  100% { transform: rotate(10deg) scale(1.15); }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem 0.2rem;
+    border-radius: 0.7rem;
+  }
+  .header {
+    font-size: 1.5rem;
+    padding: 1.2rem 0.2rem 0.7rem 0.2rem;
+  }
+  section {
+    padding: 0.5rem 0.1rem;
+  }
+  .grid-toppings {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .flex-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+</style>
 </head>
 <body>
   <header class="header">
