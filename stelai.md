@@ -1,0 +1,4 @@
+---
+permalink: /ai/
+layout: stelai
+---
