@@ -79,6 +79,9 @@ export default function Home() {
     setFile(null);
     setFileUrl(uploadedFileUrl);
     setLoading(true);
+    const res = await fetch("https://ai.hackclub.com/chat/completions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ messages: newMessages }),
     });
     const data = await res.json();
@@ -100,76 +103,96 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-black p-4">
-      <div className="w-full max-w-2xl flex gap-4">
-        <aside className="w-56 bg-zinc-900 rounded shadow p-2 flex flex-col h-[80vh] border border-zinc-800 min-w-[14rem]">
-          <div className="flex justify-between items-center mb-2">
-            <span className="font-bold text-pink-400">Chats</span>
-            <button onClick={createNewChat} className="text-xs bg-pink-600 text-white rounded px-2 py-1 hover:bg-pink-700 transition">New</button>
+    <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-black via-zinc-900 to-zinc-800 p-0">
+      <div className="w-full h-screen flex gap-0">
+        <aside className="w-64 bg-zinc-950 rounded-none shadow-none p-4 flex flex-col h-full border-r border-zinc-800 min-w-[16rem]">
+          <div className="flex justify-between items-center mb-4">
+            <span className="font-bold text-pink-400 text-lg tracking-wide">Chats</span>
+            <button onClick={createNewChat} className="text-xs bg-pink-600 text-white rounded px-3 py-1 hover:bg-pink-700 transition">New</button>
           </div>
           <div className="flex-1 overflow-y-auto space-y-1">
             {chats.map((chat) => (
               <button
                 key={chat.id}
                 onClick={() => selectChat(chat.id)}
-                className={`w-full text-left px-2 py-1 rounded transition ${chat.id === currentChatId ? "bg-pink-900 text-pink-200 font-semibold" : "hover:bg-zinc-800 text-zinc-200"}`}
+                className={`w-full text-left px-3 py-2 rounded transition text-base ${chat.id === currentChatId ? "bg-pink-900 text-pink-200 font-semibold" : "hover:bg-zinc-800 text-zinc-200"}`}
               >
                 {chat.name}
               </button>
             ))}
           </div>
         </aside>
-        <div className="flex-1 min-w-0 bg-zinc-900 rounded shadow p-4 flex flex-col h-[80vh] border border-zinc-800 max-w-3xl">
-          <h1 className="text-2xl font-extrabold text-pink-400 mb-2 text-center tracking-tight">StelAI</h1>
-          <div
-            className="flex-1 overflow-y-auto mb-2 space-y-2 border rounded p-2 bg-zinc-800 border-zinc-700"
-            onScroll={handleScroll}
-            style={{ display: "flex", flexDirection: "column-reverse" }}
-          >
-            {visibleMessages.slice().reverse().map((msg, i) => (
-              <div
-                key={i}
-                className={`p-2 rounded max-w-[80%] text-sm break-words ${
-                  msg.role === "user"
-                    ? "bg-pink-600 text-white self-end ml-auto"
-                    : "bg-zinc-700 text-zinc-100 self-start mr-auto"
-                }`}
-              >
-                {msg.content}
-                {msg.content.includes('[File:') && (
-                  <span className="block text-xs text-zinc-400 mt-1">{msg.content.match(/\[File: (.+?)\]/)?.[1]}</span>
-                )}
-              </div>
-            ))}
-            <div ref={chatEndRef} />
-          </div>
-          <form onSubmit={sendMessage} className="flex gap-2 items-center mt-2">
-            <input
-              className="flex-1 border border-zinc-700 bg-zinc-800 text-zinc-100 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-pink-500"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Type your message..."
-              disabled={loading}
-              autoFocus
-            />
-            <input
-              type="file"
-              accept="image/*,application/pdf"
-              onChange={e => setFile(e.target.files?.[0] || null)}
-              className="text-xs text-zinc-100"
-              disabled={loading}
-            />
-            <button
-              type="submit"
-              className="bg-pink-600 text-white px-3 py-1 rounded disabled:opacity-60 hover:bg-pink-700 transition"
-              disabled={loading}
+        <div className="flex-1 min-w-0 bg-zinc-900 rounded-none shadow-none p-0 flex flex-col h-full border-none max-w-full">
+          <div className="flex flex-col flex-1 h-full">
+            <h1 className="text-3xl font-extrabold text-pink-400 mb-4 text-center tracking-tight pt-6">StelAI</h1>
+            <div
+              className="flex-1 overflow-y-auto mb-2 space-y-4 border-none rounded-none p-6 bg-zinc-900"
+              onScroll={handleScroll}
+              style={{ display: "flex", flexDirection: "column-reverse" }}
             >
-              {loading ? "..." : "Send"}
-            </button>
-          </form>
+              {visibleMessages.slice().reverse().map((msg, i) => {
+                const fileMatch = msg.content.match(/\[File: (.+?)\]/);
+                const isImage = fileMatch && fileMatch[1].match(/\.(jpg|jpeg|png|gif|webp)$/i);
+                const isPdf = fileMatch && fileMatch[1].match(/\.pdf$/i);
+                return (
+                  <div
+                    key={i}
+                    className={`p-4 rounded-xl max-w-2xl text-base break-words shadow-md ${
+                      msg.role === "user"
+                        ? "bg-pink-600 text-white self-end ml-auto"
+                        : "bg-zinc-800 text-zinc-100 self-start mr-auto"
+                    }`}
+                  >
+                    <div>{msg.content.replace(/\n\[File: .+?\]/, "")}</div>
+                    {fileMatch && (
+                      <div className="mt-2">
+                        {isImage && fileUrl && (
+                          <img src={fileUrl} alt={fileMatch[1]} className="max-w-xs max-h-48 rounded border border-zinc-700" />
+                        )}
+                        {isPdf && fileUrl && (
+                          <a href={fileUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-pink-200 underline">View PDF: {fileMatch[1]}</a>
+                        )}
+                        {!isImage && !isPdf && (
+                          <span className="block text-xs text-zinc-400 mt-1">{fileMatch[1]}</span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+              <div ref={chatEndRef} />
+            </div>
+            <form onSubmit={sendMessage} className="flex gap-3 items-center p-6 border-t border-zinc-800 bg-zinc-950">
+              <input
+                className="flex-1 border border-zinc-700 bg-zinc-900 text-zinc-100 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500 text-base"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type your message..."
+                disabled={loading}
+                autoFocus
+              />
+              <label className="flex items-center cursor-pointer">
+                <input
+                  type="file"
+                  accept="image/*,application/pdf"
+                  onChange={e => setFile(e.target.files?.[0] || null)}
+                  className="hidden"
+                  disabled={loading}
+                />
+                <span className="bg-zinc-800 text-zinc-200 px-3 py-2 rounded-lg border border-zinc-700 hover:bg-zinc-700 transition text-sm">Upload</span>
+              </label>
+              <button
+                type="submit"
+                className="bg-pink-600 text-white px-6 py-2 rounded-lg disabled:opacity-60 hover:bg-pink-700 transition text-base font-semibold"
+                disabled={loading}
+              >
+                {loading ? "..." : "Send"}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-      <footer className="mt-4 text-zinc-500 text-xs text-center">Made with <span className='text-pink-400'>❤️</span> by Mahesh Dhingra & contributors</footer>
+      <footer className="py-4 text-zinc-500 text-sm text-center w-full bg-zinc-950 border-t border-zinc-800 mt-0">Made with <span className='text-pink-400'>❤️</span> by Mahesh Dhingra & contributors</footer>
     </main>
   );
 }
