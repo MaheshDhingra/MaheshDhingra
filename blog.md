@@ -1,4 +1,3 @@
-<!--
 ---
 permalink: /blog/
 layout: post
@@ -24,4 +23,3 @@ Sorted by date (latest).
 **[High Seas 2024](https://theluqmn.com/blog/high-seas)**: My experience participating in the High Seas event hosted by Hack Club.
 
 **[We are overstimulated](https://theluqmn.com/blog/we-are-overstimulated)**: A look into how modern technology has disconnected us from reality, the moment, and ourselves.
--->
