@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RustyGames | Cozy Game Engine in Rust</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cozy-bg: linear-gradient(135deg, #f7c59f 0%, #b5ead7 100%);
+      --accent: #b07d62;
+      --accent2: #6d9886;
+      --container: #fff8f3;
+      --shadow: 0 4px 32px rgba(176,125,98,0.08);
+      --radius: 1.5rem;
+    }
+    body {
+      margin: 0;
+      font-family: 'Fira Mono', 'Menlo', 'Consolas', monospace;
+      background: var(--cozy-bg);
+      min-height: 100vh;
+      color: #3a2c1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .container {
+      background: var(--container);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      max-width: 600px;
+      margin: 3rem auto 2rem auto;
+      padding: 2.5rem 2rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.03em;
+      font-weight: 700;
+    }
+    .subtitle {
+      color: var(--accent2);
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      font-weight: 600;
+    }
+    .desc {
+      font-size: 1.1rem;
+      color: #4d3b2a;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    .feature {
+      background: #f7e7d3;
+      border-radius: 1rem;
+      padding: 1.1rem 0.7rem;
+      font-size: 1.05rem;
+      color: #6d9886;
+      box-shadow: 0 2px 8px #b07d6210;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .feature:hover {
+      background: #e6d3c2;
+    }
+    .github-btn {
+      background: linear-gradient(90deg, #b07d62, #6d9886);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 2rem;
+      padding: 0.9rem 2.2rem;
+      margin-top: 0.5rem;
+      box-shadow: 0 2px 12px #b07d6240;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .github-btn:hover {
+      background: linear-gradient(90deg, #6d9886, #b07d62);
+      transform: scale(1.07);
+    }
+    .footer {
+      text-align: center;
+      color: #a88b7d;
+      font-size: 1rem;
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 1.2rem 0.3rem;
+        border-radius: 1rem;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      .features {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>RustyGames</h1>
+    <div class="subtitle">A Cozy 2D & 3D Game Engine in Rust</div>
+    <div class="desc">
+      RustyGames is a modern, open-source game engine for building beautiful 2D and 3D games in Rust.<br>
+      Designed for indie devs, hobbyists, and anyone who loves cozy, creative coding.<br>
+      Fast, safe, and fun—powered by the Rust language.
+    </div>
+    <div class="features">
+      <div class="feature">🦀 Built with Rust</div>
+      <div class="feature">🎮 2D & 3D Game Support</div>
+      <div class="feature">🌈 Cozy, Modern API</div>
+      <div class="feature">⚡ Fast & Safe</div>
+      <div class="feature">🧩 Modular & Extensible</div>
+      <div class="feature">💡 Open Source</div>
+    </div>
+    <a href="https://github.com/MaheshDhingra/RustyGames" class="github-btn" target="_blank">View on GitHub</a>
+    <section class="dev-plan" style="width:100%;margin-top:2rem;">
+      <h2 style="color:var(--accent2);font-size:1.3rem;margin-bottom:0.7rem;">Development Plan</h2>
+      <ul style="font-size:1.05rem;color:#4d3b2a;line-height:1.7;">
+        <li>🔬 <b>Research & Design</b>: Explore Rust game engine patterns, ECS, and rendering backends.</li>
+        <li>🧱 <b>Core Engine</b>: Build a modular core with plugin support, ECS, and basic math/geometry.</li>
+        <li>🖼️ <b>2D Engine</b>: Implement sprites, tilemaps, input, and simple physics.</li>
+        <li>🧊 <b>3D Engine</b>: Add 3D scene graph, camera, mesh loading, and basic lighting.</li>
+        <li>🎨 <b>Editor & Tools</b>: (Future) Visual editor for scenes, assets, and scripting.</li>
+        <li>📚 <b>Docs & Examples</b>: Write guides, API docs, and fun sample games.</li>
+        <li>🌍 <b>Community</b>: Welcome contributors, review PRs, and host jams!</li>
+      </ul>
+      <div style="margin-top:0.7rem;font-size:1rem;color:#6d9886;">Want to help? <a href="https://github.com/MaheshDhingra/RustyGames/issues" style="color:var(--accent);text-decoration:underline;">Check out open issues</a> or suggest features!</div>
+    </section>
+    <section class="funding" style="width:100%;margin-top:2rem;">
+      <h2 style="color:var(--accent2);font-size:1.3rem;margin-bottom:0.7rem;">Support & Fund the Project</h2>
+      <div style="font-size:1.05rem;color:#4d3b2a;line-height:1.7;">
+        RustyGames is a passion project. If you want to help us grow, you can:
+        <ul style="margin:0.5rem 0 0 1.2rem;">
+          <li>⭐ Star the repo on <a href="https://github.com/MaheshDhingra/RustyGames" style="color:var(--accent);text-decoration:underline;">GitHub</a></li>
+          <li>💬 Share feedback and ideas</li>
+          <li>🤝 Contribute code, docs, or art</li>
+          <li>☕ <a href="https://buymeacoffee.com/maheshdhingra" style="color:var(--accent);text-decoration:underline;">Buy me a coffee</a> (coming soon!)</li>
+        </ul>
+        <div style="margin-top:0.5rem;color:#6d9886;">Every bit of support helps us build a better, cozier engine for everyone!</div>
+      </div>
+    </section>
+    <section class="get-involved" style="width:100%;margin-top:2rem;">
+      <h2 style="color:var(--accent2);font-size:1.3rem;margin-bottom:0.7rem;">Get Involved</h2>
+      <div style="font-size:1.05rem;color:#4d3b2a;line-height:1.7;">
+        <ul style="margin:0.5rem 0 0 1.2rem;">
+          <li>Join our Discord (coming soon!)</li>
+          <li>Follow the project on GitHub for updates</li>
+          <li>Suggest features or report bugs</li>
+          <li>Help us write documentation and tutorials</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <div class="footer">Made with ❤️ by Mahesh Dhingra & contributors</div>
+</body>
+</html>
