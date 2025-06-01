@@ -86,7 +86,6 @@
 </body>
 </html>
 <script>
-// Topping selection logic
 const toppingsGrid = document.getElementById('toppingsGrid');
 const toppings = toppingsGrid.querySelectorAll('.topping');
 const submitBtn = document.getElementById('submitToppings');
@@ -114,7 +113,6 @@ function rainToppings(toppingsArr) {
   toppingRain.style.height = '100vh';
   toppingRain.style.pointerEvents = 'none';
   toppingRain.style.zIndex = '9999';
-
   const emojis = toppingsArr.map(t => t.match(/\p{Emoji_Presentation}|\p{Extended_Pictographic}/gu)?.[0] || t[0]);
   for (let i = 0; i < 24; i++) {
     const emoji = emojis[Math.floor(Math.random() * emojis.length)];
