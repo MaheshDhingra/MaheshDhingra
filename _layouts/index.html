@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Index - Luqman (@theluqmn)</title>
+        <link rel="icon" href="{{ site.baseurl }}/assets/icons/favicon.jpg" type="image/x-icon" />
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="Index - Luqman (@theluqmn)" />
+        <meta property="og:description" content="My personal portfolio website" />
+
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {}
+                }
+            }
+        </script>
+
+        <!-- JetBrains Mono font -->
+        <link href="https://fonts.cdnfonts.com/css/jetbrains-mono" rel="stylesheet">
+
+        <style>
+            .bg-paper {
+                background-image: url('{{ site.baseurl }}/assets/textures/paper.png');
+                background-repeat: repeat;
+                background-size:auto;
+            }
+            .bg-concrete {
+                background-image: url('{{ site.baseurl }}/assets/textures/background.png');
+                background-repeat: repeat;
+                background-size: auto;
+            }
+        </style>
+    </head>
+
+    <body class="md:p-4 bg-concrete bg-repeat font-mono">
+        <main class="p-4 md:p-8 w-full h-full md:w-7/12 flex flex-col gap-16 bg-[rgb(220,220,220)] mx-auto bg-white">
+            {% include header.html %}
+
+            <div class="pb-16 flex flex-col gap-4">
+                <h1 class="text-2xl font-semibold text-[rgb(50,50,50)]">
+                    The Renaissance Man
+                </h1>
+
+                <p class="text-sm text-[rgb(50,50,50)]">
+                    Howdy! I am Luqman (also goes by "Luq"), a Malaysian high school student involved in the fields of
+                    finance, business, economics, technology and software development. I am a self-taught programmer,
+                    and is a technical person. Other than that, I am also a writer, and avid music lover.
+                </p>
+
+                <p class="text-sm text-[rgb(50,50,50)]">
+                    I am a native speaker of English and Malay, and a beginner in Swedish.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-2 outline outline-1 outline-[rgb(50,50,50)] flex flex-col gap-2">
+                        <p class="text-sm text-[rgb(50,50,50)]">
+                            Currently based in
+                        </p>
+
+                        <p class="text-xl text-[rgb(50,50,50)]">
+                            Kuala Lumpur, Malaysia
+                        </p>
+                    </div>
+
+                    <div class="p-2 outline outline-1 outline-[rgb(50,50,50)] flex flex-col gap-2 md:text-center">
+                        <p class="text-sm text-[rgb(50,50,50)]">
+                            Working as a
+                        </p>
+
+                        <p class="text-xl text-[rgb(50,50,50)]">
+                            Student
+                        </p>
+                    </div>
+
+                    <div class="p-2 outline outline-1 outline-[rgb(50,50,50)] flex flex-col gap-2 md:text-right">
+                        <p class="text-sm text-[rgb(50,50,50)]">
+                            Posts on various topics, and my thoughts
+                        </p>
+
+                        <a href="{{ site.baseurl }}/blog" class="text-xl text-[rgb(50,50,50)] underline hover:text-[rgb(100,100,100)] duration-300">
+                            Blog
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="pb-16 flex flex-col gap-4 flex-1">
+                    <h2 class="text-2xl text-[rgb(50,50,50)]">
+                        Experience
+                    </h2>
+    
+                    <div class="p-2 flex flex-col gap-8 outline outline-1 outline-[rgb(50,50,50)] h-full">
+                        <div class="flex flex-col">
+                            <p class="text-sm font-bold text-[rgb(50,50,50)]">
+                                January 2025 - Present
+                            </p>
+    
+                            <h3 class="text-xl text-[rgb(50,50,50)]">
+                                Founder and author,
+                                <a href="https://theluqmn.github.io/revelations" target="_blank" class="underline hover:text-[rgb(100,100,100)] duration-300">
+                                    The Revelations
+                                </a>
+                            </h3>
+
+                            <p class="text-xs text-[rgb(50,50,50)]">
+                                Founded and now actively writing for a weekly newsletter that aims to provide a
+                                comprehensive and concise overview of various topics for the aspiring entrepreneur,
+                                leaders, and curious minds.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <p class="text-sm font-bold text-[rgb(50,50,50)]">
+                                August 2023 - Present
+                            </p>
+    
+                            <h3 class="text-xl text-[rgb(50,50,50)]">
+                                Active Open Source Software Developer
+                            </h3>
+
+                            <p class="text-xs text-[rgb(50,50,50)]">
+                                Developing various open-source projects to sharpen my project and time management,
+                                competency, and programming skills. Visit <a href="https:theluqmn.com/projects" target="_blank" class="underline hover:text-[rgb(100,100,100)] duration-300">my projects</a> to see what I'm doing.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pb-16 flex flex-col gap-4 flex-1">
+                    <h2 class="text-2xl text-[rgb(50,50,50)]">
+                        Skills and Interests
+                    </h2>
+
+                    <div class="p-2 flex flex-col gap-8 outline outline-1 outline-[rgb(50,50,50)] h-full">
+                        <div class="flex flex-col">
+                            <p class="text-sm font-bold text-[rgb(50,50,50)]">
+                                Software Development
+                            </p>
+    
+                            <h3 class="text-xl text-[rgb(50,50,50)]">
+                                Diversified
+                            </h3>
+
+                            <p class="text-xs text-[rgb(50,50,50)]">
+                                Python for Discord bots, JavaScript and HTML for the web, Rust or Go for high-performance software,
+                                x86 assembly, C, and C++ for fun. I daily drive both Linux (Ubuntu) and Windows.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <p class="text-sm font-bold text-[rgb(50,50,50)]">
+                                Finance
+                            </p>
+
+                            <h3 class="text-xl text-[rgb(50,50,50)]">
+                                Market Analysis and Private Equity
+                            </h3>
+
+                            <p class="text-xs text-[rgb(50,50,50)]">
+                                Studying signals and catalysts that drive the market, and how it influences individuals,
+                                businesses, organisations, and nations. An avid viewer of Bloomberg and CNBC.
+                                Knowledgable in private equity, venture capital, and accounting.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <p class="text-sm font-bold text-[rgb(50,50,50)]">
+                                Entrepreneurship
+                            </p>
+
+                            <h3 class="text-xl text-[rgb(50,50,50)]">
+                                Startups and Business Development
+                            </h3>
+
+                            <p class="text-xs text-[rgb(50,50,50)]">
+                                Countless individuals have exceptional products, services, and ideas, but most lacks the ability
+                                to scale and catapult their business to the next level. My arsenal includes team scaling, investing rounds,
+                                and business plan development. I have researched individuals, organisations, and companies in the quest
+                                of understanding the inner workings of the business world.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <p class="text-sm font-bold text-[rgb(50,50,50)]">
+                                Semiconductors
+                            </p>
+
+                            <h3 class="text-xl text-[rgb(50,50,50)]">
+                                Design and Technology
+                            </h3>
+
+                            <p class="text-xs text-[rgb(50,50,50)]">
+                                Keeping up with the latest breakthroughs and developments in the field of semiconductors. A loyal Intel enthusiast
+                                since 2021, with my key interests being Intel EMIB (embedded multi-die interconnect bridge), backside power delivery,
+                                Intel RibbonFat (GAAFET, gate all-around field effect transistor) and Intel 18A node.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pb-16 flex flex-col gap-4">
+                <h1 class="text-2xl font-semibold text-[rgb(50,50,50)]">
+                    Contact
+                </h1>
+
+                <p class="text-sm text-[rgb(50,50,50)]">
+                    I am available for work and open to collaboration.
+                    Reach me out on my socials, I will typically respond within 24 hours.
+                </p>
+            </div>
+        </main>
+    </body>
+</html>

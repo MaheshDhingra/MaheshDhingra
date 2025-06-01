@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Projects - Luqman (@theluqmn)</title>
+        <link rel="icon" href="{{ site.baseurl }}/assets/icons/favicon.jpg" type="image/x-icon" />
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="Index - Luqman (@theluqmn)" />
+        <meta property="og:description" content="Some of the projects I have worked on" />
+
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {}
+                }
+            }
+        </script>
+
+        <!-- JetBrains Mono font -->
+        <link href="https://fonts.cdnfonts.com/css/jetbrains-mono" rel="stylesheet">
+
+        <style>
+            .bg-paper {
+                background-image: url('{{ site.baseurl }}/assets/textures/paper.png');
+                background-repeat: repeat;
+                background-size:auto;
+            }
+            .bg-concrete {
+                background-image: url('{{ site.baseurl }}/assets/textures/background.png');
+                background-repeat: repeat;
+                background-size: auto;
+            }
+        </style>
+    </head>
+
+    <body class="md:p-4 bg-concrete bg-repeat font-mono">
+        <main class="p-4 md:p-8 w-full h-full md:w-7/12 flex flex-col gap-16 bg-[rgb(220,220,220)] mx-auto bg-white">
+            {% include header.html %}
+
+            <div class="pb-16 flex flex-col gap-4">
+                <h1 class="text-2xl font-semibold text-[rgb(50,50,50)]">
+                    Projects
+                </h1>
+
+                <p class="text-sm text-[rgb(50,50,50)]">
+                    Below are some of the projects I have worked on, which I think are decent enough to be featured. Images <b>ruins</b> the aesthetics
+                    of the website, so I decided to not include them. You can check all the projects I have worked on <a href="https://github.com/theluqmn" target="_blank" class="underline hover:text-[rgb(100,100,100)] duration-300">here</a>.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="flex flex-col justify-between h-full">
+                        <div>
+                            <p class="text-sm font-bold text-[rgb(50,50,50)]">
+                                Newsletter
+                            </p>
+            
+                            <h3 class="text-xl text-[rgb(50,50,50)]">
+                                The Revelations
+                            </h3>
+            
+                            <p class="text-xs text-[rgb(50,50,50)]">
+                                A weekly newsletter that aims to provide a comprehensive and concise overview of various
+                                topics for the aspiring entrepreneur, leaders, and curious minds.
+                            </p>
+                        </div>
+
+                        <a href="https://theluqmn.github.io/revelations" target="_blank" class="mt-2 p-2 outline outline-1 outline-[rgb(50,50,50)] text-sm text-[rgb(50,50,50)] hover:text-[rgb(100,100,100)] duration-300">
+                            View
+                        </a>
+                    </div>
+
+                    <div class="flex flex-col justify-between h-full">
+                        <div>
+                            <p class="text-sm font-bold text-[rgb(50,50,50)]">
+                                Low-level Programming
+                            </p>
+            
+                            <h3 class="text-xl text-[rgb(50,50,50)]">
+                                Core-NASM
+                            </h3>
+            
+                            <p class="text-xs text-[rgb(50,50,50)]">
+                                An assembly library consisting of basic subroutines for 64-bit x86 NASM-compiled assembly projects.
+                            </p>
+                        </div>
+
+                        <a href="https://theluqmn.github.io/737fms" target="_blank" class="mt-2 p-2 outline outline-1 outline-[rgb(50,50,50)] text-sm text-[rgb(50,50,50)] hover:text-[rgb(100,100,100)] duration-300">
+                            View
+                        </a>
+                    </div>
+
+                    <div class="flex flex-col justify-between h-full">
+                        <div>
+                            <p class="text-sm font-bold text-[rgb(50,50,50)]">
+                                Simulator
+                            </p>
+            
+                            <h3 class="text-xl text-[rgb(50,50,50)]">
+                                Boeing 737-800 Flight Management System
+                            </h3>
+            
+                            <p class="text-xs text-[rgb(50,50,50)]">
+                                A web-based simulator of the Boeing 737-800's flight management system (FMS) developed using kaplayjs.
+                            </p>
+                        </div>
+
+                        <a href="https://theluqmn.github.io/737fms" target="_blank" class="mt-2 p-2 outline outline-1 outline-[rgb(50,50,50)] text-sm text-[rgb(50,50,50)] hover:text-[rgb(100,100,100)] duration-300">
+                            View
+                        </a>
+                    </div>
+
+                    <div class="flex flex-col justify-between h-full">
+                        <div>
+                            <p class="text-sm font-bold text-[rgb(50,50,50)]">
+                                Finance
+                            </p>
+            
+                            <h3 class="text-xl text-[rgb(50,50,50)]">
+                                Falcon
+                            </h3>
+            
+                            <p class="text-xs text-[rgb(50,50,50)]">
+                                Falcon is a simple bank management system backend written in C++.
+                            </p>
+                        </div>
+
+                        <a href="https://github.com/theluqmn/falcon" target="_blank" class="mt-2 p-2 outline outline-1 outline-[rgb(50,50,50)] text-sm text-[rgb(50,50,50)] hover:text-[rgb(100,100,100)] duration-300">
+                            GitHub Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
