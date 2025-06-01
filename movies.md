@@ -1,4 +1,4 @@
 ---
 permalink: /movies/
-layout: _movies
+layout: movies
 ---

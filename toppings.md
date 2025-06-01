@@ -1,4 +1,4 @@
 ---
 permalink: /toppings/
-layout: _toppings
+layout: toppings
 ---
