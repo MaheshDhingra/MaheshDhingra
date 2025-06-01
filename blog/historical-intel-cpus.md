@@ -1,3 +1,4 @@
+<!--
 ---
 layout: post
 title: Basic overview of Intel's historical CPUs
@@ -229,3 +230,4 @@ Beyond the 2nd Gen Intel Core family of processors, changes made to the microarc
 Thanks for reading this post - apologies for the exceptionally long post, and for not posting after 2+ months, but worry not, I have a lot of content in the pipeline.
 
 In **part 2** of the Intel series, I will be covering an brief overview of the Intel Core generations, and the jump from the 11th Gen Intel Core processors to the 12th Gen Intel Core processors, and the introduction of the P-Core and E-Core architecture, alongside its benefits and issues.
+-->

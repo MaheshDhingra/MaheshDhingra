@@ -1,3 +1,4 @@
+<!--
 ---
 layout: post
 title: High Seas
@@ -35,3 +36,4 @@ The GitHub Hackable Badge arrived a week prior to the release of this post (and 
 ## Outro
 
 This event has been a lot of fun (and stress), but I am glad for the experience. I met countless wholesome individuals who are simply cracked in coding, and the things I redeemed at the shop has been really cool, and meaningful especially for my upcoming projects.
+-->

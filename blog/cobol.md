@@ -1,3 +1,4 @@
+<!--
 ---
 layout: post
 title: Learned COBOL, some thoughts on it
@@ -18,3 +19,4 @@ I got used to writing COBOL rapidly and for some reason, I find it enjoyable to 
 Below is a screenshot of the program:
 
 ![Massive](../assets/blog/cobol/code.png)
+-->

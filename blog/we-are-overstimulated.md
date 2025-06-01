@@ -1,3 +1,4 @@
+<!--
 ---
 layout: post
 title: We are overstimulated
@@ -71,3 +72,4 @@ Thank you for reading this far, and I hope this post has helped you in some way.
 ----
 
 This post is writen myself, with own thoughts and opinions. AI was only used to find websites and articles to read and reference.
+-->
