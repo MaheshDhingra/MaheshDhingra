@@ -213,21 +213,26 @@
       }
       // Confetti Animation
       function confettiBurst() {
-        for(let i=0;i<32;i++){
-          const conf=document.createElement('div');
-          conf.textContent=['🍟','🍕','🍔','🍩','🍦','🍫','🍿','🥤'][Math.floor(Math.random()*8)];
-          conf.style.position='fixed';
-          conf.style.left=Math.random()*100+'vw';
-          conf.style.top='-2rem';
-          conf.style.fontSize=(Math.random()*1.2+1.2)+'rem';
-          conf.style.opacity=1;
-          conf.style.transition='transform 2.2s cubic-bezier(.68,-0.55,.27,1.55), opacity 2.2s';
+        // Drop a bunch of fun food emojis from the top of the screen
+        for (let i = 0; i < 32; i++) {
+          const conf = document.createElement('div');
+          // Pick a random food emoji for confetti
+          const foods = ['🍟', '🍕', '🍔', '🍩', '🍦', '🍫', '🍿', '🥤'];
+          conf.textContent = foods[Math.floor(Math.random() * foods.length)];
+          conf.style.position = 'fixed';
+          conf.style.left = Math.random() * 100 + 'vw';
+          conf.style.top = '-2rem';
+          conf.style.fontSize = (Math.random() * 1.2 + 1.2) + 'rem';
+          conf.style.opacity = 1;
+          conf.style.transition = 'transform 2.2s cubic-bezier(.68,-0.55,.27,1.55), opacity 2.2s';
           document.body.appendChild(conf);
-          setTimeout(()=>{
-            conf.style.transform=`translateY(${window.innerHeight-40}px) rotate(${Math.random()*360}deg)`;
-            conf.style.opacity=0.7;
-          },50+Math.random()*400);
-          setTimeout(()=>{conf.remove();},2500);
+          // Animate the confetti falling and spinning
+          setTimeout(() => {
+            conf.style.transform = `translateY(${window.innerHeight - 40}px) rotate(${Math.random() * 360}deg)`;
+            conf.style.opacity = 0.7;
+          }, 50 + Math.random() * 400);
+          // Remove confetti after animation
+          setTimeout(() => { conf.remove(); }, 2500);
         }
       }
       // Theme Switcher
