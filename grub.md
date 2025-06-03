@@ -1,0 +1,4 @@
+---
+permalink: /grub/
+layout: grub
+---
