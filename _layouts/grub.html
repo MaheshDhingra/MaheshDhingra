@@ -1,11 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Revolution - Hack Club Grub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom animation for the glowing effect -->
+    <style>
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px #6366f1, 0 0 20px #6366f1; }
+            50% { text-shadow: 0 0 20px #6366f1, 0 0 30px #6366f1; }
+        }
+        .glow-text {
+            animation: glow 2s ease-in-out infinite;
+        }
+    </style>
 </head>
-<body>
-  Grub
+<body class="bg-black text-white min-h-screen">
+    <!-- Navbar - Feature 1 -->
+    <nav class="bg-gray-900 border-b border-indigo-500">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-indigo-400 glow-text">AI Revolution</div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#features" class="hover:text-indigo-400 transition">Features</a>
+                    <a href="#pricing" class="hover:text-indigo-400 transition">Pricing</a>
+                    <a href="#faq" class="hover:text-indigo-400 transition">FAQ</a>
+                </div>
+                <button class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Feature 2 -->
+    <section class="container mx-auto px-4 py-20 text-center">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600">
+            Welcome to the AI Revolution
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-400 mb-8">Experience the future of web development with our AI-powered features</p>
+        <div class="flex justify-center gap-4">
+            <a href="#features" class="bg-indigo-600 hover:bg-indigo-700 px-8 py-3 rounded-full font-semibold transition">
+                Explore Features
+            </a>
+            <a href="#pricing" class="border border-indigo-600 hover:bg-indigo-600/20 px-8 py-3 rounded-full font-semibold transition">
+                View Pricing
+            </a>
+        </div>
+    </section>
+
+    <!-- Feature Grid - Feature 3 -->
+    <section id="features" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Revolutionary Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-gray-900 p-6 rounded-xl border border-indigo-500/30 hover:border-indigo-500 transition">
+                <div class="text-indigo-400 text-4xl mb-4">🤖</div>
+                <h3 class="text-xl font-semibold mb-2">AI Integration</h3>
+                <p class="text-gray-400">Seamless integration with cutting-edge AI technologies</p>
+            </div>
+            <div class="bg-gray-900 p-6 rounded-xl border border-indigo-500/30 hover:border-indigo-500 transition">
+                <div class="text-indigo-400 text-4xl mb-4">🎯</div>
+                <h3 class="text-xl font-semibold mb-2">Smart Analytics</h3>
+                <p class="text-gray-400">Advanced data analysis and insights powered by AI</p>
+            </div>
+            <div class="bg-gray-900 p-6 rounded-xl border border-indigo-500/30 hover:border-indigo-500 transition">
+                <div class="text-indigo-400 text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-semibold mb-2">Future-Ready</h3>
+                <p class="text-gray-400">Built with tomorrow's technology in mind</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Cards - Feature 4 -->
+    <section id="pricing" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Choose Your AI Package</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-gray-900 p-8 rounded-xl border border-indigo-500/30">
+                <h3 class="text-2xl font-bold mb-4">Basic Meal</h3>
+                <div class="text-4xl font-bold text-indigo-400 mb-6">$6</div>
+                <ul class="space-y-3 mb-8">
+                    <li>✨ Sandwich/Burger</li>
+                    <li>✨ 2 Unique Features</li>
+                    <li>✨ Perfect for Quick Lunch</li>
+                </ul>
+                <button class="w-full bg-indigo-600 hover:bg-indigo-700 py-3 rounded-full transition">
+                    Get Started
+                </button>
+            </div>
+            <div class="bg-gray-900 p-8 rounded-xl border border-indigo-500/30">
+                <h3 class="text-2xl font-bold mb-4">Refreshment Combo</h3>
+                <div class="text-4xl font-bold text-indigo-400 mb-6">$8</div>
+                <ul class="space-y-3 mb-8">
+                    <li>✨ Sandwich/Burger + Soda</li>
+                    <li>✨ 4 Unique Features</li>
+                    <li>✨ Quench Your Thirst</li>
+                </ul>
+                <button class="w-full bg-indigo-600 hover:bg-indigo-700 py-3 rounded-full transition">
+                    Level Up
+                </button>
+            </div>
+            <div class="bg-gray-900 p-8 rounded-xl border-2 border-indigo-500 relative">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-indigo-600 px-4 py-1 rounded-full text-sm">
+                    BEST CHOICE
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Full Combo Meal</h3>
+                <div class="text-4xl font-bold text-indigo-400 mb-6">$10</div>
+                <ul class="space-y-3 mb-8">
+                    <li>✨ Full Meal + Soda + Sides</li>
+                    <li>✨ 6+ Unique Features</li>
+                    <li>✨ Complete Experience</li>
+                </ul>
+                <button class="w-full bg-indigo-600 hover:bg-indigo-700 py-3 rounded-full transition">
+                    Go Premium
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section - Feature 5 -->
+    <section id="faq" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">FAQ</h2>
+        <div class="max-w-3xl mx-auto space-y-6">
+            <div class="bg-gray-900 p-6 rounded-xl">
+                <h3 class="text-xl font-semibold mb-2">What is Tailwind CSS?</h3>
+                <p class="text-gray-400">Tailwind CSS is a utility-first CSS framework that provides low-level utility classes to build custom designs. It allows you to build your website without writing any CSS.</p>
+            </div>
+            <div class="bg-gray-900 p-6 rounded-xl">
+                <h3 class="text-xl font-semibold mb-2">Can I use CSS in my project?</h3>
+                <p class="text-gray-400">Tailwind CSS allows you to develop your website using only HTML and Tailwind CSS in most cases. Pure CSS may only be used where something can't be done without it, such as custom animations.</p>
+            </div>
+            <div class="bg-gray-900 p-6 rounded-xl">
+                <h3 class="text-xl font-semibold mb-2">Where can I ask for help?</h3>
+                <p class="text-gray-400">For questions about code, ask in #grub in Slack. For questions about Grub, DM or ping @Artem in Slack. For questions about club meetings, DM or ping @Jared in Slack.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - Feature 6 -->
+    <footer class="bg-gray-900 border-t border-indigo-500 mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center">
+                <p class="text-gray-400 mb-4">Made with ❤️ by Hack Club</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="text-indigo-400 hover:text-indigo-300">Twitter</a>
+                    <a href="#" class="text-indigo-400 hover:text-indigo-300">GitHub</a>
+                    <a href="#" class="text-indigo-400 hover:text-indigo-300">Discord</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
