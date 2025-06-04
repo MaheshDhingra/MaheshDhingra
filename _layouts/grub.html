@@ -1,14 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>Index | Burger</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+  <style>
+    body,
+    h1,
+    h2,
+    h3,
+    p,
+    a,
+    li,
+    nav,
+    footer,
+    aside,
+    div {
+      font-family: 'Anton', sans-serif;
+    }
+  </style>
 </head>
-<body class="bg-black">
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz5rSe-PSloRwAOtUxrvSQWkQHZpp5xNTkFSf1A5Iq8qsoIYWyUP-ZQTzONGUrxOOhHto&usqp=CAU" 
-       alt="4K-BURGER" 
-       class="w-screen h-screen object-cover">
+<body class="m-0 p-0 bg-black">
+  <nav class="fixed top-0 left-0 w-full bg-gray-900 text-white p-4 z-50">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="text-xl font-medium">Burger</div>
+      <ul class="flex space-x-4">
+        <li>
+          <a href="#home" class="hover:underline font-light">Home</a>
+        </li>
+        <li>
+          <a href="#menu" class="hover:underline font-normal">Menu</a>
+        </li>
+        <li>
+          <a href="#contact" class="hover:underline font-medium">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <aside class="fixed top-16 left-0 w-64 h-full bg-gray-800 text-white p-4 z-40">
+    <ul>
+      <li class="mb-4">
+        <a href="#section1" class="hover:underline">Cheeseburger</a>
+      </li>
+      <li class="mb-4">
+        <a href="#section2" class="hover:underline">Veggie Burger</a>
+      </li>
+      <li class="mb-4">
+        <a href="#section3" class="hover:underline">Chicken Burger</a>
+      </li>
+    </ul>
+  </aside>
+
+  <div class="ml-64">
+    <div class="relative bg-fixed bg-center bg-no-repeat bg-cover"
+      style="background-image: url('/assets/burger.png'); height: 100vh;">
+      <h1
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-8xl drop-shadow-lg">
+        Burger
+      </h1>
+    </div>
+
+    <div class="h-screen"></div>
+
+    <footer class="bg-gray-900 text-white p-4 text-center">
+      <p>&copy; 2025 Burger Inc.</p>
+    </footer>
+  </div>
 </body>
 </html>
