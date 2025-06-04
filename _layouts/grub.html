@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Burger</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/burger.png" />
   <style>
     body {
       font-family: "Anton", sans-serif;
@@ -17,7 +18,6 @@
     }
   </style>
 </head>
-
 <body class="bg-yellow-50 text-red-900">
   <header class="fixed top-0 left-0 w-full bg-red-600 text-yellow-300 p-4 z-50 flex items-center justify-between">
     <div class="text-xl">Burger</div>
@@ -66,7 +66,7 @@
         <div class="relative flex items-center justify-center h-full">
           <h2 class="text-6xl text-yellow-300 drop-shadow-xl">Burger shots?</h2>
         </div>
-      </section>
+        </section>
 
       <section id="menu" class="py-20 bg-yellow-100 text-red-900">
         <div class="container mx-auto px-4 text-center">
@@ -93,12 +93,13 @@
         <div class="container mx-auto px-4 text-center">
           <h2 class="text-5xl mb-6">Contact</h2>
           <p class="mb-8 text-xl">Sorry for the bug we secretly added to spice up your tounge :(</p>
-          <form class="max-w-lg mx-auto bg-red-700 p-6 rounded-lg shadow-lg space-y-4">
-            <input type="text" placeholder="Name"
+          <form action="https://formspree.io/f/mzzgpdvz" method="POST"
+            class="max-w-lg mx-auto bg-red-700 p-6 rounded-lg shadow-lg space-y-4">
+            <input type="text" name="name" placeholder="Name"
               class="w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-red-400" required />
-            <input type="email" placeholder="Email"
+            <input type="email" name="email" placeholder="Email"
               class="w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-red-400" required />
-            <textarea placeholder="Message" rows="4"
+            <textarea name="message" placeholder="Message" rows="4"
               class="w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-red-400" required></textarea>
             <button type="submit"
               class="w-full bg-red-500 p-3 rounded hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-red-400">
@@ -122,69 +123,70 @@
             <p>Truffle sauce and gourmet toppings with extra coackroaches.</p>
           </div>
         </div>
-  </div>
-  </section>
+      </section>
 
-  <section id="reservation" class="py-20 bg-yellow-500 text-red-900">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-5xl mb-6">Reservation</h2>
-      <p class="mb-8 text-xl">Book your table now(Dress code: Bali wear, shorts and shorts)</p>
-      <form class="max-w-lg mx-auto bg-yellow-600 p-6 rounded-lg shadow-lg space-y-4">
-        <input type="text" placeholder="Name"
-          class="w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required />
-        <input type="email" placeholder="Email"
-          class="w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required />
-        <input type="date" class="w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required />
-        <button type="submit"
-          class="w-full bg-yellow-500 p-3 rounded hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500">
-          Reserve
-        </button>
-      </form>
-    </div>
-  </section>
-
-  <section id="reviews" class="py-20 bg-red-800 text-yellow-200">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-5xl mb-6">Reviews</h2>
-      <p class="mb-8 text-xl">What our customers say:</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-red-700 bg-opacity-70 rounded-lg shadow-xl p-8 flex flex-col items-center">
-          <svg class="w-10 h-10 text-yellow-300 mb-4" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 12H9v-2h2v2zm0-4H9V6h2v4z" />
-          </svg>
-          <blockquote class="italic text-yellow-100 mb-4">
-            "There burgers were awesome, just like them but they were bad."
-          </blockquote>
-          <span class="block mt-2 font-light text-yellow-300">- Mahesh</span>
+      <section id="reservation" class="py-20 bg-yellow-500 text-red-900">
+        <div class="container mx-auto px-4 text-center">
+          <h2 class="text-5xl mb-6">Reservation</h2>
+          <p class="mb-8 text-xl">Book your table now(Dress code: Bali wear, shorts and shorts)</p>
+          <form action="https://formspree.io/f/mzzgpdvz" method="POST"
+            class="max-w-lg mx-auto bg-yellow-600 p-6 rounded-lg shadow-lg space-y-4">
+            <input type="text" name="name" placeholder="Name"
+              class="w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required />
+            <input type="email" name="email" placeholder="Email"
+              class="w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required />
+            <input type="date" name="date"
+              class="w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required />
+            <button type="submit"
+              class="w-full bg-yellow-500 p-3 rounded hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+              Reserve
+            </button>
+          </form>
         </div>
-        <div class="bg-red-700 bg-opacity-70 rounded-lg shadow-xl p-8 flex flex-col items-center">
-          <svg class="w-10 h-10 text-yellow-300 mb-4" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 12H9v-2h2v2zm0-4H9V6h2v4z" />
-          </svg>
-          <blockquote class="italic text-yellow-100 mb-4">
-            "I love the matress she was hot just like the inferno burger, but she looked like a potato."
-          </blockquote>
-          <span class="block mt-2 font-light text-yellow-300">- Nezuko</span>
-        </div>
-        <div class="bg-red-700 bg-opacity-70 rounded-lg shadow-xl p-8 flex flex-col items-center">
-          <svg class="w-10 h-10 text-yellow-300 mb-4" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 12H9v-2h2v2zm0-4H9V6h2v4z" />
-          </svg>
-          <blockquote class="italic text-yellow-100 mb-4">
-            "Will come back for more riding in your city as a batman."
-          </blockquote>
-          <span class="block mt-2 font-light text-yellow-300">- A hashiro from Nigeria</span>
-        </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <div class="h-screen"></div>
+      <section id="reviews" class="py-20 bg-red-800 text-yellow-200">
+        <div class="container mx-auto px-4 text-center">
+          <h2 class="text-5xl mb-6">Reviews</h2>
+          <p class="mb-8 text-xl">What our customers say:</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-red-700 bg-opacity-70 rounded-lg shadow-xl p-8 flex flex-col items-center">
+              <svg class="w-10 h-10 text-yellow-300 mb-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 12H9v-2h2v2zm0-4H9V6h2v4z" />
+              </svg>
+              <blockquote class="italic text-yellow-100 mb-4">
+                "There burgers were awesome, just like the waiters but they were bad."
+              </blockquote>
+              <span class="block mt-2 font-light text-yellow-300">- Mahesh</span>
+            </div>
+            <div class="bg-red-700 bg-opacity-70 rounded-lg shadow-xl p-8 flex flex-col items-center">
+              <svg class="w-10 h-10 text-yellow-300 mb-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 12H9v-2h2v2zm0-4H9V6h2v4z" />
+              </svg>
+              <blockquote class="italic text-yellow-100 mb-4">
+                "I love the matress she was hot just like the inferno burger, but she looked like a potato."
+              </blockquote>
+              <span class="block mt-2 font-light text-yellow-300">- Nezuko</span>
+            </div>
+            <div class="bg-red-700 bg-opacity-70 rounded-lg shadow-xl p-8 flex flex-col items-center">
+              <svg class="w-10 h-10 text-yellow-300 mb-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 12H9v-2h2v2zm0-4H9V6h2v4z" />
+              </svg>
+              <blockquote class="italic text-yellow-100 mb-4">
+                "Will come back for more riding in your city as a batman."
+              </blockquote>
+              <span class="block mt-2 font-light text-yellow-300">- A hashiro from Nigeria</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <footer class="bg-red-600 text-yellow-300 p-4 text-center">
-    <p>&copy; 2025 Burger Inc.</p>
-  </footer>
-  </main>
+      <div class="h-screen"></div>
+
+      <footer class="bg-red-600 text-yellow-300 p-4 text-center">
+        <p>&copy; 2025 Burger Inc.</p>
+      </footer>
+    </main>
   </div>
 
   <script>
