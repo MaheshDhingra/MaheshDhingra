@@ -1,74 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <title>Index | Burger</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Burger</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
   <style>
-    body,
-    h1,
-    h2,
-    h3,
-    p,
-    a,
-    li,
-    nav,
-    footer,
-    aside,
-    div {
-      font-family: 'Anton', sans-serif;
+    body {
+      font-family: "Anton", sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
   </style>
 </head>
-<body class="m-0 p-0 bg-black">
-  <nav class="fixed top-0 left-0 w-full bg-gray-900 text-white p-4 z-50">
-    <div class="container mx-auto flex justify-between items-center">
-      <div class="text-xl font-medium">Burger</div>
+
+<body class="bg-yellow-50 text-red-900">
+  <header class="fixed top-0 left-0 w-full bg-red-600 text-yellow-300 p-4 z-50 flex items-center justify-between">
+    <div class="text-xl">Burger</div>
+    <nav class="hidden md:block">
       <ul class="flex space-x-4">
-        <li>
-          <a href="#home" class="hover:underline font-light">Home</a>
-        </li>
-        <li>
-          <a href="#menu" class="hover:underline font-normal">Menu</a>
-        </li>
-        <li>
-          <a href="#contact" class="hover:underline font-medium">Contact</a>
-        </li>
+        <li><a href="#home" class="hover:underline">Home</a></li>
+        <li><a href="#burger" class="hover:underline">Burger</a></li>
+        <li><a href="#menu" class="hover:underline">Menu</a></li>
+        <li><a href="#contact" class="hover:underline">Contact</a></li>
+        <li><a href="#specials" class="hover:underline">Specials</a></li>
+        <li><a href="#reservation" class="hover:underline">Reservation</a></li>
+        <li><a href="#reviews" class="hover:underline">Reviews</a></li>
       </ul>
-    </div>
+    </nav>
+    <button id="hamburger" class="md:hidden">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </header>
+
+  <nav id="mobileMenu" class="fixed top-16 left-0 w-full bg-red-600 text-yellow-300 p-4 z-40 hidden">
+    <ul class="flex flex-col space-y-2">
+      <li><a href="#home" class="hover:underline">Home</a></li>
+      <li><a href="#burger" class="hover:underline">Burger</a></li>
+      <li><a href="#menu" class="hover:underline">Menu</a></li>
+      <li><a href="#contact" class="hover:underline">Contact</a></li>
+      <li><a href="#specials" class="hover:underline">Specials</a></li>
+      <li><a href="#reservation" class="hover:underline">Reservation</a></li>
+      <li><a href="#reviews" class="hover:underline">Reviews</a></li>
+    </ul>
   </nav>
 
-  <aside class="fixed top-16 left-0 w-64 h-full bg-gray-800 text-white p-4 z-40">
-    <ul>
-      <li class="mb-4">
-        <a href="#section1" class="hover:underline">Cheeseburger</a>
-      </li>
-      <li class="mb-4">
-        <a href="#section2" class="hover:underline">Veggie Burger</a>
-      </li>
-      <li class="mb-4">
-        <a href="#section3" class="hover:underline">Chicken Burger</a>
-      </li>
-    </ul>
-  </aside>
+  <div class="flex pt-20">
+    <main class="flex-1 ml-0">
+      <section id="home" class="relative bg-fixed bg-center bg-no-repeat bg-cover"
+        style="background-image: url('/assets/burger.png'); height: 100vh;">
+        <h1 class="absolute inset-0 flex items-center justify-center text-yellow-300 text-8xl drop-shadow-lg">
+          Welcome to Burger & Co.
+        </h1>
+      </section>
 
-  <div class="ml-64">
-    <div class="relative bg-fixed bg-center bg-no-repeat bg-cover"
-      style="background-image: url('/assets/burger.png'); height: 100vh;">
-      <h1
-        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-8xl drop-shadow-lg">
-        Burger
-      </h1>
-    </div>
+      <section id="burger" class="relative bg-fixed bg-center bg-no-repeat bg-cover"
+        style="background-image: url('/assets/burger2.png'); height: 80vh;">
+        <div class="absolute inset-0 bg-red-600 opacity-50"></div>
+        <div class="relative flex items-center justify-center h-full">
+          <h2 class="text-6xl text-yellow-300 drop-shadow-xl">Burger shots?</h2>
+        </div>
+      </section>
 
-    <div class="h-screen"></div>
+      <section id="menu" class="py-20 bg-yellow-100 text-red-900">
+        <div class="container mx-auto px-4 text-center">
+          <h2 class="text-5xl mb-6">Our Menu</h2>
+          <p class="mb-8 text-xl">Try our selective stolen menu of best burgers from all over the world!!!</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h3 class="text-3xl mb-4">Classic Burger</h3>
+              <p>Beef patty, lettuce, tomato, house sauce.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h3 class="text-3xl mb-4">Spicy Inferno</h3>
+              <p>Jalapeños, spicy sauce, beef patty.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h3 class="text-3xl mb-4">Veggie Delight</h3>
+              <p>Plant-based patty, fresh veggies, vegan sauce.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <footer class="bg-gray-900 text-white p-4 text-center">
-      <p>&copy; 2025 Burger Inc.</p>
-    </footer>
+      <section id="contact" class="py-20 bg-red-600 text-yellow-300">
+        <div class="container mx-auto px-4 text-center">
+          <h2 class="text-5xl mb-6">Contact</h2>
+          <p class="mb-8 text-xl">Sorry for the bug we secretly added to spice up your tounge :(</p>
+          <form class="max-w-lg mx-auto bg-red-700 p-6 rounded-lg shadow-lg space-y-4">
+            <input type="text" placeholder="Name"
+              class="w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-red-400" required />
+            <input type="email" placeholder="Email"
+              class="w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-red-400" required />
+            <textarea placeholder="Message" rows="4"
+              class="w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-red-400" required></textarea>
+            <button type="submit"
+              class="w-full bg-red-500 p-3 rounded hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-red-400">
+              Send
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section id="specials" class="py-20 bg-red-700 text-yellow-200">
+        <div class="container mx-auto px-4 text-center"> </div>
+        <h2 class="text-5xl mb-6">Specials</h2>
+        <p class="mb-8 text-xl">The chef has made his journey from cooking for Dumbledore to cooking for you!</p>
+        <div class="flex flex-col md:flex-row justify-center items-stretch space-y-8 md:space-y-0 md:space-x-8">
+          <div class="bg-yellow-300 p-6 rounded-lg shadow-lg flex-1 text-red-900">
+            <h3 class="text-3xl mb-4">Spicy Inferno Dominos mozzarella cheese burger</h3>
+            <p>Fiery spices and beef patty with extra humty dumty song (catering)</p>
+          </div>
+          <div class="bg-yellow-300 p-6 rounded-lg shadow-lg flex-1 text-red-900">
+            <h3 class="text-3xl mb-4">Truffle Druffle Cheese nikya Burger</h3>
+            <p>Truffle sauce and gourmet toppings with extra coackroaches.</p>
+          </div>
+        </div>
   </div>
+  </section>
+
+  <section id="reservation" class="py-20 bg-yellow-500 text-red-900">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-5xl mb-6">Reservation</h2>
+      <p class="mb-8 text-xl">Book your table now(Dress code: Bali wear, shorts and shorts)</p>
+      <form class="max-w-lg mx-auto bg-yellow-600 p-6 rounded-lg shadow-lg space-y-4">
+        <input type="text" placeholder="Name"
+          class="w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required />
+        <input type="email" placeholder="Email"
+          class="w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required />
+        <input type="date" class="w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required />
+        <button type="submit"
+          class="w-full bg-yellow-500 p-3 rounded hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+          Reserve
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <section id="reviews" class="py-20 bg-red-800 text-yellow-200">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-5xl mb-6">Reviews</h2>
+      <p class="mb-8 text-xl">What our customers say:</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-red-700 bg-opacity-70 rounded-lg shadow-xl p-8 flex flex-col items-center">
+          <svg class="w-10 h-10 text-yellow-300 mb-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 12H9v-2h2v2zm0-4H9V6h2v4z" />
+          </svg>
+          <blockquote class="italic text-yellow-100 mb-4">
+            "There burgers were awesome, just like them but they were bad."
+          </blockquote>
+          <span class="block mt-2 font-light text-yellow-300">- Mahesh</span>
+        </div>
+        <div class="bg-red-700 bg-opacity-70 rounded-lg shadow-xl p-8 flex flex-col items-center">
+          <svg class="w-10 h-10 text-yellow-300 mb-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 12H9v-2h2v2zm0-4H9V6h2v4z" />
+          </svg>
+          <blockquote class="italic text-yellow-100 mb-4">
+            "I love the matress she was hot just like the inferno burger, but she looked like a potato."
+          </blockquote>
+          <span class="block mt-2 font-light text-yellow-300">- Nezuko</span>
+        </div>
+        <div class="bg-red-700 bg-opacity-70 rounded-lg shadow-xl p-8 flex flex-col items-center">
+          <svg class="w-10 h-10 text-yellow-300 mb-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 12H9v-2h2v2zm0-4H9V6h2v4z" />
+          </svg>
+          <blockquote class="italic text-yellow-100 mb-4">
+            "Will come back for more riding in your city as a batman."
+          </blockquote>
+          <span class="block mt-2 font-light text-yellow-300">- A hashiro from Nigeria</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="h-screen"></div>
+
+  <footer class="bg-red-600 text-yellow-300 p-4 text-center">
+    <p>&copy; 2025 Burger Inc.</p>
+  </footer>
+  </main>
+  </div>
+
+  <script>
+    function navvy() {
+      var mobileMenu = document.getElementById("mobileMenu");
+      if (mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.remove("hidden");
+      } else {
+        mobileMenu.classList.add("hidden");
+      }
+    }
+    document.getElementById("hamburger").onclick = navvy;
+  </script>
 </body>
 </html>
