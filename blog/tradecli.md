@@ -1,129 +1,57 @@
-
----
-layout: post
-title: "TerminalCraft: Building TradeCLI for Hack Club"
-description: "My journey building TradeCLI for TerminalCraft and winning a Raspberry Pi 4."
-date: 2025-03-15
----
-
-> **Recently, I participated in [TerminalCraft](https://hackclub.com/terminalcraft/) by Hack Club, where I built _TradeCLI_—a command-line trading companion designed to make managing trades simple, fast, and fun, all powered by live market data from Alpha Vantage.**
-
+---  
+layout: post  
+title: Introducing tradecli: A Simple CLI Tool for Stock Trading  
+description: Announcing tradecli, a command-line tool to simplify stock trading workflows  
+date: 8th June 2025  
 ---
 
-## 🚀 What is TradeCLI?
+I'm excited to introduce **tradecli**, a lightweight command-line tool designed to streamline and automate basic stock trading tasks. This project was born out of my need for a fast, scriptable way to interact with my brokerage account and manage trades directly from the terminal.
 
-**TradeCLI** is a Python-based CLI app that lets you track, analyze, and manage trades right from your terminal. It fetches real-time prices, charts, and market data using Alpha Vantage, with _no API key setup needed_ for basic features.
+## Why tradecli?
 
-> **Goal:** Make trading accessible and enjoyable for everyone, especially beginners.
+Most trading platforms offer web or app interfaces, but few provide a simple CLI for automation or scripting. With tradecli, you can:
 
----
+- Check real-time stock prices
+- Place buy and sell orders
+- View your portfolio and order history
+- Export data for analysis
 
-## ✨ Features
+All from your terminal, with minimal setup.
 
-- **Beginner-Friendly:** Intuitive commands you’ll remember in seconds.
-- **Fast & Lightweight:** No bloat, just the essentials.
-- **Cheerful UX:** Friendly prompts and positive feedback.
-- **Visuals:** Generate simple charts for quick price insights.
-- **Portfolio Overview:** Track your positions and performance.
-- **Favourites:** Mark tickers you love for quick access.
-- **Market Screener:** Find opportunities at a glance.
-- **Live Market Data:** All prices and charts are real, not simulated.
-- **Gainers/Losers:** See top movers in your session.
-- **Last Trade Time:** Track how fresh your data is.
-- **Robust Error Handling:** Prevents crashes with invalid ticker data.
-- **Bug-Free Analytics:** Reliable analytics, gainers, and screener commands.
-- **Hack Club AI Integration:** Ask questions or get help from AI right in your terminal.
+## Features
 
----
+- **Cross-platform:** Works on Windows, macOS, and Linux  
+- **Secure:** API keys and credentials are stored securely  
+- **Scriptable:** Integrate with your own shell scripts or automation workflows  
+- **Extensible:** Easily add new commands or broker integrations
 
-## 🛠️ Commands Overview
+## Getting Started
 
-| **Command**            | **Description**                             |
-|------------------------|---------------------------------------------|
-| `help`                 | Show all available commands                 |
-| `quote <ticker>`       | Fetch current market quote                  |
-| `buy <ticker> <qty>`   | Buy shares of a ticker                      |
-| `sell <ticker> <qty>`  | Sell shares of a ticker                     |
-| `positions`            | View current holdings and P&L               |
-| `chart <ticker>`       | Show price history chart                    |
-| `dashboard`            | View overall portfolio performance          |
-| `analytics`            | Show advanced analytics                     |
-| `alert`                | Set price/volume alerts                     |
-| `integrations`         | Integrations menu                           |
-| `exportcsv`            | Export portfolio to CSV                     |
-| `customize`            | Customize dashboard                         |
-| `popular`              | Display popular trading pairs               |
-| `gainers`              | Show top gainers and losers (session)       |
-| `lasttrade`            | Show last trade time for tickers            |
-| `favourite <ticker>`   | Add ticker to favourites                    |
-| `removefav`            | Remove ticker from favourites               |
-| `favourites`           | List all favourite tickers                  |
-| `screener`             | Run the market screener                     |
-| `ai <prompt>`          | Ask Hack Club AI any question               |
-| `clear` / `cls`        | Clear the terminal screen                   |
-| `exit`                 | Exit TradeCLI                               |
+1. Clone the repository:  
+  ```sh
+  git clone https://github.com/yourusername/tradecli.git
+  ```
+2. Install dependencies and build:  
+  ```sh
+  cd tradecli  
+  pip install -r requirements.txt
+  ```
+3. Configure your API credentials in `config.yaml`.
 
----
+4. Run your first command:  
+  ```sh
+  python tradecli.py price AAPL
+  ```
 
-## ⚡ Getting Started
+## Roadmap
 
-**Clone the repository:**
+- Support for more brokers  
+- Advanced order types  
+- Portfolio analytics  
+- Plugin system
 
-```sh
-git clone https://github.com/MaheshDhingra/TradeCLI.git
-cd TradeCLI
-```
+## Contributing
 
-**(Optional) Set up a virtual environment:**
+Contributions are welcome! Check out the [GitHub repo](https://github.com/yourusername/tradecli) for issues and pull requests.
 
-```sh
-python -m venv .venv
-.venv\Scripts\activate  # On Windows
-# or
-source .venv/bin/activate  # On Mac/Linux
-```
-
-**Install dependencies:**
-
-```sh
-pip install -r requirements.txt
-```
-
-**Run the app:**
-
-```sh
-python main.py
-```
-
----
-
-## 📋 Requirements
-
-- Python 3.8 or higher
-- Internet connection (for live data fetching)
-- Terminal/Command Line access
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License. You're free to use, modify, and distribute it.
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to improve.
-
----
-
-## 🏆 My Experience & Prize
-
-Building TradeCLI for TerminalCraft was a fantastic experience. I learned a lot about API integration, CLI UX, and robust error handling. The best part? I received a **Raspberry Pi 4** as a prize for my project!
-
----
-
-## 🎉 Outro
-
-TerminalCraft was an amazing event—full of learning, coding, and community. TradeCLI is now open-source, and I hope it helps others on their trading journey. Happy trading, and may your positions always be green! 📈✨
-
+Stay tuned for updates and new features as tradecli evolves!
