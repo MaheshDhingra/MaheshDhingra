@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nest Terminal | Mahesh</title>
+  <link rel="stylesheet" href="https://unpkg.com/xterm/css/xterm.css" />
   <style>
     html, body {
       margin: 0;
@@ -18,6 +19,17 @@
   </style>
 </head>
 <body>
-  <iframe src="https://movie-search-anku.vercel.app/"></iframe>
+    <div id="terminal"></div>
+  <script src="https://unpkg.com/xterm/lib/xterm.js"></script>
+  <script>
+    const term = new Terminal();
+    term.open(document.getElementById('terminal'));
+
+    const socket = new WebSocket('ws://localhost:3000');
+    socket.onmessage = e => term.write(e.data);
+    term.onData(data => socket.send(data));
+  </script>
+
+  <!-- <iframe src="https://cockpit.hackclub.app/system/terminal"></iframe> -->
 </body>
 </html>

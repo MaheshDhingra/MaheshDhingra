@@ -1,0 +1,4 @@
+---
+permalink: /revelationss/
+layout: revelations
+---
