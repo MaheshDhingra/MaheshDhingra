@@ -12,14 +12,14 @@ Check out my twice a month newsletter [The Revelations](https://revelations.thel
 
 ## Latest Post
 
-**[Learned COBOL, some thoughts on it](https://theluqmn.com/blog/cobol)**: Meddled with COBOL - and I have some thoughts on it
+**[Tradecli for Terminalcraft](https://mahesh.is-a.dev/blog/tradecli)**: Built a trading terminal!
 
 ## Other posts
 
-Sorted by date (latest).
+<!-- Sorted by date (latest).
 
 **[Historical Intel CPUs](https://theluqmn.com/blog/historical-intel-cpus)**: Basic overview of Intel's historical CPUs and the changes to its microarchitecture.
 
 **[High Seas 2024](https://theluqmn.com/blog/high-seas)**: My experience participating in the High Seas event hosted by Hack Club.
 
-**[We are overstimulated](https://theluqmn.com/blog/we-are-overstimulated)**: A look into how modern technology has disconnected us from reality, the moment, and ourselves.
+**[We are overstimulated](https://theluqmn.com/blog/we-are-overstimulated)**: A look into how modern technology has disconnected us from reality, the moment, and ourselves. -->
