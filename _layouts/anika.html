@@ -3,9 +3,200 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Index of Anika</title>
+  <title>Our Love Story</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #ffe0ec 0%, #fff7e6 100%);
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: #b23a48;
+      min-height: 100vh;
+    }
+    header {
+      text-align: center;
+      padding: 2.5rem 0 1.5rem 0;
+      background: #ffe0ec;
+    }
+    header h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3.2rem;
+      color: #b23a48;
+      margin-bottom: 0.2rem;
+      letter-spacing: 2px;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #b23a48a0;
+      margin-top: 0;
+    }
+    .story-timeline {
+      width: 100vw;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .moment {
+      width: 100vw;
+      height: 100vh;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: stretch;
+      padding: 0;
+      margin: 0;
+      background: none;
+      box-shadow: none;
+      position: relative;
+      overflow: hidden;
+    }
+    .moment.left { flex-direction: row; }
+    .moment.right { flex-direction: row-reverse; }
+    .moment-text {
+      flex: 1 1 50vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #fff7e6;
+      padding: 0 5vw;
+      min-width: 0;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+    .moment-text h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.2rem;
+      margin: 0 0 1rem 0;
+      color: #b23a48;
+      text-align: left;
+    }
+    .moment-text p {
+      font-size: 1.1rem;
+      margin: 0 0 2.5rem 0;
+      color: #7d1935;
+      text-align: left;
+      line-height: 1.5;
+    }
+    .date {
+      font-size: 1rem;
+      color: #ff6f91;
+      background: #fff7e6;
+      border-radius: 1.2rem;
+      padding: 0.3rem 1.1rem;
+      box-shadow: 0 2px 8px #b23a4811;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+    .moment img {
+      flex: 0 0 340px;
+      width: 300px;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 32px #b23a4822;
+      margin-right: 4vw;
+    }
+    .heart {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+      color: #ff6f91;
+      opacity: 0.7;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+    @media (max-width: 900px) {
+      .moment-text h2 { font-size: 2rem; }
+      .moment-text p { font-size: 1rem; }
+    }
+    @media (max-width: 700px) {
+      .moment, .moment.left, .moment.right {
+        flex-direction: column !important;
+        width: 100vw;
+        height: auto;
+        min-height: 0;
+      }
+      .moment img {
+        width: 100vw;
+        height: 220px;
+        max-width: 100vw;
+        max-height: 220px;
+      }
+      .moment-text {
+        height: auto;
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  Still building it!
+  <header style="background: #ffe0ec; padding: 2.5rem 0 1.5rem 0; text-align: center;">
+    <h1 style="font-family: 'Pacifico', cursive; font-size: 3.2rem; color: #b23a48; margin-bottom: 0.2rem; letter-spacing: 2px;">Usss &lt;3</h1>
+    <p style="font-size: 1.1rem; color: #b23a48a0; margin-top: 0;">A timeline of our sweetest moments together</p>
+  </header>
+
+  <section class="story-timeline" id="timeline" style="padding:0;gap:0;">
+    <div class="moment left" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:none;box-shadow:none;padding:0;">
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;background:#fff7e6;height:100vh;">
+        <div class="moment-text" style="max-width:420px;padding:2.5rem 2rem;text-align:center;align-items:center;justify-content:center;">
+          <h2 style="font-size:2.5rem;margin-bottom:1.2rem;font-family:'Pacifico',cursive;color:#b23a48;">First Meeting</h2>
+          <p style="font-size:1.2rem;margin-bottom:2.2rem;color:#7d1935;line-height:1.6;">We met on a rainy afternoon, both a little shy but instantly connected. That day, the world felt a little brighter.</p>
+          <span class="date" style="font-size:1.05rem;color:#ff6f91;background:#fff7e6;border-radius:1.5rem;padding:0.4rem 1.3rem;box-shadow:0 2px 8px #b23a4811;display:inline-block;margin-top:1.2rem;letter-spacing:1px;">March 2022</span>
+        </div>
+      </div>
+      <div style="flex:0 0 360px;display:flex;align-items:center;justify-content:center;background:#ffe0ec;height:100vh;">
+        <img src="/assets/pookie-1.jpeg" alt="First Meeting" style="width:320px;height:420px;object-fit:cover;border-radius:1.7rem;box-shadow:0 6px 36px #b23a4822; margin:0 4vw; background:#fff;" />
+      </div>
+    </div>
+    <div class="moment right" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:none;box-shadow:none;padding:0;">
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;background:#fff7e6;height:100vh;">
+        <div class="moment-text" style="max-width:420px;padding:2.5rem 2rem;text-align:center;align-items:center;justify-content:center;">
+          <h2 style="font-size:2.5rem;margin-bottom:1.2rem;font-family:'Pacifico',cursive;color:#b23a48;">First Date</h2>
+          <p style="font-size:1.2rem;margin-bottom:2.2rem;color:#7d1935;line-height:1.6;">Our first date was filled with laughter, endless conversations, and a walk under the city lights. We knew something special had begun.</p>
+          <span class="date" style="font-size:1.05rem;color:#ff6f91;background:#fff7e6;border-radius:1.5rem;padding:0.4rem 1.3rem;box-shadow:0 2px 8px #b23a4811;display:inline-block;margin-top:1.2rem;letter-spacing:1px;">April 2022</span>
+        </div>
+      </div>
+      <div style="flex:0 0 360px;display:flex;align-items:center;justify-content:center;background:#ffe0ec;height:100vh;">
+        <img src="/assets/pookie-2.jpeg" alt="First Date" style="width:320px;height:420px;object-fit:cover;border-radius:1.7rem;box-shadow:0 6px 36px #b23a4822; margin:0 4vw; background:#fff;" />
+      </div>
+    </div>
+    <div class="moment left" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:none;box-shadow:none;padding:0;">
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;background:#fff7e6;height:100vh;">
+        <div class="moment-text" style="max-width:420px;padding:2.5rem 2rem;text-align:center;align-items:center;justify-content:center;">
+          <h2 style="font-size:2.5rem;margin-bottom:1.2rem;font-family:'Pacifico',cursive;color:#b23a48;">Adventures</h2>
+          <p style="font-size:1.2rem;margin-bottom:2.2rem;color:#7d1935;line-height:1.6;">From spontaneous road trips to cozy movie nights, every moment together became a cherished memory.</p>
+          <span class="date" style="font-size:1.05rem;color:#ff6f91;background:#fff7e6;border-radius:1.5rem;padding:0.4rem 1.3rem;box-shadow:0 2px 8px #b23a4811;display:inline-block;margin-top:1.2rem;letter-spacing:1px;">Summer 2022</span>
+        </div>
+      </div>
+      <div style="flex:0 0 360px;display:flex;align-items:center;justify-content:center;background:#ffe0ec;height:100vh;">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Adventures" style="width:320px;height:420px;object-fit:cover;border-radius:1.7rem;box-shadow:0 6px 36px #b23a4822; margin:0 4vw; background:#fff;" />
+      </div>
+    </div>
+    <div class="moment right" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:none;box-shadow:none;padding:0;">
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;background:#fff7e6;height:100vh;">
+        <div class="moment-text" style="max-width:420px;padding:2.5rem 2rem;text-align:center;align-items:center;justify-content:center;">
+          <h2 style="font-size:2.5rem;margin-bottom:1.2rem;font-family:'Pacifico',cursive;color:#b23a48;">Our Promise</h2>
+          <p style="font-size:1.2rem;margin-bottom:2.2rem;color:#7d1935;line-height:1.6;">We promised to always support, love, and grow with each other—no matter what life brings.</p>
+          <span class="date" style="font-size:1.05rem;color:#ff6f91;background:#fff7e6;border-radius:1.5rem;padding:0.4rem 1.3rem;box-shadow:0 2px 8px #b23a4811;display:inline-block;margin-top:1.2rem;letter-spacing:1px;">2023 &amp; Beyond</span>
+        </div>
+      </div>
+      <div style="flex:0 0 360px;display:flex;align-items:center;justify-content:center;background:#ffe0ec;height:100vh;">
+        <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=800&q=80" alt="Our Promise" style="width:320px;height:420px;object-fit:cover;border-radius:1.7rem;box-shadow:0 6px 36px #b23a4822; margin:0 4vw; background:#fff;" />
+      </div>
+    </div>
+  </section>
+
+  <footer style="text-align:center;padding:2rem 0 1.5rem 0;font-size:1.1rem;color:#b23a48;background:#ffe0ec;">
+    Made with ❤️ by us, for us.<br>
+    <span style="display:inline-block;margin-top:0.7rem;font-size:1.2rem;background:#fff7e6;padding:0.5rem 1.5rem;border-radius:2rem;box-shadow:0 2px 8px #b23a4811;">Please wish us the best! 🧿</span>
+  </footer>
 </body>
 </html>
