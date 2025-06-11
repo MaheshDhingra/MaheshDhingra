@@ -1,4 +1,4 @@
 ---
-permalink: /revelationss/
+permalink: /revelations/
 layout: revelations
 ---
