@@ -8,10 +8,33 @@
   <style>
     body {
       margin: 0;
+      /* Soft pink gradient with subtle hearts overlay */
       background: linear-gradient(135deg, #ffe0ec 0%, #fff7e6 100%);
       font-family: 'Montserrat', Arial, sans-serif;
       color: #b23a48;
       min-height: 100vh;
+      position: relative;
+    }
+    /* Cute floating hearts background effect */
+    .hearts-bg {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .hearts-bg span {
+      position: absolute;
+      font-size: 2.2rem;
+      opacity: 0.13;
+      animation: floatHeart 12s linear infinite;
+      user-select: none;
+    }
+    @keyframes floatHeart {
+      0% { transform: translateY(120vh) scale(1) rotate(0deg); opacity: 0.13; }
+      10% { opacity: 0.18; }
+      50% { opacity: 0.22; }
+      100% { transform: translateY(-10vh) scale(1.2) rotate(30deg); opacity: 0.13; }
     }
     header {
       text-align: center;
@@ -138,6 +161,15 @@
   </style>
 </head>
 <body>
+  <div class="hearts-bg">
+    <span style="top:10%;left:20%;animation-delay:0s;">❤️</span>
+    <span style="top:20%;right:15%;animation-delay:2s;">❤️</span>
+    <span style="top:30%;left:25%;animation-delay:4s;">❤️</span>
+    <span style="top:40%;right:10%;animation-delay:6s;">❤️</span>
+    <span style="top:50%;left:30%;animation-delay:8s;">❤️</span>
+    <span style="top:60%;right:20%;animation-delay:10s;">❤️</span>
+    <span style="top:70%;left:10%;animation-delay:12s;">❤️</span>
+  </div>
   <header style="background: #ffe0ec; padding: 2.5rem 0 1.5rem 0; text-align: center;">
     <h1 style="font-family: 'Pacifico', cursive; font-size: 3.2rem; color: #b23a48; margin-bottom: 0.2rem; letter-spacing: 2px;">Usss &lt;3</h1>
     <p style="font-size: 1.1rem; color: #b23a48a0; margin-top: 0;">A timeline of our sweetest moments together</p>
@@ -145,51 +177,51 @@
 
   <section class="story-timeline" id="timeline" style="padding:0;gap:0;">
     <div class="moment left" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:none;box-shadow:none;padding:0;">
-      <div style="flex:1;display:flex;align-items:center;justify-content:center;background:#fff7e6;height:100vh;">
-        <div class="moment-text" style="max-width:420px;padding:2.5rem 2rem;text-align:center;align-items:center;justify-content:center;">
-          <h2 style="font-size:2.5rem;margin-bottom:1.2rem;font-family:'Pacifico',cursive;color:#b23a48;">First Meeting</h2>
-          <p style="font-size:1.2rem;margin-bottom:2.2rem;color:#7d1935;line-height:1.6;">We met on a rainy afternoon, both a little shy but instantly connected. That day, the world felt a little brighter.</p>
-          <span class="date" style="font-size:1.05rem;color:#ff6f91;background:#fff7e6;border-radius:1.5rem;padding:0.4rem 1.3rem;box-shadow:0 2px 8px #b23a4811;display:inline-block;margin-top:1.2rem;letter-spacing:1px;">March 2022</span>
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,#fff7e6 80%,#ffe0ec 100%);height:100vh;">
+        <div class="moment-text" style="max-width:480px;padding:3rem 2.5rem;text-align:center;align-items:center;justify-content:center;box-shadow:0 8px 40px #ffb3c633;border-radius:2rem;backdrop-filter:blur(2px);">
+          <h2 style="font-size:2.7rem;margin-bottom:1.3rem;font-family:'Pacifico',cursive;color:#b23a48;letter-spacing:2px;">First Meeting</h2>
+          <p style="font-size:1.25rem;margin-bottom:2.2rem;color:#7d1935;line-height:1.7;">We met on a rainy afternoon, both a little shy but instantly connected.<br>That day, the world felt a little brighter.</p>
+          <span class="date" style="font-size:1.08rem;color:#fff;background:#ff6f91;border-radius:1.5rem;padding:0.5rem 1.5rem;box-shadow:0 2px 12px #ff6f9144;display:inline-block;margin-top:1.2rem;letter-spacing:1px;font-weight:bold;">March 2022</span>
         </div>
       </div>
-      <div style="flex:0 0 360px;display:flex;align-items:center;justify-content:center;background:#ffe0ec;height:100vh;">
-        <img src="/assets/pookie-1.jpeg" alt="First Meeting" style="width:320px;height:420px;object-fit:cover;border-radius:1.7rem;box-shadow:0 6px 36px #b23a4822; margin:0 4vw; background:#fff;" />
+      <div style="flex:0 0 400px;display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,#ffe0ec 60%,#fff7e6 100%);height:100vh;">
+        <img src="/assets/pookie-1.jpeg" alt="First Meeting" style="width:340px;height:440px;object-fit:cover;border-radius:2.2rem;box-shadow:0 12px 48px #b23a4888,0 0 0 8px #fff7e6; margin:0 4vw; background:#fff;transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.04) rotate(-2deg)'" onmouseout="this.style.transform=''" />
       </div>
     </div>
     <div class="moment right" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:none;box-shadow:none;padding:0;">
-      <div style="flex:1;display:flex;align-items:center;justify-content:center;background:#fff7e6;height:100vh;">
-        <div class="moment-text" style="max-width:420px;padding:2.5rem 2rem;text-align:center;align-items:center;justify-content:center;">
-          <h2 style="font-size:2.5rem;margin-bottom:1.2rem;font-family:'Pacifico',cursive;color:#b23a48;">First Date</h2>
-          <p style="font-size:1.2rem;margin-bottom:2.2rem;color:#7d1935;line-height:1.6;">Our first date was filled with laughter, endless conversations, and a walk under the city lights. We knew something special had begun.</p>
-          <span class="date" style="font-size:1.05rem;color:#ff6f91;background:#fff7e6;border-radius:1.5rem;padding:0.4rem 1.3rem;box-shadow:0 2px 8px #b23a4811;display:inline-block;margin-top:1.2rem;letter-spacing:1px;">April 2022</span>
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,#fff7e6 80%,#ffe0ec 100%);height:100vh;">
+        <div class="moment-text" style="max-width:480px;padding:3rem 2.5rem;text-align:center;align-items:center;justify-content:center;box-shadow:0 8px 40px #ffb3c633;border-radius:2rem;backdrop-filter:blur(2px);">
+          <h2 style="font-size:2.7rem;margin-bottom:1.3rem;font-family:'Pacifico',cursive;color:#b23a48;letter-spacing:2px;">First Date</h2>
+          <p style="font-size:1.25rem;margin-bottom:2.2rem;color:#7d1935;line-height:1.7;">Our first date was filled with laughter, endless conversations, and a walk under the city lights.<br>We knew something special had begun.</p>
+          <span class="date" style="font-size:1.08rem;color:#fff;background:#ff6f91;border-radius:1.5rem;padding:0.5rem 1.5rem;box-shadow:0 2px 12px #ff6f9144;display:inline-block;margin-top:1.2rem;letter-spacing:1px;font-weight:bold;">April 2022</span>
         </div>
       </div>
-      <div style="flex:0 0 360px;display:flex;align-items:center;justify-content:center;background:#ffe0ec;height:100vh;">
-        <img src="/assets/pookie-2.jpeg" alt="First Date" style="width:320px;height:420px;object-fit:cover;border-radius:1.7rem;box-shadow:0 6px 36px #b23a4822; margin:0 4vw; background:#fff;" />
+      <div style="flex:0 0 400px;display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,#ffe0ec 60%,#fff7e6 100%);height:100vh;">
+        <img src="/assets/pookie-2.jpeg" alt="First Date" style="width:340px;height:440px;object-fit:cover;border-radius:2.2rem;box-shadow:0 12px 48px #b23a4888,0 0 0 8px #fff7e6; margin:0 4vw; background:#fff;transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.04) rotate(-2deg)'" onmouseout="this.style.transform=''" />
       </div>
     </div>
     <div class="moment left" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:none;box-shadow:none;padding:0;">
-      <div style="flex:1;display:flex;align-items:center;justify-content:center;background:#fff7e6;height:100vh;">
-        <div class="moment-text" style="max-width:420px;padding:2.5rem 2rem;text-align:center;align-items:center;justify-content:center;">
-          <h2 style="font-size:2.5rem;margin-bottom:1.2rem;font-family:'Pacifico',cursive;color:#b23a48;">Adventures</h2>
-          <p style="font-size:1.2rem;margin-bottom:2.2rem;color:#7d1935;line-height:1.6;">From spontaneous road trips to cozy movie nights, every moment together became a cherished memory.</p>
-          <span class="date" style="font-size:1.05rem;color:#ff6f91;background:#fff7e6;border-radius:1.5rem;padding:0.4rem 1.3rem;box-shadow:0 2px 8px #b23a4811;display:inline-block;margin-top:1.2rem;letter-spacing:1px;">Summer 2022</span>
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,#fff7e6 80%,#ffe0ec 100%);height:100vh;">
+        <div class="moment-text" style="max-width:480px;padding:3rem 2.5rem;text-align:center;align-items:center;justify-content:center;box-shadow:0 8px 40px #ffb3c633;border-radius:2rem;backdrop-filter:blur(2px);">
+          <h2 style="font-size:2.7rem;margin-bottom:1.3rem;font-family:'Pacifico',cursive;color:#b23a48;letter-spacing:2px;">Adventures</h2>
+          <p style="font-size:1.25rem;margin-bottom:2.2rem;color:#7d1935;line-height:1.7;">From spontaneous road trips to cozy movie nights, every moment together became a cherished memory.</p>
+          <span class="date" style="font-size:1.08rem;color:#fff;background:#ff6f91;border-radius:1.5rem;padding:0.5rem 1.5rem;box-shadow:0 2px 12px #ff6f9144;display:inline-block;margin-top:1.2rem;letter-spacing:1px;font-weight:bold;">Summer 2022</span>
         </div>
       </div>
-      <div style="flex:0 0 360px;display:flex;align-items:center;justify-content:center;background:#ffe0ec;height:100vh;">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Adventures" style="width:320px;height:420px;object-fit:cover;border-radius:1.7rem;box-shadow:0 6px 36px #b23a4822; margin:0 4vw; background:#fff;" />
+      <div style="flex:0 0 400px;display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,#ffe0ec 60%,#fff7e6 100%);height:100vh;">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Adventures" style="width:340px;height:440px;object-fit:cover;border-radius:2.2rem;box-shadow:0 12px 48px #b23a4888,0 0 0 8px #fff7e6; margin:0 4vw; background:#fff;transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.04) rotate(-2deg)'" onmouseout="this.style.transform=''" />
       </div>
     </div>
     <div class="moment right" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:none;box-shadow:none;padding:0;">
-      <div style="flex:1;display:flex;align-items:center;justify-content:center;background:#fff7e6;height:100vh;">
-        <div class="moment-text" style="max-width:420px;padding:2.5rem 2rem;text-align:center;align-items:center;justify-content:center;">
-          <h2 style="font-size:2.5rem;margin-bottom:1.2rem;font-family:'Pacifico',cursive;color:#b23a48;">Our Promise</h2>
-          <p style="font-size:1.2rem;margin-bottom:2.2rem;color:#7d1935;line-height:1.6;">We promised to always support, love, and grow with each other—no matter what life brings.</p>
-          <span class="date" style="font-size:1.05rem;color:#ff6f91;background:#fff7e6;border-radius:1.5rem;padding:0.4rem 1.3rem;box-shadow:0 2px 8px #b23a4811;display:inline-block;margin-top:1.2rem;letter-spacing:1px;">2023 &amp; Beyond</span>
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,#fff7e6 80%,#ffe0ec 100%);height:100vh;">
+        <div class="moment-text" style="max-width:480px;padding:3rem 2.5rem;text-align:center;align-items:center;justify-content:center;box-shadow:0 8px 40px #ffb3c633;border-radius:2rem;backdrop-filter:blur(2px);">
+          <h2 style="font-size:2.7rem;margin-bottom:1.3rem;font-family:'Pacifico',cursive;color:#b23a48;letter-spacing:2px;">Our Promise</h2>
+          <p style="font-size:1.25rem;margin-bottom:2.2rem;color:#7d1935;line-height:1.7;">We promised to always support, love, and grow with each other—no matter what life brings.</p>
+          <span class="date" style="font-size:1.08rem;color:#fff;background:#ff6f91;border-radius:1.5rem;padding:0.5rem 1.5rem;box-shadow:0 2px 12px #ff6f9144;display:inline-block;margin-top:1.2rem;letter-spacing:1px;font-weight:bold;">2023 &amp; Beyond</span>
         </div>
       </div>
-      <div style="flex:0 0 360px;display:flex;align-items:center;justify-content:center;background:#ffe0ec;height:100vh;">
-        <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=800&q=80" alt="Our Promise" style="width:320px;height:420px;object-fit:cover;border-radius:1.7rem;box-shadow:0 6px 36px #b23a4822; margin:0 4vw; background:#fff;" />
+      <div style="flex:0 0 400px;display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,#ffe0ec 60%,#fff7e6 100%);height:100vh;">
+        <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=800&q=80" alt="Our Promise" style="width:340px;height:440px;object-fit:cover;border-radius:2.2rem;box-shadow:0 12px 48px #b23a4888,0 0 0 8px #fff7e6; margin:0 4vw; background:#fff;transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.04) rotate(-2deg)'" onmouseout="this.style.transform=''" />
       </div>
     </div>
   </section>
