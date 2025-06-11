@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ page.title }} - The Revelations</title>
+        <link rel="icon" href="{{ site.baseurl }}/assets/icon.png" type="image/x-icon" />
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="{{ page.title }} - The Revelations" />
+        <meta property="og:description" content="{{ page.description }}" />
+
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {}
+                }
+            }
+        </script>
+
+        <!-- JetBrains Mono font -->
+        <link href="https://fonts.cdnfonts.com/css/jetbrains-mono" rel="stylesheet">
+
+        <style>
+            .bg-paper {
+                background-image: url('{{ site.baseurl }}/assets/textures/paper.png');
+                background-repeat: repeat;
+                background-size:auto;
+            }
+            .bg-concrete {
+                background-image: url('{{ site.baseurl }}/assets/textures/background.png');
+                background-repeat: repeat;
+                background-size: auto;
+            }
+        </style>
+    </head>
+
+    <body class="md:p-4 bg-concrete bg-repeat font-mono">
+        <main class="p-4 md:p-8 w-full h-full md:w-8/12 flex flex-col gap-16 bg-paper mx-auto bg-white">
+            {% include nav.html %}
+
+            <div class="flex flex-col gap-4">
+                <h1 class="text-2xl md:text-4xl font-semibold text-[rgb(50,50,50)]">
+                    {{ page.title }}
+                </h1>
+
+                <div class="flex flex-col gap-4 md:flex-row md:justify-between items-start">
+                    <p class="w-8/12 text-sm text-[rgb(50,50,50)]">
+                        {{ page.description }}
+                    </p>
+                </div>
+            </div>
+
+            <div class="
+            space-y-3
+            text-sm text-[rgb(50,50,50)]
+            [&_h2]:text-2xl [&_h2]:pt-8 [&_h2]:font-semibold [&_h2]:text-[rgb(50,50,50)]
+            [&_h3]:text-xl [&_h3]:pt-4 [&_h3]:font-semibold [&_h3]:text-[rgb(50,50,50)]
+            [&_a]:font-semibold [&_a]:underline
+            [&_img]:w-full [&_img]:rounded-md
+            ">
+                {{ content }}
+            </div>
+        </main>
+    </body>
+</html>
