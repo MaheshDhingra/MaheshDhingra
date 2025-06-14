@@ -1,0 +1,4 @@
+---
+permalink: /cars/
+layout: cars
+---
