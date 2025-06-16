@@ -6,82 +6,42 @@
   <title>404 - Command Not Found</title>
   <style>
     body {
-      background: linear-gradient(135deg, #010a00, #003300);
+      background-color: #0d0d0d;
       color: #00ff00;
-      font-family: 'Fira Mono', 'Fira Code', 'Courier New', Courier, monospace;
+      font-family: 'Fira Code', 'Courier New', Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 100vh;
       margin: 0;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      padding: 2rem 3rem;
-      user-select: none;
-      overflow: hidden;
     }
 
     .terminal {
-      max-width: 700px;
-      width: 100%;
-      background: #011400;
-      box-shadow: 0 0 20px #00ff00cc;
-      padding: 1.5rem 2rem;
-      border-radius: 8px;
-      border: 1px solid #008000;
-      line-height: 1.6;
-      white-space: nowrap;
-      font-size: 1.1rem;
-      letter-spacing: 0.05em;
-      overflow-x: auto;
+      max-width: 90vw;
+      width: 600px;
     }
 
     .terminal-line {
+      white-space: nowrap;
       overflow: hidden;
       border-right: 2px solid #00ff00;
       display: inline-block;
       visibility: hidden;
-      padding-right: 4px;
-      position: relative;
-    }
-
-    .terminal-line.blink::after {
-      content: '';
-      position: absolute;
-      right: 2px;
-      top: 0;
-      width: 8px;
-      height: 100%;
-      background: #00ff00;
-      animation: blink-caret 1s step-end infinite;
-      opacity: 0.7;
-      border-radius: 2px;
     }
 
     @keyframes blink-caret {
-      0%, 100% { opacity: 0.7; }
-      50% { opacity: 0; }
+      0%, 100% { border-color: transparent }
+      50% { border-color: #00ff00 }
     }
 
     a {
       color: #00ff00;
       text-decoration: underline;
     }
-
-    /* Scrollbar for overflow */
-    .terminal::-webkit-scrollbar {
-      height: 8px;
-    }
-    .terminal::-webkit-scrollbar-track {
-      background: #002200;
-      border-radius: 4px;
-    }
-    .terminal::-webkit-scrollbar-thumb {
-      background: #00cc00;
-      border-radius: 4px;
-    }
   </style>
 </head>
 <body>
-  <div class="terminal" aria-label="Terminal-style 404 error message">
+  <div class="terminal">
     <div class="terminal-line" id="line1" data-text="~/MaheshDhingra ➜ 404"></div>
     <div class="terminal-line" id="line2" data-text="~/MaheshDhingra ➜ Oops! This page does not exist."></div>
     <div class="terminal-line" id="line3" data-text="~/MaheshDhingra ➜ command not found: page"></div>
@@ -96,23 +56,22 @@
       document.getElementById("line4")
     ];
 
-    const typeLine = (el, callback) => {
+    const typeLine = (el, index, callback) => {
       const text = el.dataset.text;
       el.textContent = "";
       el.style.visibility = "visible";
-      el.classList.add("blink");
       let i = 0;
-      const interval = setInterval(() => {
-        el.textContent = text.slice(0, i + 1);
-        i++;
+      const typingInterval = setInterval(() => {
+        el.textContent = text.slice(0, ++i);
         if (i === text.length) {
-          clearInterval(interval);
-          el.classList.remove("blink");
+          clearInterval(typingInterval);
           el.style.borderRight = "none";
           if (el.dataset.link) {
             const a = document.createElement("a");
             a.href = el.dataset.link;
-            a.textContent = el.textContent;
+            a.textContent = text;
+            a.style.color = "#00ff00";
+            a.style.textDecoration = "underline";
             el.innerHTML = "";
             el.appendChild(a);
           }
@@ -121,9 +80,9 @@
       }, 30);
     };
 
-    const startTyping = (index = 0) => {
-      if (index < lines.length) {
-        typeLine(lines[index], () => startTyping(index + 1));
+    const startTyping = (i = 0) => {
+      if (i < lines.length) {
+        typeLine(lines[i], i, () => startTyping(i + 1));
       }
     };
 
