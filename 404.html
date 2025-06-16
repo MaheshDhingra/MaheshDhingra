@@ -9,49 +9,84 @@
       background-color: #0d0d0d;
       color: #00ff00;
       font-family: 'Fira Code', 'Courier New', Courier, monospace;
-      padding: 2rem;
-      font-size: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .terminal {
+      max-width: 90vw;
+      width: 600px;
     }
 
     .terminal-line {
-      margin: 0.5rem 0;
-    }
-
-    .prompt {
-      color: #00ff00;
-    }
-
-    .cursor {
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #00ff00;
       display: inline-block;
-      width: 10px;
-      height: 20px;
-      background-color: #00ff00;
-      margin-left: 5px;
-      animation: blink 1s infinite;
+      visibility: hidden;
     }
 
-    @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0; }
-      100% { opacity: 1; }
+    @keyframes blink-caret {
+      0%, 100% { border-color: transparent }
+      50% { border-color: #00ff00 }
     }
 
     a {
       color: #00ff00;
       text-decoration: underline;
     }
-
-    .comment {
-      color: #4caf50;
-    }
   </style>
 </head>
 <body>
-  <div class="terminal-line"><span class="prompt">~/MaheshDhingra</span> ➜ <span class="comment">404</span></div>
-  <div class="terminal-line"><span class="prompt">~/MaheshDhingra</span> ➜ <span class="comment">Oops! This page does not exist.</span></div>
-  <div class="terminal-line"><span class="prompt">~/MaheshDhingra</span> ➜ <span>command not found: <strong>page</strong></span></div>
-  <div class="terminal-line"><span class="prompt">~/MaheshDhingra</span> ➜ <a href="/">Return to Home</a></div>
-  <div class="terminal-line"><span class="prompt">~/MaheshDhingra</span> ➜ <span class="cursor"></span></div>
+  <div class="terminal">
+    <div class="terminal-line" id="line1" data-text="~/MaheshDhingra ➜ 404"></div>
+    <div class="terminal-line" id="line2" data-text="~/MaheshDhingra ➜ Oops! This page does not exist."></div>
+    <div class="terminal-line" id="line3" data-text="~/MaheshDhingra ➜ command not found: page"></div>
+    <div class="terminal-line" id="line4" data-text="~/MaheshDhingra ➜ Return to Home" data-link="/"></div>
+  </div>
+
+  <script>
+    const lines = [
+      document.getElementById("line1"),
+      document.getElementById("line2"),
+      document.getElementById("line3"),
+      document.getElementById("line4")
+    ];
+
+    const typeLine = (el, index, callback) => {
+      const text = el.dataset.text;
+      el.textContent = "";
+      el.style.visibility = "visible";
+      let i = 0;
+      const typingInterval = setInterval(() => {
+        el.textContent = text.slice(0, ++i);
+        if (i === text.length) {
+          clearInterval(typingInterval);
+          el.style.borderRight = "none";
+          if (el.dataset.link) {
+            const a = document.createElement("a");
+            a.href = el.dataset.link;
+            a.textContent = text;
+            a.style.color = "#00ff00";
+            a.style.textDecoration = "underline";
+            el.innerHTML = "";
+            el.appendChild(a);
+          }
+          callback();
+        }
+      }, 30);
+    };
+
+    const startTyping = (i = 0) => {
+      if (i < lines.length) {
+        typeLine(lines[i], i, () => startTyping(i + 1));
+      }
+    };
+
+    window.onload = () => startTyping();
+  </script>
 </body>
 </html>
-
