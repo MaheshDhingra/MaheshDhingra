@@ -1,0 +1,4 @@
+---
+permalink: /github/
+layout: github
+---
