@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>404 - Command Not Found</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #00ff00;
+      font-family: 'Fira Code', 'Courier New', Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .terminal {
+      max-width: 90vw;
+      width: 600px;
+    }
+
+    .terminal-line {
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #00ff00;
+      display: inline-block;
+      visibility: hidden;
+    }
+
+    @keyframes blink-caret {
+      0%, 100% { border-color: transparent }
+      50% { border-color: #00ff00 }
+    }
+
+    a {
+      color: #00ff00;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <div class="terminal-line" id="line1" data-text="~/MaheshDhingra ➜ 404"></div>
+    <div class="terminal-line" id="line2" data-text="~/MaheshDhingra ➜ Oops! This page does not exist."></div>
+    <div class="terminal-line" id="line3" data-text="~/MaheshDhingra ➜ command not found: page"></div>
+    <div class="terminal-line" id="line4" data-text="~/MaheshDhingra ➜ Return to Home" data-link="/"></div>
+  </div>
+
+  <script>
+    const lines = [
+      document.getElementById("line1"),
+      document.getElementById("line2"),
+      document.getElementById("line3"),
+      document.getElementById("line4")
+    ];
+
+    const typeLine = (el, index, callback) => {
+      const text = el.dataset.text;
+      el.textContent = "";
+      el.style.visibility = "visible";
+      let i = 0;
+      const typingInterval = setInterval(() => {
+        el.textContent = text.slice(0, ++i);
+        if (i === text.length) {
+          clearInterval(typingInterval);
+          el.style.borderRight = "none";
+          if (el.dataset.link) {
+            const a = document.createElement("a");
+            a.href = el.dataset.link;
+            a.textContent = text;
+            a.style.color = "#00ff00";
+            a.style.textDecoration = "underline";
+            el.innerHTML = "";
+            el.appendChild(a);
+          }
+          callback();
+        }
+      }, 30);
+    };
+
+    const startTyping = (i = 0) => {
+      if (i < lines.length) {
+        typeLine(lines[i], i, () => startTyping(i + 1));
+      }
+    };
+
+    window.onload = () => startTyping();
+  </script>
+</body>
+</html>
