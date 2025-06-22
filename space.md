@@ -1,4 +1,4 @@
 ---
 permalink: /space/
-layout: Space
+layout: space
 ---
