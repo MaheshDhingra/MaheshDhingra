@@ -1,4 +1,4 @@
 ---
-permalink: /Space/
+permalink: /space/
 layout: Space
 ---
