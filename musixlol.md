@@ -1,0 +1,4 @@
+---
+permalink: /musixlol/
+layout: musixlol
+---
