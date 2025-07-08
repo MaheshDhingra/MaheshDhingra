@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Personality Picker - Page 2</title>
+    <link rel="stylesheet" href="../assets/css/pet_styles.css">
+</head>
+<body>
+    <header>
+        <h1>More About Your Pet Personality!</h1>
+        <p>Let's dig a little deeper.</p>
+    </header>
+
+    <main>
+        <section class="question-section">
+            <h2>Question 2: What's your ideal weekend activity?</h2>
+            <select id="activity-select">
+                <option value="">--Please choose an option--</option>
+                <option value="relax">Relaxing at home</option>
+                <option value="adventure">Outdoor adventure</option>
+                <option value="social">Social gathering</option>
+            </select>
+            <p id="activity-feedback">Select an activity to see your personality trait!</p>
+        </section>
+
+        <section class="toggle-section">
+            <h2>Click the button to reveal a fun fact!</h2>
+            <button id="toggle-fact-btn">Show/Hide Fact</button>
+            <p id="fun-fact" style="display: none;">Did you know cats can make over 100 different sounds, while dogs can only make about 10?</p>
+        </section>
+
+        <section class="counter-section">
+            <h2>How many pets do you wish you had?</h2>
+            <button id="decrement-btn">-</button>
+            <span id="pet-count">0</span>
+            <button id="increment-btn">+</button>
+            <p id="pet-count-message"></p>
+        </section>
+
+        <nav>
+            <a href="pet.html" class="prev-page-btn">Go to Page 1</a>
+        </nav>
+    </main>
+
+    <footer>
+        <p>Orpheus Yippee! Made by Mahesh</p>
+    </footer>
+
+    <script src="../assets/js/pet_script2.js"></script>
+</body>
+</html>

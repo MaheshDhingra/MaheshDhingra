@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Personality Picker - Page 1</title>
+    <link rel="stylesheet" href="../assets/css/pet_styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Pet Personality Picker!</h1>
+        <p>Discover your inner pet personality.</p>
+    </header>
+
+    <main>
+        <section class="question-section">
+            <h2>Question 1: What's your favorite color?</h2>
+            <div class="color-options">
+                <button class="color-btn" data-color="blue">Blue</button>
+                <button class="color-btn" data-color="green">Green</button>
+                <button class="color-btn" data-color="red">Red</button>
+            </div>
+            <p id="color-feedback">Choose a color above!</p>
+        </section>
+
+        <section class="image-section">
+            <h2>Which animal do you feel most connected to?</h2>
+            <img id="animal-image" src="../assets/pookie-1.jpeg" alt="Cute animal" width="300">
+            <button id="change-image-btn">Change Animal</button>
+        </section>
+
+        <section class="input-section">
+            <h2>Enter your name to see a personalized message:</h2>
+            <input type="text" id="name-input" placeholder="Your Name">
+            <p id="personalized-message">Hello there!</p>
+        </section>
+
+        <nav>
+            <a href="pet2.html" class="next-page-btn">Go to Page 2</a>
+        </nav>
+    </main>
+
+    <footer>
+        <p>Orpheus Yippee! Made by Mahesh</p>
+    </footer>
+
+    <script src="../assets/js/pet_script1.js"></script>
+</body>
+</html>
