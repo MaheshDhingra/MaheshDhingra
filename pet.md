@@ -1,0 +1,4 @@
+---
+permalink: /pet/
+layout: pet
+---
