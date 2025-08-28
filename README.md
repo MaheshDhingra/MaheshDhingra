@@ -2,7 +2,7 @@
 
 <h3 align="center">brainrotted individual who creates to solves problems
 </h3>
-<div align="center"><img alt="uwu"src="https://discord.c99.nl/widget/theme-3/808332105108553759.png"></div>
+<div align="center"><img alt="uwu"src="https://discord.c99.nl/widget/theme-3/773906643133661205.png"></div>
 
 ![](https://komarev.com/ghpvc/?username=MaheshDhingra)
 
