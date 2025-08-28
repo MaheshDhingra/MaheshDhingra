@@ -2,6 +2,8 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
+    <!-- Google Fonts: Inter (similar to Neue Regrade) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <title>Mahesh's Photo Archive</title>
@@ -621,17 +623,11 @@
             }
         }
 
-        @font-face {
-            font-family: 'Neue Regrade';
-            src: url('./fonts/NeueRegrade-Regular.woff2') format('woff2'),
-                url('./fonts/Neue Regrade Variable.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
+    /* Use Google Fonts: Inter */
+    /* Using Inter from Google Fonts instead of local Neue Regrade */
 
         body {
-            font-family: 'Neue Regrade', sans-serif
+            font-family: 'Inter', sans-serif;
         }
 
         ::selection {
@@ -1048,7 +1044,8 @@
         const MASONRY = document.getElementById('masonry');
         const EMPTY = document.getElementById('emptyMsg');
         const LOADING = document.getElementById('loadingIndicator');
-        const DATA_URL = './photos-data.json';
+    // Use absolute path for production
+    const DATA_URL = './photos.json';
 
 
         const revealObserver = new IntersectionObserver((entries) => {
