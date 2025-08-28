@@ -1,4 +1,4 @@
 ---
 permalink: /photos/
-layout: photos.html
+layout: photos
 ---

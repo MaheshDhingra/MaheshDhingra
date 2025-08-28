@@ -407,7 +407,7 @@
 
 
         <p id="emptyMsg" class="hidden text-gray-500 text-sm mt-8">
-            something went wrong likely because <code>photos.json</code> is uh.
+            something went wrong likely because <code>photos-data.json</code> is uh.
         </p>
     </main>
 
@@ -457,7 +457,7 @@
         const MASONRY = document.getElementById('masonry');
         const EMPTY = document.getElementById('emptyMsg');
         const LOADING = document.getElementById('loadingIndicator');
-        const DATA_URL = './photos.json';
+        const DATA_URL = './photos-data.json';
 
 
         const revealObserver = new IntersectionObserver((entries) => {
@@ -507,7 +507,7 @@
         async function loadPhotos() {
             try {
                 const res = await fetch(DATA_URL, { cache: 'no-store' });
-                if (!res.ok) throw new Error('Failed to load photos.json');
+                if (!res.ok) throw new Error('Failed to load photos-data.json');
                 const data = await res.json();
                 const items = Array.isArray(data) ? data : (data.photos || []);
                 if (!items.length) {
@@ -561,7 +561,7 @@
             } catch (err) {
                 console.error(err);
                 LOADING.style.display = 'none';
-                EMPTY.textContent = 'Could not load photos.json';
+                EMPTY.textContent = 'Could not load photos-data.json';
                 EMPTY.classList.remove('hidden');
             }
         }
