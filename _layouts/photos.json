@@ -1,0 +1,27 @@
+[
+  {
+    "src": "https://hc-cdn.hel1.your-objectstorage.com/s/v3/17e99564e0e21af446ea18beab147172de2effe0_1000014466.jpg",
+    "alt": "Photo 1",
+    "caption": "Song for the mood 1"
+  },
+  {
+    "src": "https://hc-cdn.hel1.your-objectstorage.com/s/v3/c4252516ef1bd17b64943fa8b1bb6b0faf1c74a1_1000014016.jpg",
+    "alt": "Photo 2",
+    "caption": "Song for the mood 2"
+  },
+  {
+    "src": "https://hc-cdn.hel1.your-objectstorage.com/s/v3/fd02f2c03cbbf633223d840d8b1dacfdb5b9ff7b_1000008699.jpg",
+    "alt": "Photo 3",
+    "caption": "Song for the mood 3"
+  },
+  {
+    "src": "https://hc-cdn.hel1.your-objectstorage.com/s/v3/e372044df1bb75ac597670e4f4732b646407d2d9_1000011325.jpg",
+    "alt": "Photo 4",
+    "caption": "Song for the mood 4"
+  },
+  {
+    "src": "https://hc-cdn.hel1.your-objectstorage.com/s/v3/4c0e700e1f5dcada335f137ac751b06d1bf546ff_1000008876.jpg",
+    "alt": "Photo 5",
+    "caption": "Song for the mood 5"
+  }
+]

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <title>Mahesh's Photo Archive</title>
+
+    <meta name="description" content="Mahesh's photos" />
+    <meta name="theme-color" content="#9CC0CA" />
+    <link rel="preload" href="./fonts/NeueRegrade-Regular.woff2" as="font" type="font/woff2" crossorigin />
+
+    <link rel="preload"
+        href="https://hc-cdn.hel1.your-objectstorage.com/s/v3/17e99564e0e21af446ea18beab147172de2effe0_1000014466.jpg"
+        as="image">
+    <link rel="preload"
+        href="https://hc-cdn.hel1.your-objectstorage.com/s/v3/c4252516ef1bd17b64943fa8b1bb6b0faf1c74a1_1000014016.jpg"
+        as="image">
+    <link rel="preload"
+        href="https://hc-cdn.hel1.your-objectstorage.com/s/v3/fd02f2c03cbbf633223d840d8b1dacfdb5b9ff7b_1000008699.jpg"
+        as="image">
+    <link rel="preload"
+        href="https://hc-cdn.hel1.your-objectstorage.com/s/v3/e372044df1bb75ac597670e4f4732b646407d2d9_1000011325.jpg"
+        as="image">
+    <link rel="preload"
+        href="https://hc-cdn.hel1.your-objectstorage.com/s/v3/4c0e700e1f5dcada335f137ac751b06d1bf546ff_1000008876.jpg"
+        as="image">
+
+
+    <link rel="stylesheet" href="./photooutput.css" />
+
+    <style>
+        @font-face {
+            font-family: 'Neue Regrade';
+            src: url('./fonts/NeueRegrade-Regular.woff2') format('woff2'),
+                url('./fonts/Neue Regrade Variable.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        body {
+            font-family: 'Neue Regrade', sans-serif
+        }
+
+        ::selection {
+            background: #9CC0CA;
+            color: #151515
+        }
+
+        ::-moz-selection {
+            background: #9CC0CA;
+            color: #151515
+        }
+
+        /* Subtle reveal */
+        .fade-slide {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity .6s ease, transform .6s ease
+        }
+
+        .fade-slide.show {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        .underline-animate {
+            position: relative;
+            display: inline-block
+        }
+
+        .underline-animate::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            height: 1px;
+            width: 0;
+            background: currentColor;
+            transition: width .35s ease
+        }
+
+        .group:hover .underline-animate::after {
+            width: 100%
+        }
+
+
+        .masonry {
+            column-gap: 1.25rem
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.25rem
+        }
+
+        @media (min-width:640px) {
+            .masonry {
+                column-count: 2
+            }
+        }
+
+        @media (min-width:1024px) {
+            .masonry {
+                column-count: 3
+            }
+        }
+
+        @media (min-width:1280px) {
+            .masonry {
+                column-count: 4
+            }
+        }
+
+
+        .photo-card {
+            overflow: hidden;
+            border: 1px solid #2C2C2C;
+            border-radius: .5rem;
+            background: #121212
+        }
+
+        .photo-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: transform .5s ease, opacity .5s ease
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.015);
+            opacity: .95
+        }
+
+        /* Lightbox */
+        #lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .92);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 60;
+            padding: 1rem;
+        }
+
+        #lightbox.open {
+            display: flex
+        }
+
+        .lb-inner {
+            position: relative;
+            max-width: min(95vw, 1400px);
+            max-height: 85vh;
+            width: 100%;
+        }
+
+        .lb-img {
+            max-width: 100%;
+            max-height: 80vh;
+            height: auto;
+            width: auto;
+            object-fit: contain;
+            border: 1px solid #2C2C2C;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .lb-meta {
+            margin-top: .75rem;
+            color: #9CC0CA;
+            text-align: center;
+            font-size: .75rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: 0 1rem;
+        }
+
+        .lb-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border: 1px solid #9CC0CA;
+            border-radius: 9999px;
+            color: #9CC0CA;
+            background: rgba(21, 21, 21, 0.8);
+            display: grid;
+            place-items: center;
+            opacity: .85;
+            transition: opacity .2s ease;
+            z-index: 65;
+        }
+
+        .lb-btn:hover {
+            opacity: 1;
+            background: rgba(21, 21, 21, 0.95);
+        }
+
+        .lb-prev {
+            left: -50px
+        }
+
+        .lb-next {
+            right: -50px
+        }
+
+        .lb-close {
+            top: -50px;
+            right: 0;
+            transform: none
+        }
+
+
+        @media (max-width: 768px) {
+            #lightbox {
+                padding: 0.5rem;
+            }
+
+            .lb-inner {
+                max-width: 100vw;
+                max-height: 90vh;
+            }
+
+            .lb-img {
+                max-height: 70vh;
+            }
+
+            .lb-meta {
+                font-size: .7rem;
+                margin-top: .5rem;
+                padding: 0 0.5rem;
+            }
+
+            .lb-btn {
+                width: 36px;
+                height: 36px;
+            }
+
+            .lb-prev {
+                left: 8px;
+                top: 50%;
+            }
+
+            .lb-next {
+                right: 8px;
+                top: 50%;
+            }
+
+            .lb-close {
+                top: 8px;
+                right: 8px;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .lb-inner {
+                max-height: 95vh;
+            }
+
+            .lb-img {
+                max-height: 65vh;
+            }
+
+            .lb-meta {
+                font-size: .65rem;
+            }
+
+            .lb-btn {
+                width: 32px;
+                height: 32px;
+            }
+
+            .lb-btn svg {
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: #9CC0CA;
+            width: 0;
+            z-index: 50;
+            transition: width .2s ease
+        }
+
+
+        .skeleton {
+            background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            border-radius: 0.5rem;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gl-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            position: relative;
+            z-index: 2;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+
+        .image-container.loading .skeleton {
+            display: block;
+        }
+
+        .image-container:not(.loading) .skeleton {
+            display: none;
+        }
+
+        .masonry-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .masonry-item.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #2C2C2C;
+            border-top: 3px solid #9CC0CA;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[#151515] text-white">
+    <div id="scroll-progress"></div>
+
+
+    <header class="px-8 md:px-16 lg:px-24 py-8 flex justify-between items-center">
+        <a href="/" class="text-[#9CC0CA] text-base sm:text-lg font-bold group">
+            <span class="underline-animate">maheshdhingra.xyz</span>
+        </a>
+        <nav class="space-x-4 sm:space-x-6 text-xs sm:text-sm text-gray-400 uppercase tracking-wider">
+            <a href="/" class="hover:text-white">Home</a>
+            <a href="#gallery" class="hover:text-white">Gallery</a>
+        </nav>
+    </header>
+
+    <section class="px-8 md:px-16 lg:px-24 pb-8">
+        <h1 class="text-5xl md:text-6xl font-bold leading-none">Photo Archive</h1>
+        <p class="text-sm text-gray-400 mt-3 max-w-xl">
+            Occasionally i click photos as practice for the eye. Each photo is named as a song that complements its
+            mood. Click to view them in a lightbox.
+        </p>
+    </section>
+
+    <main id="gallery" class="px-8 md:px-16 lg:px-24 pb-24 border-t border-dashed border-[#2C2C2C]">
+        <br>
+
+        <!-- Loading indicator -->
+        <div id="loadingIndicator" class="loading-spinner"></div>
+
+        <div id="masonry" class="masonry fade-slide hidden"></div>
+
+
+        <p id="emptyMsg" class="hidden text-gray-500 text-sm mt-8">
+            something went wrong likely because <code>photos.json</code> is uh.
+        </p>
+    </main>
+
+
+    <div id="lightbox" aria-hidden="true">
+        <div class="lb-inner">
+            <img id="lbImg" class="lb-img" src="" alt="">
+            <div class="lb-meta" id="lbMeta"></div>
+
+            <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#9CC0CA">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                </svg>
+            </button>
+            <button class="lb-btn lb-next" id="lbNext" aria-label="Next">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#9CC0CA">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+                </svg>
+            </button>
+            <button class="lb-btn lb-close" id="lbClose" aria-label="Close">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#9CC0CA">
+                    <path
+                        d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <footer
+        class="px-8 md:px-16 lg:px-24 py-10 text-xs uppercase tracking-widest text-gray-400 border-t border-dashed border-[#2C2C2C]">
+        © 2025 Medhansh Kapoor
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const t = window.scrollY;
+            const h = document.body.scrollHeight - window.innerHeight;
+            document.getElementById('scroll-progress').style.width = `${(h ? t / h : 0) * 100}%`;
+        });
+
+
+        const obs = new IntersectionObserver(es => {
+            es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); } });
+        }, { threshold: .1 });
+
+
+        const MASONRY = document.getElementById('masonry');
+        const EMPTY = document.getElementById('emptyMsg');
+        const LOADING = document.getElementById('loadingIndicator');
+        const DATA_URL = './photos.json';
+
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '50px' });
+
+
+        function createOptimizedImage(src, alt, sizes) {
+            const container = document.createElement('div');
+            container.className = 'image-container loading relative';
+
+            const img = document.createElement('img');
+            img.className = 'gl-img';
+            img.alt = alt || '';
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            img.sizes = sizes || '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw';
+
+
+            const skeleton = document.createElement('div');
+            skeleton.className = 'skeleton';
+
+            // Handle load events
+            img.onload = () => {
+                container.classList.remove('loading');
+            };
+
+            img.onerror = () => {
+                container.classList.remove('loading');
+                img.style.display = 'none';
+            };
+
+            // Set src to start loading
+            img.src = src;
+
+            container.appendChild(skeleton);
+            container.appendChild(img);
+
+            return container;
+        }
+
+        async function loadPhotos() {
+            try {
+                const res = await fetch(DATA_URL, { cache: 'no-store' });
+                if (!res.ok) throw new Error('Failed to load photos.json');
+                const data = await res.json();
+                const items = Array.isArray(data) ? data : (data.photos || []);
+                if (!items.length) {
+                    LOADING.style.display = 'none';
+                    EMPTY.classList.remove('hidden');
+                    return;
+                }
+
+                LOADING.style.display = 'none';
+                MASONRY.classList.remove('hidden');
+
+                const frag = document.createDocumentFragment();
+
+
+                items.forEach((p, index) => {
+                    const fig = document.createElement('figure');
+                    fig.className = 'masonry-item photo-card gl-item';
+
+                    // Create optimized image container
+                    const imageContainer = createOptimizedImage(
+                        p.src,
+                        p.alt || '',
+                        '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw'
+                    );
+
+                    const cap = document.createElement('figcaption');
+                    cap.className = 'p-3 text-[11px] uppercase tracking-[.18em] text-gray-400';
+                    cap.textContent = p.caption || '';
+
+                    fig.appendChild(imageContainer);
+                    if (p.caption) { fig.appendChild(cap); }
+
+                    frag.appendChild(fig);
+                });
+
+
+                MASONRY.appendChild(frag);
+
+
+                const allItems = MASONRY.querySelectorAll('.masonry-item');
+                allItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        revealObserver.observe(item);
+                    }, index * 50); // Faster stagger
+                });
+
+
+                obs.observe(MASONRY);
+
+                setupLightbox();
+            } catch (err) {
+                console.error(err);
+                LOADING.style.display = 'none';
+                EMPTY.textContent = 'Could not load photos.json';
+                EMPTY.classList.remove('hidden');
+            }
+        }
+
+
+        function setupLightbox() {
+            const overlay = document.getElementById('lightbox');
+            const lbImg = document.getElementById('lbImg');
+            const lbMeta = document.getElementById('lbMeta');
+            const prevBtn = document.getElementById('lbPrev');
+            const nextBtn = document.getElementById('lbNext');
+            const closeBtn = document.getElementById('lbClose');
+
+            const items = Array.from(document.querySelectorAll('.gl-item .gl-img'));
+            if (!items.length) return;
+
+            let idx = 0;
+
+            function preloadImage(src) {
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.onload = () => resolve(img);
+                    img.onerror = reject;
+                    img.src = src;
+                });
+            }
+
+            async function open(i) {
+                idx = i;
+                const img = items[idx];
+
+                // Show image immediately, no blur effect
+                lbImg.src = img.src;
+                lbImg.alt = img.alt || '';
+
+                const cap = img.closest('figure').querySelector('figcaption');
+                lbMeta.textContent = cap ? cap.textContent.trim() : '';
+
+                overlay.classList.add('open');
+                overlay.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+
+                // Preload adjacent images in background
+                const nextIdx = (idx + 1) % items.length;
+                const prevIdx = (idx - 1 + items.length) % items.length;
+                preloadImage(items[nextIdx].src).catch(() => { });
+                preloadImage(items[prevIdx].src).catch(() => { });
+            }
+
+            function close() {
+                overlay.classList.remove('open');
+                overlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                lbImg.src = '';
+            }
+            function next() { open((idx + 1) % items.length); }
+            function prev() { open((idx - 1 + items.length) % items.length); }
+
+            items.forEach((img, i) => {
+                img.style.cursor = 'zoom-in';
+                img.addEventListener('click', () => open(i));
+            });
+
+            overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+            closeBtn.addEventListener('click', close);
+            nextBtn.addEventListener('click', next);
+            prevBtn.addEventListener('click', prev);
+
+            window.addEventListener('keydown', e => {
+                if (!overlay.classList.contains('open')) return;
+                if (e.key === 'Escape') close();
+                else if (e.key === 'ArrowRight') next();
+                else if (e.key === 'ArrowLeft') prev();
+            });
+        }
+
+        // Start loading immediately
+        loadPhotos();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+---
+permalink: /photos/
+layout: photos
+---
