@@ -1,0 +1,4 @@
+---
+permalink: /ishikaneedsjusticeforherdesigns/
+layout: ishikaneedsjusticeforherdesigns
+---
